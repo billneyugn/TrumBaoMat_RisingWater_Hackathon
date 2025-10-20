@@ -25,7 +25,7 @@
         }
     },
     "helpText": {
-        "en": "<div class='help-section'><h3>🎮 Game Overview</h3><p>You are a Community Leader in Hanoi's urban lowlands. Rapid flooding challenges infrastructure and requires quick emergency response. Keep Safety ≥ 70% and Infrastructure ≥ 60% to succeed.</p></div>"
+        "en": "<div class='help-section'><h3>🎮 Game Overview</h3><p>You are a Community Leader in Hanoi's urban lowlands. Rapid flooding challenges infrastructure and requires quick emergency response. Keep Safety ≥ 70% and Infrastructure ≥ 60% to succeed.</p></div><div class='help-section'><h3>📊 Daily Score Calculation</h3><p>Each day, your metrics change based on:</p><ul><li><strong>Event Effect:</strong> The flood event that occurs (automatic impact)</li><li><strong>Action Effect:</strong> The action you choose (your impact)</li></ul><p>Your <strong>Daily Net Score</strong> = Event Effects + Action Effects</p><p style='font-size: 0.9em; color: #666;'><em>For example: If an event causes -5 Safety, and your action adds +15 Safety, your net change is +10 Safety for that day.</em></p></div><div class='help-section'><h3>🏆 Final Score (Out of 80)</h3><p>After 8 days, your final score is calculated from:</p><ul><li>Safety (0-25 pts)</li><li>Infrastructure (0-20 pts)</li><li>Morale (0-15 pts)</li><li>Resource Efficiency (0-20 pts)</li><li>Bonus Points (0-20 pts)</li></ul><p style='font-size: 0.9em; color: #666;'><em>Your goal: Keep Safety ≥ 70% and Infrastructure ≥ 60% to achieve \"Resilient Survivor\" status!</em></p></div>"
     },
     "events": [
         {

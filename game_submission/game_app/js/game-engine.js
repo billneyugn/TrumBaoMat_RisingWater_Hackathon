@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
     gameState.gameStatus = 'playing';
 
+    // Display welcome modal on first load
+    showWelcomeModal();
+
     // Draw first event (generates actionPool)
     drawNextEvent();
     
@@ -115,12 +118,19 @@ function setupEventListeners() {
     closeModal('helpModal');
   });
 
+  // Welcome modal
+  document.getElementById('closeWelcomeBtn').addEventListener('click', () => {
+    closeModal('welcomeModal');
+  });
+
+  document.getElementById('startGameBtn').addEventListener('click', () => {
+    closeModal('welcomeModal');
+  });
+
   // Restart button
   document.getElementById('restartBtn').addEventListener('click', () => {
     if (confirm(i18n('Restart Game? Current progress will be lost.'))) {
-      initializeGame();
-      gameState.gameStatus = 'playing';
-      drawNextEvent();
+      location.reload();
     }
   });
 }
@@ -139,17 +149,11 @@ function drawNextEvent() {
 }
 
 /**
- * Generate a random action pool for the current day
- * Strategy (All Days, including Day 1):
- * 1. Find the "Do Nothing" action (category: risk)
- * 2. Get all other actions
- * 3. Randomly pick 3 actions from the full pool
- * 4. Always add "Do Nothing" as the 4th option
- * 5. Shuffle so Do Nothing isn't always in the same position
- * 6. Ensure exactly 4 actions are available each day
+ * Generate action pool with at least 1 event-relevant action
  */
 function generateActionPool() {
   const allActions = gameState.gameData.actions;
+  const currentEvent = gameState.currentEvent;
   
   // Find the "Do Nothing" action (has category: 'risk')
   const doNothingAction = allActions.find(a => a.category === 'risk');
@@ -157,23 +161,87 @@ function generateActionPool() {
   // Get all other actions (exclude Do Nothing)
   const otherActions = allActions.filter(a => a.category !== 'risk');
   
-  // Randomly shuffle and pick 3 actions
-  const shuffledOthers = shuffleArray(otherActions);
-  const selectedActions = shuffledOthers.slice(0, 3);
+  // ===== EVENT-TO-ACTION MAPPING =====
+  // Maps event IDs to recommended action categories
+  // Ensures at least 1 action in the pool is relevant to the current event
+  const eventActionMap = {
+    // Rainfall/Water Level Events
+    'event_slow_rain': ['prepare', 'recover'],
+    'event_heavy_rain': ['prepare', 'defend'],
+    'event_dike_breach': ['defend', 'recover'],
+    'event_landslide_warning': ['defend'],
+    
+    // Damage/Infrastructure Events
+    'event_irrigation_damage': ['recover'],
+    'event_water_recedes': ['recover'],
+    'event_communication_down': ['prepare'],
+    
+    // Emergency Events
+    'event_rescue_request': ['defend'],
+    'event_disease_risk': ['defend'],
+    'event_supplies_shortage': ['recover'],
+    
+    // Positive Events
+    'event_clear_weather': ['recover'],
+    'event_successful_evacuation': ['defend'],
+    'event_aid_arrives': ['recover'],
+    
+    // Add more events as needed - defaults to empty for unmapped events
+  };
   
-  // Build action pool with 3 random + Do Nothing
+  // Get relevant categories for current event
+  const eventId = currentEvent.id;
+  const relevantCategories = eventActionMap[eventId] || [];
+  
+  // ===== ACTION POOL SELECTION LOGIC =====
+  let selectedActions = [];
+  
+  if (relevantCategories.length > 0) {
+    // Filter actions by relevant categories
+    const relevantActions = otherActions.filter(a => 
+      relevantCategories.includes(a.category)
+    );
+    
+    if (relevantActions.length > 0) {
+      // Pick 1 random relevant action (guaranteed event-related)
+      const shuffledRelevant = shuffleArray(relevantActions);
+      const eventRelatedAction = shuffledRelevant[0];
+      selectedActions.push(eventRelatedAction);
+      
+      // Pick 2 more random actions from ALL other actions (for variety)
+      const remaining = otherActions.filter(a => a.id !== eventRelatedAction.id);
+      const shuffledRemaining = shuffleArray(remaining);
+      selectedActions.push(...shuffledRemaining.slice(0, 2));
+    } else {
+      // Fallback: if no relevant actions found, pick 3 random actions
+      const shuffledOthers = shuffleArray(otherActions);
+      selectedActions = shuffledOthers.slice(0, 3);
+    }
+  } else {
+    // Fallback: if event not in map, pick 3 random actions
+    const shuffledOthers = shuffleArray(otherActions);
+    selectedActions = shuffledOthers.slice(0, 3);
+  }
+  
+  // Build final action pool with "Do Nothing"
   let actionPool = selectedActions;
   if (doNothingAction) {
     actionPool.push(doNothingAction);
   }
   
-  // Final shuffle so Do Nothing position is random
+  // Final shuffle so Do Nothing position is random (and overall action order is randomized)
   gameState.actionPool = shuffleArray(actionPool).slice(0, 4);
   
   // Log for debugging
-  console.log(`Day ${gameState.currentDay} - Random Action Pool Generated`);
-  console.log(`Generated ${gameState.actionPool.length} actions (3 random + Do Nothing)`);
-  console.log('Action Pool:', gameState.actionPool.map(a => a.id));
+  console.log(`Day ${gameState.currentDay} - Action Pool Generated`);
+  console.log(`Event: ${eventId}`);
+  if (relevantCategories.length > 0) {
+    console.log(`Relevant categories: ${relevantCategories.join(', ')}`);
+    console.log(`Event-related action: ${selectedActions[0]?.id}`);
+  } else {
+    console.log(`No relevant categories mapped for this event`);
+  }
+  console.log('Final Action Pool:', gameState.actionPool.map(a => a.id));
 }
 
 /**
@@ -421,8 +489,8 @@ function calculateScore() {
   
   score += breakdown.bonus;
 
-  // Cap total score at 100
-  gameState.totalScore = Math.min(score, 100);
+  // Cap total score at 80
+  gameState.totalScore = Math.min(score, 80);
   gameState.scoreBreakdown = breakdown;
   
   return gameState.totalScore;
@@ -456,7 +524,7 @@ function endGame() {
     ? `
       <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
         <h4 style="text-align: center; color: #856404; margin: 0 0 10px 0; font-size: 1.1rem;">
-          🏆 Final Score: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/100</span>
+          🏆 Final Score: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/80</span>
         </h4>
         <div style="font-size: 0.85rem; color: #856404; text-align: left;">
           <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
@@ -485,7 +553,7 @@ function endGame() {
     : `
       <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
         <h4 style="text-align: center; color: #856404; margin: 0 0 10px 0; font-size: 1.1rem;">
-          🏆 Điểm Cuối Cùng: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/100</span>
+          🏆 Điểm Cuối Cùng: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/80</span>
         </h4>
         <div style="font-size: 0.85rem; color: #856404; text-align: left;">
           <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
@@ -550,18 +618,7 @@ function endGame() {
       </div>
     </div>
 
-    <div style="background: ${won ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
-      <p style="font-size: 0.9rem; color: ${won ? '#155724' : '#721c24'}; margin: 0; line-height: 1.5;">
-        <strong>${won 
-          ? (lang === 'en' 
-              ? '✅ Excellent leadership! Your community survived the flood crisis with proper preparation and swift action.' 
-              : '✅ Lãnh đạo xuất sắc! Cộng đồng của bạn sống sót qua khủng hoảng lũ lụt.')
-          : (lang === 'en' 
-              ? '❌ The community struggled during this flood season. Consider different strategies in your next attempt.' 
-              : '❌ Cộng đồng gặp khó khăn trong mùa lũ này. Hãy thử các chiến lược khác nhau trong lần tiếp theo.')
-        }</strong>
-      </p>
-    </div>
+    ${generateDynamicFeedback(safety, infrastructure, morale, rp, won, lang)}
 
     <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; border-left: 4px solid #2196F3;">
       <p style="font-size: 0.85rem; color: #1565c0; margin: 0;">
@@ -580,6 +637,8 @@ function endGame() {
     iconColor: won ? '#27ae60' : '#f39c12',
     confirmButtonText: lang === 'en' ? '🔄 Replay Game' : '🔄 Chơi Lại',
     confirmButtonColor: '#2c5f8d',
+    denyButtonText: lang === 'en' ? '🗺️ Choose Scenario' : '🗺️ Chọn Kịch Bản',
+    showDenyButton: true,
     allowOutsideClick: false,
     allowEscapeKey: false,
     showCloseButton: false,
@@ -587,8 +646,143 @@ function endGame() {
   }).then((result) => {
     if (result.isConfirmed) {
       replayGame();
+    } else if (result.isDenied) {
+      showScenarioSelector();
     }
   });
+}
+
+/**
+ * Generate dynamic feedback based on player performance
+ */
+function generateDynamicFeedback(safety, infrastructure, morale, rp, won, lang) {
+  // Find lowest metric
+  const metrics = {
+    safety: { value: safety, name: lang === 'en' ? 'Safety' : 'An Toàn', icon: '🛡️' },
+    infrastructure: { value: infrastructure, name: lang === 'en' ? 'Infrastructure' : 'Cơ Sở Hạ Tầng', icon: '🏗️' },
+    morale: { value: morale, name: lang === 'en' ? 'Morale' : 'Tinh Thần', icon: '💪' }
+  };
+
+  let lowest = metrics.safety;
+  let lowestKey = 'safety';
+  
+  if (infrastructure < lowest.value) {
+    lowest = metrics.infrastructure;
+    lowestKey = 'infrastructure';
+  }
+  if (morale < lowest.value) {
+    lowest = metrics.morale;
+    lowestKey = 'morale';
+  }
+
+  // Generate feedback based on performance
+  let mainFeedback = '';
+  let lowMetricTip = '';
+
+  if (won) {
+    mainFeedback = lang === 'en'
+      ? `✅ Excellent leadership! Your community survived the flood crisis with proper preparation and swift action.`
+      : `✅ Lãnh đạo xuất sắc! Cộng đồng của bạn sống sót qua khủng hoảng lũ lụt.`;
+  } else {
+    // Provide specific feedback based on what went wrong
+    if (safety < 50 && infrastructure < 50) {
+      mainFeedback = lang === 'en'
+        ? `❌ Critical situation: Both Safety and Infrastructure collapsed. Prioritize immediate evacuation and emergency shelters early in future attempts.`
+        : `❌ Tình huống nghiêm trọng: Cả An Toàn và Cơ Sở Hạ Tầng đã sụp đổ. Ưu tiên sơ tán khẩn cấp và nơi trú ẩn khẩn cấp sớm trong các lần tiếp theo.`;
+    } else if (safety < 70) {
+      mainFeedback = lang === 'en'
+        ? `⚠️ Safety fell short of target. You need to prioritize evacuation actions and defensive measures to protect your community.`
+        : `⚠️ An Toàn không đạt mục tiêu. Bạn cần ưu tiên các hành động sơ tán và biện pháp phòng vệ để bảo vệ cộng đồng.`;
+    } else if (infrastructure < 60) {
+      mainFeedback = lang === 'en'
+        ? `⚠️ Infrastructure dropped below required level. Focus on repair and restoration actions to maintain essential services.`
+        : `⚠️ Cơ Sở Hạ Tầng giảm dưới mức yêu cầu. Tập trung vào các hành động sửa chữa và khôi phục để duy trì các dịch vụ thiết yếu.`;
+    } else {
+      mainFeedback = lang === 'en'
+        ? `⚠️ Your community faced challenges. Try focusing more on ${lowest.name.toLowerCase()} in your next attempt—it was your weakest area.`
+        : `⚠️ Cộng đồng của bạn gặp phải những thách thức. Hãy tập trung vào ${lowest.name} trong lần tiếp theo—nó là lĩnh vực yếu nhất của bạn.`;
+    }
+  }
+
+  // Generate tip for lowest metric
+  if (lowestKey === 'safety') {
+    lowMetricTip = lang === 'en'
+      ? `<strong>🛡️ Safety (${safety}%):</strong> Your weakest area. Use "Evacuate People", "Provide Medical Support", and "Organize Rescue Teams" actions more frequently to protect lives.`
+      : `<strong>🛡️ An Toàn (${safety}%):</strong> Lĩnh vực yếu nhất của bạn. Sử dụng các hành động "Sơ Tán Dân", "Cung Cấp Y Tế", và "Tổ Chức Đội Cứu Hộ" thường xuyên hơn để bảo vệ sinh mạng.`;
+  } else if (lowestKey === 'infrastructure') {
+    lowMetricTip = lang === 'en'
+      ? `<strong>🏗️ Infrastructure (${infrastructure}%):</strong> Your weakest area. Use "Repair Roads", "Restore Utilities", and "Reinforce Dike" actions to maintain critical services.`
+      : `<strong>🏗️ Cơ Sở Hạ Tầng (${infrastructure}%):</strong> Lĩnh vực yếu nhất của bạn. Sử dụng các hành động "Sửa Đường", "Khôi Phục Tiện Ích", và "Gia Cố Đê" để duy trì các dịch vụ quan trọng.`;
+  } else {
+    lowMetricTip = lang === 'en'
+      ? `<strong>💪 Morale (${morale}%):</strong> Your weakest area. Use "Deliver Aid", "Community Support", and "Distribute Relief" to keep community spirits up.`
+      : `<strong>💪 Tinh Thần (${morale}%):</strong> Lĩnh vực yếu nhất của bạn. Sử dụng "Cung Cấp Trợ Giúp", "Hỗ Trợ Cộng Đồng", và "Phân Phát Lũ Khẩn Cấp" để giữ tinh thần cộng đồng.`;
+  }
+
+  return `
+    <div style="background: ${won ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+      <p style="font-size: 0.9rem; color: ${won ? '#155724' : '#721c24'}; margin: 0; line-height: 1.5;">
+        <strong>${mainFeedback}</strong>
+      </p>
+    </div>
+
+    <div style="background: #fff3cd; padding: 12px; border-radius: 6px; border-left: 4px solid #ffc107; margin-bottom: 15px;">
+      <h4 style="font-size: 0.95rem; color: #856404; margin: 0 0 8px 0;">
+        ${lang === 'en' ? '🎯 Area to Focus On' : '🎯 Lĩnh Vực Cần Tập Trung'}
+      </h4>
+      <p style="font-size: 0.85rem; color: #856404; margin: 0; line-height: 1.5;">
+        ${lowMetricTip}
+      </p>
+    </div>
+  `;
+}
+
+/**
+ * Show welcome modal with game briefing
+ */
+function showWelcomeModal() {
+  const lang = gameState.currentLanguage;
+  
+  const welcomeContent = lang === 'en' 
+    ? `
+      <p><strong>You are the Community Leader</strong> of a flood-prone town. Over the next 8 days, your mission is to protect lives, defend infrastructure, and maintain community morale as floods rise and fall.</p>
+      
+      <p><strong>Each day,</strong> unexpected events will challenge you — from sudden rains and dike breaches to rescue missions and disease risks. Choose your actions wisely. Every decision affects:</p>
+      
+      <ul style="margin: 15px 0; padding-left: 20px;">
+        <li><strong>🛡️ Safety</strong> - Lives and protection</li>
+        <li><strong>🏗️ Infrastructure</strong> - Roads, utilities, shelter</li>
+        <li><strong>💪 Morale</strong> - Community trust and spirit</li>
+        <li><strong>💰 Resources (RP)</strong> - Your budget for actions</li>
+      </ul>
+      
+      <p><strong>Your Goal:</strong> Keep your community safe and functioning through the entire flood cycle (8 days).</p>
+      
+      <p><strong>Learn, adapt, and replay</strong> to master flood preparedness and recovery. Different strategies teach different lessons!</p>
+    `
+    : `
+      <p><strong>Bạn là Nhà Lãnh Đạo Cộng Đồng</strong> của một thị trấn dễ bị lũ lụt. Trong 8 ngày tiếp theo, nhiệm vụ của bạn là bảo vệ sinh mạng, bảo vệ cơ sở hạ tầng và duy trì tinh thần cộng đồng khi lũ lụt dâng lên và rút xuống.</p>
+      
+      <p><strong>Mỗi ngày,</strong> những sự kiện bất ngờ sẽ thách thức bạn — từ mưa lớn đột ngột, vỡ đê đến các nhiệm vụ cứu hộ và nguy cơ bệnh tật. Chọn hành động của bạn một cách sáng suốt. Mỗi quyết định ảnh hưởng đến:</p>
+      
+      <ul style="margin: 15px 0; padding-left: 20px;">
+        <li><strong>🛡️ An Toàn</strong> - Sinh mạng và bảo vệ</li>
+        <li><strong>🏗️ Cơ Sở Hạ Tầng</strong> - Đường, tiện ích, nơi trú ẩn</li>
+        <li><strong>💪 Tinh Thần</strong> - Lòng tin và tinh thần cộng đồng</li>
+        <li><strong>💰 Tài Nguyên (RP)</strong> - Ngân sách của bạn để hành động</li>
+      </ul>
+      
+      <p><strong>Mục Tiêu Của Bạn:</strong> Giữ cộng đồng của bạn an toàn và hoạt động bình thường trong suốt chu kỳ lũ lụt (8 ngày).</p>
+      
+      <p><strong>Học hỏi, thích ứng và chơi lại</strong> để thành thạo khả năng chuẩn bị và phục hồi sau lũ lụt. Mỗi chiến lược khác nhau dạy các bài học khác nhau!</p>
+    `;
+  
+  const welcomeEl = document.getElementById('welcomeText');
+  if (welcomeEl) {
+    welcomeEl.innerHTML = welcomeContent;
+  }
+  
+  openModal('welcomeModal');
 }
 
 /**
@@ -628,4 +822,167 @@ function replayGame() {
     allowOutsideClick: false,
     allowEscapeKey: false
   });
+}
+
+/**
+ * Show scenario selector modal
+ */
+function showScenarioSelector() {
+  const lang = gameState.currentLanguage;
+  
+  const scenarioHTML = lang === 'en'
+    ? `
+      <div style="text-align: left; margin-bottom: 15px;">
+        <p style="margin-bottom: 20px; color: #2c3e50; font-weight: 500; font-size: 1rem;">
+          Choose a flood scenario to experience:
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Central Highlands -->
+          <button onclick="selectScenario('central_highlands')" style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(102, 126, 234, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">⛰️ Central Highlands</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Slow but prolonged floods damage roads and fields. Requires long-term resource management.</div>
+          </button>
+          
+          <!-- Hanoi Lowlands -->
+          <button onclick="selectScenario('hanoi_lowlands')" style="
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(245, 87, 108, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(245, 87, 108, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">🏙️ Hanoi Lowlands</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Rapid urban flooding demands quick emergency response. Test your crisis management skills.</div>
+          </button>
+          
+          <!-- Mekong Delta -->
+          <button onclick="selectScenario('mekong_detal')" style="
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(79, 172, 254, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(79, 172, 254, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">🌾 Mekong Delta</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Seasonal flooding affects agriculture. Balance farm recovery with community needs.</div>
+          </button>
+        </div>
+      </div>
+    `
+    : `
+      <div style="text-align: left; margin-bottom: 15px;">
+        <p style="margin-bottom: 20px; color: #2c3e50; font-weight: 500; font-size: 1rem;">
+          Chọn kịch bản lũ lụt để trải nghiệm:
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Central Highlands -->
+          <button onclick="selectScenario('central_highlands')" style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(102, 126, 234, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">⛰️ Phiên Bản Tây Nguyên</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Lũ chậm nhưng kéo dài làm hư hại đường xá và đất nông nghiệp. Yêu cầu quản lý tài nguyên dài hạn.</div>
+          </button>
+          
+          <!-- Hanoi Lowlands -->
+          <button onclick="selectScenario('hanoi_lowlands')" style="
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(245, 87, 108, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(245, 87, 108, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">🏙️ Phiên Bản Hà Nội</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Lũ đô thị nhanh chóng đòi hỏi phản ứng khẩn cấp. Kiểm tra kỹ năng quản lý khủng hoảng của bạn.</div>
+          </button>
+          
+          <!-- Mekong Delta -->
+          <button onclick="selectScenario('mekong_detal')" style="
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+          " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(79, 172, 254, 0.4)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(79, 172, 254, 0.2)';">
+            <div style="font-size: 1.3rem; margin-bottom: 6px; font-weight: 700;">🌾 Phiên Bản Đồng Bằng Sông Cửu Long</div>
+            <div style="font-size: 0.85rem; opacity: 0.95; line-height: 1.4;">Lũ theo mùa ảnh hưởng đến nông nghiệp. Cân bằng phục hồi nông trại với nhu cầu cộng đồng.</div>
+          </button>
+        </div>
+      </div>
+    `;
+  
+  Swal.fire({
+    title: lang === 'en' ? '🗺️ Select Your Scenario' : '🗺️ Chọn Kịch Bản',
+    html: scenarioHTML,
+    icon: 'question',
+    iconColor: '#2c5f8d',
+    confirmButtonText: lang === 'en' ? 'Back' : 'Quay Lại',
+    confirmButtonColor: '#999',
+    showConfirmButton: true,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showCloseButton: false,
+    width: '580px'
+  });
+}
+
+/**
+ * Select a scenario and start new game
+ */
+function selectScenario(scenario) {
+  localStorage.setItem('selectedScenario', scenario);
+  location.reload();
 }

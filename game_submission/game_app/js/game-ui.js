@@ -131,8 +131,27 @@ function showTip() {
   const event = gameState.currentEvent;
   const lang = gameState.currentLanguage;
 
+  // Set event title
+  const eventTitle = document.getElementById('tipEventTitle');
+  eventTitle.textContent = event.title[lang];
+
+  // Set event context (description + recommended action in 1-2 lines)
+  const eventContext = document.getElementById('tipEventContext');
+  const contextText = lang === 'en'
+    ? `${event.description[lang]}`
+    : `${event.description[lang]}`;
+  eventContext.textContent = contextText;
+
+  // Set main tip
   const tipText = document.getElementById('tipText');
   tipText.textContent = event.tip[lang];
+
+  // Set next day guidance
+  const nextDayText = document.getElementById('nextDayText');
+  const nextDayMsg = lang === 'en'
+    ? `📋 Up next: Please choose the best action for Day ${gameState.currentDay + 1} situation.`
+    : `📋 Tiếp theo: Vui lòng chọn hành động tốt nhất cho tình huống Ngày ${gameState.currentDay + 1}.`;
+  nextDayText.textContent = nextDayMsg;
 
   openModal('tipModal');
 }

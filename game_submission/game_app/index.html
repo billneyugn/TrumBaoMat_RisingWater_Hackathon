@@ -123,7 +123,24 @@
         <div class="modal-content tip-content">
             <button class="modal-close" id="closeTipBtn">&times;</button>
             <h2 data-i18n="floodTip">💡 Flood Safety Tip</h2>
-            <p id="tipText"></p>
+            
+            <!-- Event Context Section -->
+            <div class="tip-section">
+                <h3 class="tip-subtitle" id="tipEventTitle"></h3>
+                <p id="tipEventContext"></p>
+            </div>
+            
+            <!-- Main Tip Section -->
+            <div class="tip-section">
+                <h4 class="tip-label">What to Do:</h4>
+                <p id="tipText"></p>
+            </div>
+            
+            <!-- Next Day Guidance -->
+            <div class="tip-next-day">
+                <p id="nextDayText"></p>
+            </div>
+            
             <button class="btn btn-primary" id="tipAckBtn" data-i18n="understood">Understood</button>
         </div>
     </div>
@@ -145,6 +162,18 @@
             <h2 data-i18n="howToPlay">How to Play</h2>
             <div class="help-content-text" id="helpText"></div>
             <button class="btn btn-primary" id="closeHelpConfirmBtn" data-i18n="close">Close</button>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content welcome-content">
+            <button class="modal-close" id="closeWelcomeBtn">&times;</button>
+            <div class="welcome-header">
+                <h1>🌊 Rising Waters: Vietnam Flood Resilience</h1>
+            </div>
+            <div class="welcome-body" id="welcomeText"></div>
+            <button class="btn btn-primary" id="startGameBtn">Begin Your Mission</button>
         </div>
     </div>
 

@@ -230,6 +230,102 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* ===== WELCOME MODAL ===== */
+.welcome-content {
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.welcome-header h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.welcome-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.welcome-body p {
+    margin: 12px 0;
+}
+
+.welcome-body strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* ===== TIP MODAL ENHANCEMENTS ===== */
+.tip-section {
+    background: #f0f8ff;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--info-color);
+}
+
+.tip-subtitle {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.tip-label {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#tipEventContext {
+    font-size: 0.95rem;
+    color: #34495e;
+    margin: 0;
+    line-height: 1.5;
+}
+
+#tipText {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.tip-next-day {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--success-color);
+    border-bottom: 2px solid var(--success-color);
+}
+
+#nextDayText {
+    font-size: 0.95rem;
+    color: #1565c0;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.5;
+    font-style: italic;
+}
+
 .game-header .subtitle {
     font-size: 1.1rem;
     opacity: 0.95;
