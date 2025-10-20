@@ -10,6 +10,7 @@
       "meterMorale": "Morale",
       "meterResourcePoints": "Resource Points",
       "chooseAction": "Choose Your Action:",
+      "gameStats": "Game Statistics",
       "help": "Help",
       "restart": "Restart Game",
       "quizTitle": "Safety Quiz",
@@ -32,6 +33,7 @@
       "meterMorale": "Tinh Thần",
       "meterResourcePoints": "Điểm Tài Nguyên",
       "chooseAction": "Chọn Hành Động Của Bạn:",
+      "gameStats": "Thống Kê Trò Chơi",
       "help": "Trợ Giúp",
       "restart": "Khởi Động Lại Trò Chơi",
       "quizTitle": "Câu Hỏi An Toàn",
@@ -53,22 +55,46 @@
     {
       "id": "event_heavy_rain",
       "icon": "🌧️",
-      "title": { "en": "Heavy Rainfall Warning", "vi": "Cảnh Báo Mưa Lớn" },
-      "description": { "en": "Weather forecast predicts 100+ mm of rain in the next 24 hours. Rivers are rising.", "vi": "Dự báo thời tiết dự đoán hơn 100 mm mưa trong 24 giờ tới. Các sông đang dâng cao." },
+      "title": {
+        "en": "Heavy Rainfall Warning",
+        "vi": "Cảnh Báo Mưa Lớn"
+      },
+      "description": {
+        "en": "Weather forecast predicts 100+ mm of rain in the next 24 hours. Rivers are rising.",
+        "vi": "Dự báo thời tiết dự đoán hơn 100 mm mưa trong 24 giờ tới. Các sông đang dâng cao."
+      },
       "effects": {
         "safety": -10,
         "infrastructure": -5,
         "morale": -5,
         "resourcePoints": 0
       },
-      "tip": { "en": "During heavy rain, ensure all drainage systems are clear to prevent flooding in low-lying areas.", "vi": "Trong mưa lớn, hãy đảm bảo tất cả các hệ thống thoát nước sạch để ngăn chặn lũ lụt ở các khu vực thấp." },
+      "tip": {
+        "en": "During heavy rain, ensure all drainage systems are clear to prevent flooding in low-lying areas.",
+        "vi": "Trong mưa lớn, hãy đảm bảo tất cả các hệ thống thoát nước sạch để ngăn chặn lũ lụt ở các khu vực thấp."
+      },
       "quiz": {
-        "question": { "en": "What is the first step in preparing for a flood?", "vi": "Bước đầu tiên để chuẩn bị cho lũ lụt là gì?" },
+        "question": {
+          "en": "What is the first step in preparing for a flood?",
+          "vi": "Bước đầu tiên để chuẩn bị cho lũ lụt là gì?"
+        },
         "options": [
-          { "en": "Evacuate immediately", "vi": "Sơ tán ngay lập tức" },
-          { "en": "Create and practice an evacuation plan", "vi": "Lập kế hoạch sơ tán và tập luyện" },
-          { "en": "Stock up on food only", "vi": "Chỉ tích trữ thực phẩm" },
-          { "en": "Wait for official orders", "vi": "Chờ lệnh chính thức" }
+          {
+            "en": "Evacuate immediately",
+            "vi": "Sơ tán ngay lập tức"
+          },
+          {
+            "en": "Create and practice an evacuation plan",
+            "vi": "Lập kế hoạch sơ tán và tập luyện"
+          },
+          {
+            "en": "Stock up on food only",
+            "vi": "Chỉ tích trữ thực phẩm"
+          },
+          {
+            "en": "Wait for official orders",
+            "vi": "Chờ lệnh chính thức"
+          }
         ],
         "correctAnswer": 1
       }
@@ -76,22 +102,46 @@
     {
       "id": "event_dike_breach",
       "icon": "💥",
-      "title": { "en": "Dike Breach Reported", "vi": "Báo Cáo Vỡ Đê" },
-      "description": { "en": "A critical dike in the north has breached. Water is flooding nearby villages rapidly. Emergency response needed now.", "vi": "Một con đê quan trọng ở phía bắc đã vỡ. Nước lũ nhấn chìm các làng gần đó một cách nhanh chóng. Cần phản ứng khẩn cấp ngay bây giờ." },
+      "title": {
+        "en": "Dike Breach Reported",
+        "vi": "Báo Cáo Vỡ Đê"
+      },
+      "description": {
+        "en": "A critical dike in the north has breached. Water is flooding nearby villages rapidly. Emergency response needed now.",
+        "vi": "Một con đê quan trọng ở phía bắc đã vỡ. Nước lũ nhấn chìm các làng gần đó một cách nhanh chóng. Cần phản ứng khẩn cấp ngay bây giờ."
+      },
       "effects": {
         "safety": -25,
         "infrastructure": -20,
         "morale": -15,
         "resourcePoints": 0
       },
-      "tip": { "en": "Reinforce dikes before flood season. Regular inspections and repairs can prevent catastrophic breaches.", "vi": "Gia cố đê trước mùa lũ. Kiểm tra và sửa chữa thường xuyên có thể ngăn chặn vỡ đê thảm họa." },
+      "tip": {
+        "en": "Reinforce dikes before flood season. Regular inspections and repairs can prevent catastrophic breaches.",
+        "vi": "Gia cố đê trước mùa lũ. Kiểm tra và sửa chữa thường xuyên có thể ngăn chặn vỡ đê thảm họa."
+      },
       "quiz": {
-        "question": { "en": "If a dike is breaching, what should you do?", "vi": "Nếu một con đê đang vỡ, bạn nên làm gì?" },
+        "question": {
+          "en": "If a dike is breaching, what should you do?",
+          "vi": "Nếu một con đê đang vỡ, bạn nên làm gì?"
+        },
         "options": [
-          { "en": "Ignore it and stay calm", "vi": "Bỏ qua nó và giữ bình tĩnh" },
-          { "en": "Alert authorities and evacuate immediately", "vi": "Cảnh báo chính quyền và sơ tán ngay lập tức" },
-          { "en": "Try to fix it yourself", "vi": "Cố gắng tự sửa nó" },
-          { "en": "Document it for later", "vi": "Ghi lại nó để sau này" }
+          {
+            "en": "Ignore it and stay calm",
+            "vi": "Bỏ qua nó và giữ bình tĩnh"
+          },
+          {
+            "en": "Alert authorities and evacuate immediately",
+            "vi": "Cảnh báo chính quyền và sơ tán ngay lập tức"
+          },
+          {
+            "en": "Try to fix it yourself",
+            "vi": "Cố gắng tự sửa nó"
+          },
+          {
+            "en": "Document it for later",
+            "vi": "Ghi lại nó để sau này"
+          }
         ],
         "correctAnswer": 1
       }
@@ -99,22 +149,46 @@
     {
       "id": "event_rising_water",
       "icon": "💧",
-      "title": { "en": "Water Levels Rising Rapidly", "vi": "Mực Nước Dâng Nhanh Chóng" },
-      "description": { "en": "Rivers are overflowing. Water is entering homes and businesses in low-lying districts. Citizens are in panic.", "vi": "Các sông đang tràn nước. Nước lũ vào các nhà cửa và cửa hàng ở các khu vực thấp. Công dân hoảng sợ." },
+      "title": {
+        "en": "Water Levels Rising Rapidly",
+        "vi": "Mực Nước Dâng Nhanh Chóng"
+      },
+      "description": {
+        "en": "Rivers are overflowing. Water is entering homes and businesses in low-lying districts. Citizens are in panic.",
+        "vi": "Các sông đang tràn nước. Nước lũ vào các nhà cửa và cửa hàng ở các khu vực thấp. Công dân hoảng sợ."
+      },
       "effects": {
         "safety": -20,
         "infrastructure": -15,
         "morale": -20,
         "resourcePoints": 0
       },
-      "tip": { "en": "Move to higher ground or upper floors. Never swim or drive through floodwaters—currents are deadly.", "vi": "Di chuyển đến địa hình cao hơn hoặc tầng trên. Không bao giờ bơi hoặc lái xe qua nước lũ—dòng chảy có thể gây chết người." },
-        "quiz": {
-        "question": { "en": "What should you do if floodwater enters your home?", "vi": "Bạn nên làm gì nếu nước lũ vào nhà của bạn?" },
+      "tip": {
+        "en": "Move to higher ground or upper floors. Never swim or drive through floodwaters—currents are deadly.",
+        "vi": "Di chuyển đến địa hình cao hơn hoặc tầng trên. Không bao giờ bơi hoặc lái xe qua nước lũ—dòng chảy có thể gây chết người."
+      },
+      "quiz": {
+        "question": {
+          "en": "What should you do if floodwater enters your home?",
+          "vi": "Bạn nên làm gì nếu nước lũ vào nhà của bạn?"
+        },
         "options": [
-          { "en": "Try to collect the water", "vi": "Cố gắng thu thập nước" },
-          { "en": "Move to higher floors or roof", "vi": "Chuyển sang tầng cao hơn hoặc mái nhà" },
-          { "en": "Stay in the basement", "vi": "Ở lại tầng hầm" },
-          { "en": "Go outside to find help", "vi": "Ra ngoài để tìm trợ giúp" }
+          {
+            "en": "Try to collect the water",
+            "vi": "Cố gắng thu thập nước"
+          },
+          {
+            "en": "Move to higher floors or roof",
+            "vi": "Chuyển sang tầng cao hơn hoặc mái nhà"
+          },
+          {
+            "en": "Stay in the basement",
+            "vi": "Ở lại tầng hầm"
+          },
+          {
+            "en": "Go outside to find help",
+            "vi": "Ra ngoài để tìm trợ giúp"
+          }
         ],
         "correctAnswer": 1
       }
@@ -122,22 +196,46 @@
     {
       "id": "event_disease_outbreak",
       "icon": "🦠",
-      "title": { "en": "Disease Outbreak Risk", "vi": "Rủi Ro Bùng Phát Bệnh Tật" },
-      "description": { "en": "After the floodwaters recede, cholera and other waterborne diseases are spreading. Medical supplies are low.", "vi": "Sau khi nước lũ rút đi, bệnh tả và các bệnh do nước lây truyền khác đang lây lan. Các vật tư y tế có ít." },
+      "title": {
+        "en": "Disease Outbreak Risk",
+        "vi": "Rủi Ro Bùng Phát Bệnh Tật"
+      },
+      "description": {
+        "en": "After the floodwaters recede, cholera and other waterborne diseases are spreading. Medical supplies are low.",
+        "vi": "Sau khi nước lũ rút đi, bệnh tả và các bệnh do nước lây truyền khác đang lây lan. Các vật tư y tế có ít."
+      },
       "effects": {
         "safety": -15,
         "infrastructure": 0,
         "morale": -10,
         "resourcePoints": -20
       },
-      "tip": { "en": "Boil water before drinking after floods. Ensure proper sanitation to prevent waterborne diseases.", "vi": "Đun sôi nước trước khi uống sau lũ. Đảm bảo vệ sinh thích hợp để ngăn chặn các bệnh do nước lây truyền." },
+      "tip": {
+        "en": "Boil water before drinking after floods. Ensure proper sanitation to prevent waterborne diseases.",
+        "vi": "Đun sôi nước trước khi uống sau lũ. Đảm bảo vệ sinh thích hợp để ngăn chặn các bệnh do nước lây truyền."
+      },
       "quiz": {
-        "question": { "en": "How should you treat water after a flood?", "vi": "Bạn nên xử lý nước như thế nào sau lũ?" },
+        "question": {
+          "en": "How should you treat water after a flood?",
+          "vi": "Bạn nên xử lý nước như thế nào sau lũ?"
+        },
         "options": [
-          { "en": "Drink it as is", "vi": "Uống như vậy" },
-          { "en": "Boil it for at least 1 minute or use purification tablets", "vi": "Đun sôi ít nhất 1 phút hoặc sử dụng viên tinh chế" },
-          { "en": "Let it sit overnight", "vi": "Để nó qua đêm" },
-          { "en": "Filter through cloth", "vi": "Lọc qua vải" }
+          {
+            "en": "Drink it as is",
+            "vi": "Uống như vậy"
+          },
+          {
+            "en": "Boil it for at least 1 minute or use purification tablets",
+            "vi": "Đun sôi ít nhất 1 phút hoặc sử dụng viên tinh chế"
+          },
+          {
+            "en": "Let it sit overnight",
+            "vi": "Để nó qua đêm"
+          },
+          {
+            "en": "Filter through cloth",
+            "vi": "Lọc qua vải"
+          }
         ],
         "correctAnswer": 1
       }
@@ -145,22 +243,46 @@
     {
       "id": "event_evacuee_influx",
       "icon": "👥",
-      "title": { "en": "Thousands of Evacuees Arriving", "vi": "Hàng Nghìn Người Sơ Tán Đến" },
-      "description": { "en": "Nearby communities have evacuated. Your town is now a refuge. You need shelter, food, and medical care for thousands.", "vi": "Các cộng đồng gần đó đã sơ tán. Thị trấn của bạn hiện là nơi trú ẩn. Bạn cần nơi trú ẩn, thực phẩm và chăm sóc y tế cho hàng nghìn người." },
+      "title": {
+        "en": "Thousands of Evacuees Arriving",
+        "vi": "Hàng Nghìn Người Sơ Tán Đến"
+      },
+      "description": {
+        "en": "Nearby communities have evacuated. Your town is now a refuge. You need shelter, food, and medical care for thousands.",
+        "vi": "Các cộng đồng gần đó đã sơ tán. Thị trấn của bạn hiện là nơi trú ẩn. Bạn cần nơi trú ẩn, thực phẩm và chăm sóc y tế cho hàng nghìn người."
+      },
       "effects": {
         "safety": -10,
         "infrastructure": -10,
         "morale": -5,
         "resourcePoints": -30
       },
-      "tip": { "en": "Establish evacuation centers early. Provide water, sanitation, medical care, and emotional support to reduce stress.", "vi": "Lập các trung tâm sơ tán sớm. Cung cấp nước, vệ sinh, chăm sóc y tế và hỗ trợ tình cảm để giảm căng thẳng." },
+      "tip": {
+        "en": "Establish evacuation centers early. Provide water, sanitation, medical care, and emotional support to reduce stress.",
+        "vi": "Lập các trung tâm sơ tán sớm. Cung cấp nước, vệ sinh, chăm sóc y tế và hỗ trợ tình cảm để giảm căng thẳng."
+      },
       "quiz": {
-        "question": { "en": "What is critical in an evacuation center?", "vi": "Điều gì là quan trọng trong trung tâm sơ tán?" },
+        "question": {
+          "en": "What is critical in an evacuation center?",
+          "vi": "Điều gì là quan trọng trong trung tâm sơ tán?"
+        },
         "options": [
-          { "en": "Only sleeping areas", "vi": "Chỉ khu vực ngủ" },
-          { "en": "Water, sanitation, medical care, and shelter", "vi": "Nước, vệ sinh, chăm sóc y tế và nơi trú ẩn" },
-          { "en": "Food only", "vi": "Chỉ thực phẩm" },
-          { "en": "Entertainment systems", "vi": "Hệ thống giải trí" }
+          {
+            "en": "Only sleeping areas",
+            "vi": "Chỉ khu vực ngủ"
+          },
+          {
+            "en": "Water, sanitation, medical care, and shelter",
+            "vi": "Nước, vệ sinh, chăm sóc y tế và nơi trú ẩn"
+          },
+          {
+            "en": "Food only",
+            "vi": "Chỉ thực phẩm"
+          },
+          {
+            "en": "Entertainment systems",
+            "vi": "Hệ thống giải trí"
+          }
         ],
         "correctAnswer": 1
       }
@@ -168,22 +290,46 @@
     {
       "id": "event_rescue_operation",
       "icon": "🚁",
-      "title": { "en": "Rescue Operation Required", "vi": "Cần Phải Tiến Hành Cứu Hộ" },
-      "description": { "en": "Citizens are stranded on rooftops and high ground. A massive rescue operation is underway. Coordination with military and NGOs is critical.", "vi": "Công dân bị mắc kẹt trên mái nhà và địa hình cao. Một cuộc cứu hộ lớn đang diễn ra. Sự phối hợp với quân đội và các tổ chức phi chính phủ rất quan trọng." },
+      "title": {
+        "en": "Rescue Operation Required",
+        "vi": "Cần Phải Tiến Hành Cứu Hộ"
+      },
+      "description": {
+        "en": "Citizens are stranded on rooftops and high ground. A massive rescue operation is underway. Coordination with military and NGOs is critical.",
+        "vi": "Công dân bị mắc kẹt trên mái nhà và địa hình cao. Một cuộc cứu hộ lớn đang diễn ra. Sự phối hợp với quân đội và các tổ chức phi chính phủ rất quan trọng."
+      },
       "effects": {
         "safety": 15,
         "infrastructure": -10,
         "morale": 10,
         "resourcePoints": -25
       },
-      "tip": { "en": "Organize community-based rescue teams before floods hit. Train citizens in basic rescue techniques and first aid.", "vi": "Tổ chức các đội cứu hộ dựa trên cộng đồng trước khi lũ lụt xảy ra. Đào tạo công dân các kỹ thuật cứu hộ cơ bản và sơ cứu." },
+      "tip": {
+        "en": "Organize community-based rescue teams before floods hit. Train citizens in basic rescue techniques and first aid.",
+        "vi": "Tổ chức các đội cứu hộ dựa trên cộng đồng trước khi lũ lụt xảy ra. Đào tạo công dân các kỹ thuật cứu hộ cơ bản và sơ cứu."
+      },
       "quiz": {
-        "question": { "en": "If you are stranded, what should you do?", "vi": "Nếu bạn bị mắc kẹt, bạn nên làm gì?" },
+        "question": {
+          "en": "If you are stranded, what should you do?",
+          "vi": "Nếu bạn bị mắc kẹt, bạn nên làm gì?"
+        },
         "options": [
-          { "en": "Wave and signal to rescuers from high ground", "vi": "Vẫy tay và báo hiệu cứu hộ từ địa hình cao" },
-          { "en": "Try to swim to help", "vi": "Cố gắng bơi để tìm giúp đỡ" },
-          { "en": "Stay hidden in the home", "vi": "Ở ẩn trong nhà" },
-          { "en": "Wait silently", "vi": "Chờ im lặng" }
+          {
+            "en": "Wave and signal to rescuers from high ground",
+            "vi": "Vẫy tay và báo hiệu cứu hộ từ địa hình cao"
+          },
+          {
+            "en": "Try to swim to help",
+            "vi": "Cố gắng bơi để tìm giúp đỡ"
+          },
+          {
+            "en": "Stay hidden in the home",
+            "vi": "Ở ẩn trong nhà"
+          },
+          {
+            "en": "Wait silently",
+            "vi": "Chờ im lặng"
+          }
         ],
         "correctAnswer": 0
       }
@@ -191,22 +337,46 @@
     {
       "id": "event_water_recedes",
       "icon": "🌅",
-      "title": { "en": "Water Levels Receding", "vi": "Mực Nước Rút Xuống" },
-      "description": { "en": "The flood is subsiding. However, damage is extensive: collapsed houses, contaminated fields, and destroyed roads. Recovery will take months.", "vi": "Nước lũ đang rút xuống. Tuy nhiên, thiệt hại rất lớn: nhà đổ sập, đất nông nghiệp bị nhiễm, và đường xá bị phá hủy. Phục hồi sẽ mất nhiều tháng." },
+      "title": {
+        "en": "Water Levels Receding",
+        "vi": "Mực Nước Rút Xuống"
+      },
+      "description": {
+        "en": "The flood is subsiding. However, damage is extensive: collapsed houses, contaminated fields, and destroyed roads. Recovery will take months.",
+        "vi": "Nước lũ đang rút xuống. Tuy nhiên, thiệt hại rất lớn: nhà đổ sập, đất nông nghiệp bị nhiễm, và đường xá bị phá hủy. Phục hồi sẽ mất nhiều tháng."
+      },
       "effects": {
         "safety": 10,
         "infrastructure": -20,
         "morale": -10,
         "resourcePoints": 0
       },
-      "tip": { "en": "Document all damage for disaster aid claims. Start debris removal, repair dikes, and restore utilities as priorities.", "vi": "Ghi lại tất cả thiệt hại để yêu cầu trợ cấp thảm họa. Bắt đầu dọn dẹp mảnh vỡ, sửa chữa đê, và khôi phục tiện ích là ưu tiên." },
+      "tip": {
+        "en": "Document all damage for disaster aid claims. Start debris removal, repair dikes, and restore utilities as priorities.",
+        "vi": "Ghi lại tất cả thiệt hại để yêu cầu trợ cấp thảm họa. Bắt đầu dọn dẹp mảnh vỡ, sửa chữa đê, và khôi phục tiện ích là ưu tiên."
+      },
       "quiz": {
-        "question": { "en": "After floods, what is the priority?", "vi": "Sau lũ lụt, ưu tiên là gì?" },
+        "question": {
+          "en": "After floods, what is the priority?",
+          "vi": "Sau lũ lụt, ưu tiên là gì?"
+        },
         "options": [
-          { "en": "Immediate cleanup and debris removal", "vi": "Dọn dẹp và dọn dẹp mảnh vỡ ngay lập tức" },
-          { "en": "Restore roads, restore water, and aid distribution", "vi": "Khôi phục đường xá, khôi phục nước, và phân phối trợ giúp" },
-          { "en": "Rebuild houses first", "vi": "Xây dựng lại nhà trước tiên" },
-          { "en": "Relax and celebrate survival", "vi": "Thư giãn và ăn mừng sống sót" }
+          {
+            "en": "Immediate cleanup and debris removal",
+            "vi": "Dọn dẹp và dọn dẹp mảnh vỡ ngay lập tức"
+          },
+          {
+            "en": "Restore roads, restore water, and aid distribution",
+            "vi": "Khôi phục đường xá, khôi phục nước, và phân phối trợ giúp"
+          },
+          {
+            "en": "Rebuild houses first",
+            "vi": "Xây dựng lại nhà trước tiên"
+          },
+          {
+            "en": "Relax and celebrate survival",
+            "vi": "Thư giãn và ăn mừng sống sót"
+          }
         ],
         "correctAnswer": 1
       }
@@ -214,22 +384,46 @@
     {
       "id": "event_clear_weather",
       "icon": "☀️",
-      "title": { "en": "Clear Weather Period", "vi": "Giai Đoạn Thời Tiết Quang Đãng" },
-      "description": { "en": "A brief reprieve! Weather has cleared. This is a window to conduct repairs, distribute aid, and boost community morale.", "vi": "Một khoảng thời gian bao giờ! Thời tiết đã quang đãng. Đây là cơ hội để tiến hành sửa chữa, phân phối trợ giúp, và tăng cường tinh thần cộng đồng." },
+      "title": {
+        "en": "Clear Weather Period",
+        "vi": "Giai Đoạn Thời Tiết Quang Đãng"
+      },
+      "description": {
+        "en": "A brief reprieve! Weather has cleared. This is a window to conduct repairs, distribute aid, and boost community morale.",
+        "vi": "Một khoảng thời gian bao giờ! Thời tiết đã quang đãng. Đây là cơ hội để tiến hành sửa chữa, phân phối trợ giúp, và tăng cường tinh thần cộng đồng."
+      },
       "effects": {
         "safety": 5,
         "infrastructure": 10,
         "morale": 15,
         "resourcePoints": 10
       },
-      "tip": { "en": "Use calm weather to reinforce dikes, repair water systems, and deliver supplies to isolated communities.", "vi": "Sử dụng thời tiết yên tĩnh để gia cố đê, sửa chữa hệ thống nước, và cung cấp vật tư cho các cộng đồng bị cô lập." },
+      "tip": {
+        "en": "Use calm weather to reinforce dikes, repair water systems, and deliver supplies to isolated communities.",
+        "vi": "Sử dụng thời tiết yên tĩnh để gia cố đê, sửa chữa hệ thống nước, và cung cấp vật tư cho các cộng đồng bị cô lập."
+      },
       "quiz": {
-        "question": { "en": "During clear weather after floods, what should leaders prioritize?", "vi": "Trong thời tiết quang đãng sau lũ lụt, các nhà lãnh đạo nên ưu tiên điều gì?" },
+        "question": {
+          "en": "During clear weather after floods, what should leaders prioritize?",
+          "vi": "Trong thời tiết quang đãng sau lũ lụt, các nhà lãnh đạo nên ưu tiên điều gì?"
+        },
         "options": [
-          { "en": "Rest and take a break", "vi": "Nghỉ ngơi và tạm dừng" },
-          { "en": "Repairs, aid distribution, and morale building", "vi": "Sửa chữa, phân phối trợ giúp, và tăng cường tinh thần" },
-          { "en": "Organize celebration events", "vi": "Tổ chức các sự kiện lễ hội" },
-          { "en": "Do minimal work", "vi": "Làm việc tối thiểu" }
+          {
+            "en": "Rest and take a break",
+            "vi": "Nghỉ ngơi và tạm dừng"
+          },
+          {
+            "en": "Repairs, aid distribution, and morale building",
+            "vi": "Sửa chữa, phân phối trợ giúp, và tăng cường tinh thần"
+          },
+          {
+            "en": "Organize celebration events",
+            "vi": "Tổ chức các sự kiện lễ hội"
+          },
+          {
+            "en": "Do minimal work",
+            "vi": "Làm việc tối thiểu"
+          }
         ],
         "correctAnswer": 1
       }
@@ -238,8 +432,14 @@
   "actions": [
     {
       "id": "action_prepare_dikes",
-      "title": { "en": "Reinforce Dikes", "vi": "Gia Cố Đê" },
-      "description": { "en": "Strengthen dikes with sandbags and repairs. Costs 20 RP.", "vi": "Tăng cường đê bằng bao cát và sửa chữa. Chi phí 20 RP." },
+      "title": {
+        "en": "Reinforce Dikes",
+        "vi": "Gia Cố Đê"
+      },
+      "description": {
+        "en": "Strengthen dikes with sandbags and repairs. Costs 20 RP.",
+        "vi": "Tăng cường đê bằng bao cát và sửa chữa. Chi phí 20 RP."
+      },
       "cost": 20,
       "effects": {
         "safety": 10,
@@ -251,8 +451,14 @@
     },
     {
       "id": "action_evacuate",
-      "title": { "en": "Evacuate Citizens", "vi": "Sơ Tán Công Dân" },
-      "description": { "en": "Move people to higher ground. Costs 15 RP, reduces safety risk.", "vi": "Di chuyển mọi người lên địa hình cao hơn. Chi phí 15 RP, giảm rủi ro an toàn." },
+      "title": {
+        "en": "Evacuate Citizens",
+        "vi": "Sơ Tán Công Dân"
+      },
+      "description": {
+        "en": "Move people to higher ground. Costs 15 RP, reduces safety risk.",
+        "vi": "Di chuyển mọi người lên địa hình cao hơn. Chi phí 15 RP, giảm rủi ro an toàn."
+      },
       "cost": 15,
       "effects": {
         "safety": 20,
@@ -264,8 +470,14 @@
     },
     {
       "id": "action_distribute_aid",
-      "title": { "en": "Distribute Relief Supplies", "vi": "Phân Phối Vật Tư Cứu Trợ" },
-      "description": { "en": "Provide food, water, and medicine. Costs 15 RP, boosts morale.", "vi": "Cung cấp thực phẩm, nước và thuốc. Chi phí 15 RP, tăng tinh thần." },
+      "title": {
+        "en": "Distribute Relief Supplies",
+        "vi": "Phân Phối Vật Tư Cứu Trợ"
+      },
+      "description": {
+        "en": "Provide food, water, and medicine. Costs 15 RP, boosts morale.",
+        "vi": "Cung cấp thực phẩm, nước và thuốc. Chi phí 15 RP, tăng tinh thần."
+      },
       "cost": 15,
       "effects": {
         "safety": 5,
@@ -277,8 +489,14 @@
     },
     {
       "id": "action_repair_roads",
-      "title": { "en": "Repair Roads", "vi": "Sửa Chữa Đường Xá" },
-      "description": { "en": "Restore transportation for aid delivery. Costs 18 RP.", "vi": "Khôi phục giao thông để cung cấp trợ giúp. Chi phí 18 RP." },
+      "title": {
+        "en": "Repair Roads",
+        "vi": "Sửa Chữa Đường Xá"
+      },
+      "description": {
+        "en": "Restore transportation for aid delivery. Costs 18 RP.",
+        "vi": "Khôi phục giao thông để cung cấp trợ giúp. Chi phí 18 RP."
+      },
       "cost": 18,
       "effects": {
         "safety": 8,
@@ -290,8 +508,14 @@
     },
     {
       "id": "action_establish_shelter",
-      "title": { "en": "Establish Evacuation Centers", "vi": "Lập Các Trung Tâm Sơ Tán" },
-      "description": { "en": "Set up safe shelters with supplies. Costs 25 RP, critical for safety.", "vi": "Thiết lập nơi trú ẩn an toàn với vật tư. Chi phí 25 RP, quan trọng cho an toàn." },
+      "title": {
+        "en": "Establish Evacuation Centers",
+        "vi": "Lập Các Trung Tâm Sơ Tán"
+      },
+      "description": {
+        "en": "Set up safe shelters with supplies. Costs 25 RP, critical for safety.",
+        "vi": "Thiết lập nơi trú ẩn an toàn với vật tư. Chi phí 25 RP, quan trọng cho an toàn."
+      },
       "cost": 25,
       "effects": {
         "safety": 25,
@@ -303,8 +527,14 @@
     },
     {
       "id": "action_organize_rescue",
-      "title": { "en": "Organize Rescue Teams", "vi": "Tổ Chức Đội Cứu Hộ" },
-      "description": { "en": "Train and deploy volunteer rescue teams. Costs 20 RP.", "vi": "Đào tạo và triển khai các đội cứu hộ tình nguyện. Chi phí 20 RP." },
+      "title": {
+        "en": "Organize Rescue Teams",
+        "vi": "Tổ Chức Đội Cứu Hộ"
+      },
+      "description": {
+        "en": "Train and deploy volunteer rescue teams. Costs 20 RP.",
+        "vi": "Đào tạo và triển khai các đội cứu hộ tình nguyện. Chi phí 20 RP."
+      },
       "cost": 20,
       "effects": {
         "safety": 18,
@@ -316,8 +546,14 @@
     },
     {
       "id": "action_community_awareness",
-      "title": { "en": "Community Awareness Campaign", "vi": "Chiến Dịch Nâng Cao Nhận Thức Cộng Đồng" },
-      "description": { "en": "Educate citizens on flood safety. Costs 10 RP, low-cost, moderate boost.", "vi": "Giáo dục công dân về an toàn lũ. Chi phí 10 RP, chi phí thấp, tăng tầm trung bình." },
+      "title": {
+        "en": "Community Awareness Campaign",
+        "vi": "Chiến Dịch Nâng Cao Nhận Thức Cộng Đồng"
+      },
+      "description": {
+        "en": "Educate citizens on flood safety. Costs 10 RP, low-cost, moderate boost.",
+        "vi": "Giáo dục công dân về an toàn lũ. Chi phí 10 RP, chi phí thấp, tăng tầm trung bình."
+      },
       "cost": 10,
       "effects": {
         "safety": 12,
@@ -329,8 +565,14 @@
     },
     {
       "id": "action_medical_support",
-      "title": { "en": "Provide Medical Support", "vi": "Cung Cấp Hỗ Trợ Y Tế" },
-      "description": { "en": "Set up clinics and disease prevention. Costs 22 RP.", "vi": "Thiết lập các phòng khám và phòng chống bệnh tật. Chi phí 22 RP." },
+      "title": {
+        "en": "Provide Medical Support",
+        "vi": "Cung Cấp Hỗ Trợ Y Tế"
+      },
+      "description": {
+        "en": "Set up clinics and disease prevention. Costs 22 RP.",
+        "vi": "Thiết lập các phòng khám và phòng chống bệnh tật. Chi phí 22 RP."
+      },
       "cost": 22,
       "effects": {
         "safety": 15,
@@ -342,8 +584,14 @@
     },
     {
       "id": "action_do_nothing",
-      "title": { "en": "Do Nothing", "vi": "Không Làm Gì Cả" },
-      "description": { "en": "Save resources but risk grows. No RP spent.", "vi": "Tiết kiệm tài nguyên nhưng rủi ro tăng. Không chi RP." },
+      "title": {
+        "en": "Do Nothing",
+        "vi": "Không Làm Gì Cả"
+      },
+      "description": {
+        "en": "Save resources but risk grows. No RP spent.",
+        "vi": "Tiết kiệm tài nguyên nhưng rủi ro tăng. Không chi RP."
+      },
       "cost": 0,
       "effects": {
         "safety": -8,
