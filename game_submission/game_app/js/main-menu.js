@@ -19,12 +19,12 @@ function showHowToPlay() {
         html: `
             <div style="font-family: 'Orbitron', monospace;">
                 <div class="info-card">
-                    <h4>🎯 Objective</h4>
+                    <h4>OBJECTIVE</h4>
                     <p>Lead your community through 8 rounds of flood crisis. Maintain Safety ≥ 70% and Infrastructure ≥ 60% to achieve victory!</p>
                 </div>
                 
                 <div class="info-card">
-                    <h4>🎮 Gameplay</h4>
+                    <h4>GAMEPLAY</h4>
                     <ul>
                         <li>Analyze each event card carefully</li>
                         <li>Make strategic decisions to balance resources</li>
@@ -34,7 +34,7 @@ function showHowToPlay() {
                 </div>
                 
                 <div class="info-card">
-                    <h4>💡 Strategy Tips</h4>
+                    <h4>STRATEGY TIPS</h4>
                     <ul>
                         <li>Plan ahead for future challenges</li>
                         <li>Balance immediate needs with long-term stability</li>
@@ -44,10 +44,10 @@ function showHowToPlay() {
             </div>
         `,
         icon: 'info',
-        iconColor: '#2563eb',
-        confirmButtonText: 'Got it!',
-        confirmButtonColor: '#2563eb',
-        width: '480px',
+        iconColor: '#1976d2',
+        showConfirmButton: false,
+        showCancelButton: false,
+        showCloseButton: true,
         customClass: {
             popup: 'swal2-popup'
         }
@@ -60,12 +60,12 @@ function showGameInfo() {
         html: `
             <div style="font-family: 'Orbitron', monospace;">
                 <div class="info-card">
-                    <h4>🎮 About Rising Waters</h4>
+                    <h4>ABOUT RISING WATERS</h4>
                     <p>A strategic simulation game where you lead a community through flood crisis management. Experience real-world scenarios based on Vietnam's diverse regions.</p>
                 </div>
                 
                 <div class="info-card">
-                    <h4>🏞️ Available Scenarios</h4>
+                    <h4>AVAILABLE SCENARIOS</h4>
                     <ul>
                         <li><strong>Central Highlands:</strong> Persistent floods affecting infrastructure and agriculture</li>
                         <li><strong>Hanoi Lowlands:</strong> Rapid urban flooding with emergency response challenges</li>
@@ -74,7 +74,7 @@ function showGameInfo() {
                 </div>
                 
                 <div class="info-card">
-                    <h4>🎯 Learning Objectives</h4>
+                    <h4>LEARNING OBJECTIVES</h4>
                     <ul>
                         <li>Master flood management strategies</li>
                         <li>Develop community resilience planning</li>
@@ -85,10 +85,10 @@ function showGameInfo() {
             </div>
         `,
         icon: 'info',
-        iconColor: '#2563eb',
-        confirmButtonText: 'Understood!',
-        confirmButtonColor: '#2563eb',
-        width: '480px',
+        iconColor: '#1976d2',
+        showConfirmButton: false,
+        showCancelButton: false,
+        showCloseButton: true,
         customClass: {
             popup: 'swal2-popup'
         }
@@ -103,29 +103,26 @@ function showScenarioSelection() {
                 <p style="margin-bottom: 20px; text-align: center; color: #6b7280; font-size: 0.875rem;">Select a region to experience unique flood management challenges:</p>
                 
                 <div class="scenario-card" onclick="selectScenario('central_highlands')">
-                    <div class="scenario-card-title">🏔️ Central Highlands</div>
+                    <div class="scenario-card-title">CENTRAL HIGHLANDS</div>
                     <div class="scenario-card-desc">Persistent floods affecting roads and agriculture. Focus on long-term infrastructure protection and community resilience.</div>
                 </div>
                 
                 <div class="scenario-card" onclick="selectScenario('hanoi_lowlands')">
-                    <div class="scenario-card-title">🏙️ Hanoi Lowlands</div>
+                    <div class="scenario-card-title">HANOI LOWLANDS</div>
                     <div class="scenario-card-desc">Rapid urban flooding with infrastructure challenges. Manage emergency response and urban planning coordination.</div>
                 </div>
                 
                 <div class="scenario-card" onclick="selectScenario('mekong_detal')">
-                    <div class="scenario-card-title">🌾 Mekong Delta</div>
+                    <div class="scenario-card-title">MEKONG DELTA</div>
                     <div class="scenario-card-desc">Seasonal flooding with agricultural focus. Balance farming needs with flood protection strategies.</div>
                 </div>
             </div>
         `,
         icon: 'question',
-        iconColor: '#2563eb',
-        showCancelButton: true,
-        cancelButtonText: 'Back to Menu',
-        cancelButtonColor: '#6b7280',
-        confirmButtonText: false,
-        confirmButtonColor: '#2563eb',
-        width: '480px',
+        iconColor: '#1976d2',
+        showConfirmButton: false,
+        showCancelButton: false,
+        showCloseButton: true,
         customClass: {
             popup: 'swal2-popup'
         }
@@ -140,7 +137,7 @@ function selectScenario(scenario) {
         title: 'Loading Game...',
         text: 'Preparing your scenario...',
         icon: 'info',
-        iconColor: '#2563eb',
+        iconColor: '#1976d2',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showConfirmButton: false,
