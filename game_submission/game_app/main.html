@@ -13,38 +13,51 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <!-- Main Menu Container -->
-    <div class="main-menu-container">
-        <!-- Header -->
-        <header class="main-menu-header">
-            <h1 class="game-title">Rising Waters</h1>
-            <p class="game-subtitle">Strategic Flood Management</p>
-        </header>
 
-        <!-- Menu Section -->
-        <div class="menu-section">
-            <div class="menu-buttons">
-                <button class="menu-btn how-to-play-btn" id="howToPlayBtn">
-                    <span class="btn-icon">🎮</span>
-                    <span class="btn-text">How to Play</span>
-                </button>
-                
-                <button class="menu-btn start-btn" id="startBtn">
-                    <span class="btn-icon">⚡</span>
-                    <span class="btn-text">Start Game</span>
-                </button>
-                
-                <button class="menu-btn game-info-btn" id="gameInfoBtn">
-                    <span class="btn-icon">ℹ️</span>
-                    <span class="btn-text">Game Info</span>
-                </button>
+    <!-- Main Game Menu Container -->
+    <div class="game-menu-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="title-container">
+                <h1 class="game-title">
+                    <span class="title-word rising">RISING</span>
+                    <span class="title-word waters">WATERS</span>
+                </h1>
+                <div class="title-subtitle">FLOOD CRISIS SIMULATOR</div>
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="main-menu-footer">
-            <p>Make strategic decisions to protect your community</p>
-        </footer>
+        <!-- Game Menu Panel -->
+        <div class="menu-panel">
+            <div class="menu-content">
+                <div class="menu-section">
+                    <h2 class="section-title">MISSION CONTROL</h2>
+                    <div class="menu-buttons">
+                        <button class="game-btn primary-btn" id="startBtn">
+                            <div class="btn-content">
+                                <span class="btn-title">START MISSION</span>
+                                <span class="btn-desc">Begin flood management</span>
+                            </div>
+                        </button>
+                        
+                        <button class="game-btn secondary-btn" id="howToPlayBtn">
+                            <div class="btn-content">
+                                <span class="btn-title">TUTORIAL</span>
+                                <span class="btn-desc">Learn how to play</span>
+                            </div>
+                        </button>
+                        
+                        <button class="game-btn info-btn" id="gameInfoBtn">
+                            <div class="btn-content">
+                                <span class="btn-title">INTEL</span>
+                                <span class="btn-desc">Mission briefing</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
