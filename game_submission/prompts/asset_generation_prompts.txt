@@ -1,0 +1,77 @@
+# 🎨 Rising Waters: Asset Generation Prompts
+
+## Visual Design Prompts
+
+### Game Interface Design
+- "Create a clean, modern web interface with a professional gradient header"
+- "Design a two-column layout: left side for town map and events, right side for metrics and actions"
+- "Use a color scheme that reflects water/flood themes: blues, teals, and earth tones"
+- "Make the interface responsive for desktop, tablet, and mobile devices"
+
+### Town Map Visualization
+- "Design an SVG-based town map showing buildings, roads, and water levels"
+- "Create simple but recognizable building shapes with roofs"
+- "Include water level indicators that can be animated to show rising floodwaters"
+- "Add small person icons to represent community members"
+- "Make the map visually appealing but not distracting from gameplay"
+
+### UI Components
+- "Design meter bars with smooth animations for Safety, Infrastructure, Morale, and Resource Points"
+- "Create action buttons with clear icons and descriptive text"
+- "Design modal dialogs for quizzes, tips, and game over screens"
+- "Use consistent button styling with hover effects and clear visual feedback"
+
+### Event Card Design
+- "Create event cards with large emoji icons for quick visual recognition"
+- "Design clear typography hierarchy for event titles and descriptions"
+- "Include effect indicators showing how each event impacts metrics"
+- "Make event cards visually distinct but consistent with overall design"
+
+### Language Switcher
+- "Design a clean language switcher in the top-right corner"
+- "Use clear language buttons: 'English' and 'Tiếng Việt'"
+- "Include visual feedback when switching languages"
+- "Make it easily accessible but not intrusive"
+
+### Modal Dialogs
+- "Design quiz modals with clear question formatting and multiple choice options"
+- "Create tip modals with educational content and acknowledgment buttons"
+- "Design game over screens with summary statistics and replay options"
+- "Include help modals with comprehensive game instructions"
+
+### Responsive Design Elements
+- "Create mobile-friendly button sizes (minimum 44px touch targets)"
+- "Design collapsible layouts for smaller screens"
+- "Ensure text remains readable at all screen sizes"
+- "Optimize spacing and padding for different devices"
+
+### Animation & Transitions
+- "Add smooth meter bar animations when values change"
+- "Include subtle hover effects on interactive elements"
+- "Design smooth modal transitions (fade in/out)"
+- "Create loading animations for initial game setup"
+
+### Color Scheme
+- "Primary colors: Water blues (#2c5f8d, #4a90e2) for main interface"
+- "Secondary colors: Warning orange (#e67e22) for alerts"
+- "Success green (#27ae60) for positive feedback"
+- "Danger red (#e74c3c) for critical situations"
+- "Neutral grays for text and backgrounds"
+
+### Typography
+- "Use clean, readable fonts: 'Orbitron' monospace for body text"
+- "Implement proper font sizing hierarchy for different content types"
+- "Ensure good contrast ratios for accessibility"
+- "Support both Latin and Vietnamese character sets"
+
+### Icon Design
+- "Use emoji icons for events: ⛈️ 🌊 💥 🏥 👥 🚁 ☀️"
+- "Create consistent icon usage throughout the interface"
+- "Ensure icons are universally recognizable"
+- "Use appropriate sizing for different screen densities"
+
+### Loading States
+- "Design a simple spinner for initial game loading"
+- "Include loading overlays for data fetching"
+- "Show progress indicators where appropriate"
+- "Provide clear feedback when operations are in progress"
