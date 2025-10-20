@@ -1,107 +1,257 @@
-# 🔧 Rising Waters: Quality Assurance & Refinement Prompts
+# 🔧 Rising Waters: Quality Assurance & Refinement Guidelines
 
-## Code Quality & Performance
+## 🎯 Quality Assurance Framework
+
+### Quality Standards & Metrics
+- "Establish clear quality gates for code, design, and user experience"
+- "Define measurable success criteria for performance, accessibility, and usability"
+- "Implement automated quality checks in CI/CD pipeline"
+- "Regular quality audits and improvement cycles"
+- "User feedback integration for continuous quality enhancement"
+
+### Testing Strategy Overview
+- "Comprehensive testing pyramid: Unit tests, Integration tests, E2E tests"
+- "Automated testing for critical functionality and regression prevention"
+- "Manual testing for user experience and edge cases"
+- "Performance testing under various conditions and devices"
+- "Accessibility testing with real users and assistive technologies"
+
+## 🧪 Code Quality & Performance
 
 ### Code Refactoring & Optimization
 - "Refactor monolithic code into modular, maintainable components"
-- "Implement consistent naming conventions and code organization"
+- "Implement consistent naming conventions and code organization patterns"
 - "Optimize DOM queries with element caching and efficient selectors"
-- "Reduce bundle size through code splitting and lazy loading"
+- "Reduce bundle size through code splitting, tree shaking, and lazy loading"
+- "Eliminate code duplication through proper abstraction and reuse"
 
-### Performance Monitoring
-- "Implement performance metrics tracking for load times and interactions"
-- "Monitor memory usage and prevent memory leaks in long sessions"
-- "Optimize animation performance with GPU acceleration"
-- "Implement efficient rendering strategies for smooth 60fps gameplay"
+### Performance Monitoring & Optimization
+- "Implement performance metrics tracking for load times, interactions, and animations"
+- "Monitor memory usage and prevent memory leaks in long gaming sessions"
+- "Optimize animation performance with GPU acceleration and efficient rendering"
+- "Achieve smooth 60fps gameplay on target devices and browsers"
+- "Implement performance budgets and monitoring alerts"
+
+### Code Quality Metrics
+- "Maintain test coverage above 80% for critical game logic"
+- "Keep cyclomatic complexity below 10 for individual functions"
+- "Ensure code duplication below 5% across the entire codebase"
+- "Maintain consistent code style with automated formatting and linting"
+- "Regular code review process with quality checklists"
 
 ### Error Handling & Debugging
-- "Comprehensive error handling for network requests and data loading"
+- "Comprehensive error handling for network requests, data loading, and user interactions"
 - "User-friendly error messages with actionable recovery steps"
 - "Debug logging system for development and production monitoring"
-- "Graceful degradation when features are unavailable"
+- "Graceful degradation when features are unavailable or fail"
+- "Error boundary implementation for JavaScript errors"
 
-## User Experience Enhancement
+## 🎨 User Experience Enhancement
 
 ### Accessibility Improvements
-- "WCAG 2.1 AA compliance with proper color contrast ratios"
-- "Screen reader optimization with semantic HTML and ARIA labels"
-- "Keyboard navigation support for all interactive elements"
-- "Alternative text and descriptions for visual elements"
+- "WCAG 2.1 AA compliance with proper color contrast ratios (4.5:1 minimum)"
+- "Screen reader optimization with semantic HTML and comprehensive ARIA labels"
+- "Full keyboard navigation support for all interactive elements"
+- "Alternative text and descriptions for all visual elements and interactions"
+- "High contrast mode support and motion sensitivity preferences"
 
 ### Mobile Experience Optimization
 - "Touch-friendly interface with appropriate target sizes (44px minimum)"
 - "Responsive design testing across device sizes and orientations"
 - "Performance optimization for mobile devices and slower networks"
-- "Gesture support for common mobile interactions"
+- "Gesture support for common mobile interactions and navigation"
+- "Mobile-specific UI patterns and interaction design"
 
 ### Visual Polish & Animations
-- "Smooth transitions between game states with consistent timing"
+- "Smooth transitions between game states with consistent timing and easing"
 - "Visual feedback for all user interactions and state changes"
 - "Loading states and progress indicators for better perceived performance"
 - "Micro-interactions that enhance usability without distraction"
+- "Consistent visual language and design patterns throughout"
 
-## Content & Educational Value
+### Usability Testing
+- "User testing with target demographics and diverse user groups"
+- "Task completion rate analysis for key user workflows"
+- "Time-to-completion metrics for first-time users"
+- "Error rate analysis and user confusion point identification"
+- "A/B testing for interface improvements and feature additions"
 
-### Game Balance & Difficulty
+## 🎮 Game Balance & Content Quality
+
+### Gameplay Balance Testing
 - "Playtesting with diverse user groups to validate difficulty curves"
 - "Action cost and effect balancing for meaningful strategic choices"
-- "Event variety and randomization for high replayability"
+- "Event variety and randomization testing for high replayability"
 - "Progressive difficulty that teaches concepts gradually"
+- "Win/loss condition analysis and adjustment"
 
-### Educational Content Refinement
-- "Accuracy verification of flood management information"
-- "Cultural appropriateness review for Vietnamese scenarios"
-- "Quiz question validation with subject matter experts"
+### Educational Content Validation
+- "Accuracy verification of flood management information with subject matter experts"
+- "Cultural appropriateness review for Vietnamese scenarios and content"
+- "Quiz question validation with educational professionals"
 - "Safety tip effectiveness and clarity assessment"
+- "Content relevance and educational value evaluation"
 
-### Localization Quality
-- "Native speaker review of Vietnamese translations"
-- "Cultural adaptation of scenarios and content"
+### Content Quality Assurance
+- "Grammar and spelling checks for all text content"
+- "Translation quality review by native speakers"
+- "Cultural adaptation verification for Vietnamese context"
 - "Consistency checking across all language versions"
-- "Text length optimization for different languages"
+- "Content length optimization for different languages and screen sizes"
 
-## Technical Stability
+### Scenario Design Validation
+- "Scenario difficulty progression testing and adjustment"
+- "Event variety and replayability analysis"
+- "Action balance and strategic depth evaluation"
+- "Cultural authenticity and educational value assessment"
+- "User engagement and completion rate analysis"
+
+## 🔧 Technical Stability & Compatibility
 
 ### Cross-Browser Compatibility
-- "Testing on Chrome, Firefox, Safari, Edge, and mobile browsers"
-- "CSS fallbacks for older browser support"
-- "JavaScript polyfills for ES6+ features"
-- "Performance optimization for different browser engines"
+- "Comprehensive testing on Chrome, Firefox, Safari, Edge, and mobile browsers"
+- "CSS fallbacks for older browser support and graceful degradation"
+- "JavaScript polyfills for ES6+ features and modern APIs"
+- "Performance optimization for different browser engines and rendering"
+- "Feature detection and progressive enhancement implementation"
 
 ### Data Integrity & Validation
-- "JSON schema validation for game data files"
-- "Input validation for all user interactions"
+- "JSON schema validation for all game data files and content"
+- "Input validation for all user interactions and data modifications"
 - "Data corruption detection and recovery mechanisms"
-- "Backup and version control for game content"
+- "Backup and version control for all game content and configurations"
+- "Data migration and update procedures for content changes"
 
 ### Security & Privacy
-- "Content Security Policy implementation"
-- "Input sanitization to prevent XSS attacks"
-- "Privacy-compliant analytics and monitoring"
-- "Secure handling of user preferences and game state"
+- "Content Security Policy (CSP) implementation and testing"
+- "Input sanitization to prevent XSS attacks and security vulnerabilities"
+- "Privacy-compliant analytics and monitoring implementation"
+- "Secure handling of user preferences and game state data"
+- "Regular security audits and vulnerability assessments"
 
-## Quality Assurance Processes
+### Network & Performance
+- "Offline functionality testing and service worker implementation"
+- "Network failure handling and graceful degradation"
+- "CDN integration and global performance testing"
+- "Caching strategy optimization and validation"
+- "Load testing under various network conditions"
 
-### Testing Protocols
-- "Automated unit testing for core game logic"
-- "Integration testing for user workflows"
-- "User acceptance testing with target demographics"
-- "Performance testing under various conditions"
+## 📊 Quality Assurance Processes
+
+### Testing Protocols & Procedures
+- "Automated unit testing for core game logic and utility functions"
+- "Integration testing for user workflows and component interactions"
+- "User acceptance testing with target demographics and stakeholders"
+- "Performance testing under various conditions and device types"
+- "Accessibility testing with real users and assistive technologies"
 
 ### Code Review Standards
-- "Peer review process for all code changes"
-- "Documentation requirements for new features"
-- "Testing requirements before code merge"
-- "Performance impact assessment for changes"
+- "Peer review process for all code changes and feature additions"
+- "Documentation requirements for new features and complex logic"
+- "Testing requirements before code merge and deployment"
+- "Performance impact assessment for all changes"
+- "Security review for sensitive functionality and data handling"
+
+### Quality Gates & Checkpoints
+- "Pre-commit hooks for code quality and formatting checks"
+- "Automated testing in CI/CD pipeline with failure prevention"
+- "Performance budgets and monitoring with alert thresholds"
+- "Accessibility compliance checks and validation"
+- "Security scanning and vulnerability detection"
 
 ### Deployment & Monitoring
 - "Staging environment testing before production deployment"
-- "Rollback procedures for failed deployments"
-- "Monitoring and alerting for production issues"
-- "User feedback collection and analysis"
+- "Rollback procedures for failed deployments and issues"
+- "Monitoring and alerting for production issues and performance"
+- "User feedback collection and analysis systems"
+- "Regular health checks and automated monitoring"
 
-### Maintenance & Updates
+## 🔄 Continuous Improvement
+
+### Feedback Collection & Analysis
+- "User feedback collection through in-game surveys and analytics"
+- "Performance monitoring and optimization opportunity identification"
+- "Error tracking and resolution prioritization"
+- "Feature usage analysis and improvement recommendations"
+- "Regular user research and usability studies"
+
+### Content Updates & Maintenance
 - "Regular content updates for accuracy and relevance"
 - "Security patch management and vulnerability assessment"
 - "Performance monitoring and optimization opportunities"
 - "User feedback integration and feature prioritization"
+- "Content localization and cultural adaptation updates"
+
+### Technical Debt Management
+- "Regular code refactoring and technical debt reduction"
+- "Dependency updates and security patch management"
+- "Performance optimization and bottleneck resolution"
+- "Legacy code modernization and improvement"
+- "Architecture evolution and scalability improvements"
+
+### Learning & Development
+- "Team knowledge sharing and best practice documentation"
+- "Regular training on new technologies and methodologies"
+- "Industry best practice research and implementation"
+- "Tool and process improvement recommendations"
+- "Quality standard evolution and refinement"
+
+## 🎯 Specific Testing Scenarios
+
+### Game Logic Testing
+- "Metric calculation accuracy and boundary condition testing"
+- "Action cost validation and resource management testing"
+- "Event randomization and distribution testing"
+- "Win/loss condition logic and edge case testing"
+- "Save/load functionality and state persistence testing"
+
+### UI/UX Testing
+- "Responsive design testing across all target devices"
+- "Accessibility testing with screen readers and keyboard navigation"
+- "Animation performance and smoothness testing"
+- "Loading state and error handling testing"
+- "User flow completion and task success testing"
+
+### Content Testing
+- "Translation accuracy and cultural appropriateness testing"
+- "Educational content effectiveness and engagement testing"
+- "Scenario difficulty and balance testing"
+- "Quiz question validity and educational value testing"
+- "Safety tip clarity and usefulness testing"
+
+### Performance Testing
+- "Load time testing under various network conditions"
+- "Memory usage testing during extended gameplay sessions"
+- "Animation performance testing on different devices"
+- "Database query performance and optimization testing"
+- "CDN performance and global delivery testing"
+
+## 📈 Quality Metrics & Reporting
+
+### Key Performance Indicators
+- "Page load time: < 3 seconds on standard broadband"
+- "First contentful paint: < 1.5 seconds"
+- "Time to interactive: < 2.5 seconds"
+- "Cumulative layout shift: < 0.1"
+- "Accessibility score: 95+ on Lighthouse"
+
+### User Experience Metrics
+- "Task completion rate: > 90% for core game functions"
+- "User satisfaction score: > 4.0/5.0"
+- "Error rate: < 2% for user interactions"
+- "Support ticket volume: < 5% of active users"
+- "User retention rate: > 70% after first session"
+
+### Technical Quality Metrics
+- "Test coverage: > 80% for critical functionality"
+- "Code duplication: < 5%"
+- "Cyclomatic complexity: < 10 per function"
+- "Security vulnerabilities: 0 high/critical"
+- "Performance budget compliance: 100%"
+
+### Regular Reporting
+- "Weekly quality metrics dashboard and trend analysis"
+- "Monthly quality review meetings and improvement planning"
+- "Quarterly comprehensive quality assessment and strategy updates"
+- "Annual quality standard review and evolution"
+- "Continuous monitoring and real-time alerting for critical issues"

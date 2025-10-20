@@ -1,87 +1,324 @@
-# 💻 Rising Waters: Code Architecture & Implementation Prompts
+# 💻 Rising Waters: Code Architecture & Implementation Guidelines
 
-## Modular JavaScript Architecture
+## 🏗️ Core Architecture Principles
 
-### Core Game Engine
-- "Implement centralized game state management with clear data flow"
-- "Create modular functions for initialization, gameplay loop, and state updates"
-- "Design event-driven architecture with proper separation of concerns"
-- "Implement robust error handling with graceful degradation"
+### Modular JavaScript Design
+- "Implement clean separation of concerns with distinct modules for game logic, UI rendering, and utilities"
+- "Use ES6+ modules with clear import/export patterns for maintainable code organization"
+- "Create a centralized game state management system with immutable state updates"
+- "Design event-driven architecture with proper decoupling between components"
+- "Implement robust error handling with graceful degradation and user-friendly error messages"
 
-### Game State Management
-- "Centralized state object tracking: metrics, current event, round, game status"
-- "Immutable state updates using pure functions for predictability"
-- "State validation and boundary checking (0-100 range for metrics)"
-- "Local storage integration for scenario persistence"
+### Code Organization Structure
+```
+game_app/
+├── js/
+│   ├── game-engine.js      # Core game logic and state management
+│   ├── game-ui.js          # UI rendering and DOM manipulation
+│   ├── game-utils.js       # Utility functions and helpers
+│   ├── main-menu.js        # Menu system and navigation
+│   └── game-legacy.js      # Legacy compatibility (if needed)
+├── css/
+│   ├── game-styles.css     # Main game styling
+│   └── main-menu.css       # Menu-specific styling
+└── gameData/
+    ├── *.json              # Scenario data files
+```
+
+### Design Patterns & Best Practices
+- "Use Factory Pattern for creating game objects and scenarios"
+- "Implement Observer Pattern for UI updates based on state changes"
+- "Apply Strategy Pattern for different action types and event handling"
+- "Use Module Pattern for encapsulating related functionality"
+- "Implement Command Pattern for undoable actions and action history"
+
+## 🎮 Game Engine Architecture
+
+### State Management System
+- "Centralized game state object with clear structure and validation"
+- "Immutable state updates using pure functions for predictability and debugging"
+- "State validation and boundary checking (0-100 range for metrics, 0-200 for resources)"
+- "Local storage integration for scenario persistence and user preferences"
+- "State serialization for save/load functionality and debugging"
+
+### Game State Structure
+```javascript
+const gameState = {
+  // Core metrics
+  metrics: {
+    safety: 50,
+    infrastructure: 50,
+    morale: 50,
+    resourcePoints: 100
+  },
+  
+  // Game progress
+  currentRound: 1,
+  maxRounds: 8,
+  gameStatus: 'playing', // 'playing', 'won', 'lost', 'paused'
+  
+  // Current context
+  currentEvent: null,
+  currentScenario: null,
+  actionHistory: [],
+  
+  // UI state
+  selectedAction: null,
+  showModal: false,
+  language: 'en'
+};
+```
 
 ### Event System Architecture
-- "Randomized event deck with Fisher-Yates shuffle algorithm"
-- "Event progression system with proper round management"
+- "Randomized event deck using Fisher-Yates shuffle algorithm for fair distribution"
+- "Event progression system with proper round management and difficulty scaling"
 - "Action execution with cost validation and effect application"
-- "Win/loss condition evaluation with clear feedback"
+- "Win/loss condition evaluation with clear feedback and game state updates"
+- "Event history tracking for replayability and debugging"
 
-### UI Rendering Engine
-- "Declarative UI updates based on game state changes"
-- "Efficient DOM manipulation with minimal reflows"
-- "Responsive layout calculations for different screen sizes"
-- "Animation coordination with game state transitions"
+### Action System Design
+- "Action validation: Check resource requirements and availability before execution"
+- "Effect application: Apply changes to metrics with proper bounds checking"
+- "Cost deduction: Remove resource points after successful action execution"
+- "Feedback generation: Create user-friendly messages for action results"
+- "History tracking: Record actions for undo functionality and game analysis"
 
-### Data Management
-- "JSON-based content system for events, actions, and translations"
-- "Dynamic loading of scenario-specific game data"
-- "Error handling for missing or corrupted data files"
-- "Fallback mechanisms for network failures"
+## 🎨 UI Rendering Engine
+
+### Declarative UI Updates
+- "Render UI based on game state changes using pure functions"
+- "Minimize DOM manipulation with efficient update strategies"
+- "Use document fragments for batch DOM updates to improve performance"
+- "Implement virtual DOM concepts for complex UI state management"
+- "Cache DOM elements to avoid repeated queries and improve performance"
+
+### Responsive Layout System
+- "CSS Grid and Flexbox for modern, responsive layouts"
+- "Mobile-first approach with progressive enhancement for larger screens"
+- "Dynamic layout calculations based on screen size and content"
+- "Touch-friendly interface with appropriate target sizes (44px minimum)"
+- "Accessible navigation with proper focus management and keyboard support"
+
+### Animation & Transition System
+- "CSS transitions for smooth state changes and user feedback"
+- "JavaScript-controlled animations for complex interactions"
+- "Performance-optimized animations using transform and opacity"
+- "Accessibility support with prefers-reduced-motion respect"
+- "Consistent timing and easing functions throughout the application"
+
+## 📊 Data Management & Content System
+
+### JSON-Based Content Architecture
+- "Modular JSON files for each scenario with events, actions, and translations"
+- "Centralized content loading with error handling and fallback mechanisms"
+- "Dynamic content validation to ensure data integrity and consistency"
+- "Content versioning for updates and backward compatibility"
+- "Lazy loading of non-critical content for improved performance"
+
+### Scenario Data Structure
+```javascript
+const scenarioData = {
+  metadata: {
+    id: 'central_highlands',
+    name: 'Central Highlands',
+    description: 'Persistent flooding scenario...',
+    difficulty: 'moderate',
+    maxRounds: 8
+  },
+  
+  events: [
+    {
+      id: 'event_001',
+      title: 'Heavy Rainfall',
+      description: 'Continuous heavy rain...',
+      round: 1,
+      actions: [...]
+    }
+  ],
+  
+  actions: [
+    {
+      id: 'action_001',
+      title: 'Evacuate Low Areas',
+      cost: 15,
+      effects: {
+        safety: 10,
+        morale: -5
+      }
+    }
+  ],
+  
+  i18n: {
+    en: { /* English translations */ },
+    vi: { /* Vietnamese translations */ }
+  }
+};
+```
 
 ### Localization System
-- "i18n function supporting multiple languages with fallbacks"
-- "Real-time language switching without page reload"
-- "Translation key management with validation"
-- "Cultural adaptation for Vietnamese content"
+- "i18n function supporting multiple languages with fallback to default language"
+- "Real-time language switching without page reload or state loss"
+- "Translation key management with validation and missing key detection"
+- "Cultural adaptation for Vietnamese content and context"
+- "Pluralization support for different languages and number formats"
 
-### Performance Optimization
-- "Lazy loading of non-critical resources"
-- "Debounced user interactions to prevent rapid-fire actions"
-- "Efficient array operations and object property access"
-- "Memory management with proper cleanup of event listeners"
+## ⚡ Performance Optimization
 
-### Browser Compatibility
-- "ES6+ features with polyfills for older browsers"
-- "CSS Grid and Flexbox with appropriate fallbacks"
-- "Cross-browser testing and compatibility fixes"
-- "Progressive enhancement for modern features"
+### JavaScript Performance
+- "Debounced user interactions to prevent rapid-fire actions and improve performance"
+- "Efficient array operations using modern JavaScript methods (map, filter, reduce)"
+- "Object property access optimization with consistent naming conventions"
+- "Memory management with proper cleanup of event listeners and timers"
+- "Lazy loading of non-critical JavaScript modules and features"
+
+### DOM Performance
+- "Element caching to avoid repeated DOM queries"
+- "Batch DOM updates using document fragments"
+- "Efficient event delegation for dynamic content"
+- "Minimize reflows and repaints with CSS transforms"
+- "Use requestAnimationFrame for smooth animations"
+
+### Asset Loading & Caching
+- "Critical CSS inlined for above-the-fold content"
+- "Non-critical CSS loaded asynchronously"
+- "Image optimization with appropriate formats and compression"
+- "Service worker implementation for offline functionality"
+- "CDN integration for global asset delivery"
+
+## 🔒 Security & Error Handling
+
+### Input Validation & Sanitization
+- "Validate all user inputs on both client and server side"
+- "Sanitize dynamic content to prevent XSS attacks"
+- "Implement Content Security Policy (CSP) headers"
+- "Use safe JSON parsing with proper error handling"
+- "Validate file uploads and data imports"
+
+### Error Handling Strategy
+- "Comprehensive try-catch blocks around critical operations"
+- "User-friendly error messages with actionable recovery steps"
+- "Error logging system for development and production monitoring"
+- "Graceful degradation when features are unavailable"
+- "Network error handling with retry mechanisms and offline support"
+
+### Data Security
+- "Secure handling of user preferences and game state"
+- "Input validation for all data modifications"
+- "Safe storage of sensitive information in localStorage"
+- "Protection against common web vulnerabilities"
+- "Regular security audits and dependency updates"
+
+## ♿ Accessibility Implementation
+
+### Semantic HTML Structure
+- "Use proper HTML5 semantic elements (main, section, article, header, footer)"
+- "Implement proper heading hierarchy (h1, h2, h3) for screen readers"
+- "Use descriptive alt text for all images and visual elements"
+- "Provide proper form labels and fieldset groupings"
+- "Use ARIA landmarks for complex interface navigation"
+
+### Keyboard Navigation
+- "Full keyboard accessibility for all interactive elements"
+- "Logical tab order throughout the entire interface"
+- "Skip links for efficient navigation"
+- "Focus management for modal dialogs and dynamic content"
+- "Keyboard shortcuts for power users and accessibility"
+
+### Screen Reader Support
+- "ARIA labels and descriptions for complex UI elements"
+- "Live regions for dynamic content updates"
+- "Role attributes for custom interactive elements"
+- "State announcements for game state changes"
+- "Alternative text for all visual information"
+
+## 🧪 Testing Strategy & Quality Assurance
+
+### Unit Testing Framework
+- "Jest or similar testing framework for JavaScript unit tests"
+- "Test coverage for all core game logic functions"
+- "Mock objects for external dependencies and DOM manipulation"
+- "Automated testing in CI/CD pipeline"
+- "Performance testing for critical game functions"
+
+### Integration Testing
+- "End-to-end testing of complete user workflows"
+- "Cross-browser compatibility testing"
+- "Mobile device testing on various screen sizes"
+- "Accessibility testing with screen readers and assistive technologies"
+- "Performance testing under various network conditions"
 
 ### Code Quality Standards
-- "ESLint configuration for consistent code style"
-- "JSDoc documentation for all public functions"
-- "Unit test structure for core game logic"
-- "Modular file organization with clear dependencies"
+- "ESLint configuration for consistent code style and error detection"
+- "Prettier for automatic code formatting"
+- "JSDoc documentation for all public functions and classes"
+- "Code review process for all changes"
+- "Automated code quality checks in CI/CD pipeline"
 
-### Security Considerations
-- "Input sanitization for all user interactions"
-- "XSS prevention in dynamic content rendering"
-- "Safe JSON parsing with error handling"
-- "Content Security Policy implementation"
+## 🚀 Deployment & Build Process
 
-### Accessibility Implementation
-- "ARIA labels and roles for screen readers"
-- "Keyboard navigation for all interactive elements"
-- "Focus management for modal dialogs"
-- "High contrast mode support"
+### Build Optimization
+- "Webpack or similar bundler for code optimization and minification"
+- "Tree shaking to remove unused code"
+- "Code splitting for optimal loading performance"
+- "Asset optimization and compression"
+- "Source maps for debugging in production"
 
-### Testing Strategy
-- "Automated testing for game logic functions"
-- "Manual testing protocols for different scenarios"
-- "Cross-browser compatibility testing"
-- "Performance testing on various devices"
-
-### Deployment Architecture
+### Deployment Strategy
 - "Static file serving with proper caching headers"
-- "CDN integration for asset delivery"
+- "CDN integration for global content delivery"
+- "Progressive Web App (PWA) features for mobile experience"
 - "Service worker for offline functionality"
-- "Progressive Web App features"
+- "Automated deployment with GitHub Actions or similar CI/CD"
 
-### Maintenance & Updates
-- "Configuration-driven game parameters"
-- "Easy content updates through JSON modification"
-- "Version control for game data and translations"
-- "Monitoring and analytics integration"
+### Environment Configuration
+- "Environment-specific configuration files"
+- "Feature flags for gradual rollout of new features"
+- "Error tracking and analytics integration"
+- "Performance monitoring and alerting"
+- "Backup and recovery procedures"
+
+## 📚 Documentation & Maintenance
+
+### Code Documentation
+- "Comprehensive README with setup and usage instructions"
+- "API documentation for all public functions and classes"
+- "Architecture documentation with diagrams and explanations"
+- "Contributing guidelines for developers"
+- "Changelog for version tracking and updates"
+
+### Maintenance Procedures
+- "Regular dependency updates and security patches"
+- "Performance monitoring and optimization opportunities"
+- "User feedback collection and analysis"
+- "Content updates and localization management"
+- "Backup and version control for all game data"
+
+### Monitoring & Analytics
+- "Error tracking and reporting system"
+- "Performance metrics monitoring"
+- "User behavior analytics (privacy-compliant)"
+- "A/B testing framework for feature improvements"
+- "Regular health checks and automated monitoring"
+
+## 🔧 Development Tools & Workflow
+
+### Development Environment
+- "Modern code editor with JavaScript/HTML/CSS support"
+- "Browser developer tools for debugging and profiling"
+- "Version control with Git and proper branching strategy"
+- "Package manager for dependency management"
+- "Local development server with hot reloading"
+
+### Code Quality Tools
+- "Linting tools (ESLint) for code quality and consistency"
+- "Formatting tools (Prettier) for consistent code style"
+- "Type checking tools (TypeScript or JSDoc) for better code reliability"
+- "Bundle analyzers for performance optimization"
+- "Security scanning tools for vulnerability detection"
+
+### Collaboration & Review
+- "Pull request process with code review requirements"
+- "Automated testing before code merge"
+- "Documentation requirements for new features"
+- "Performance impact assessment for changes"
+- "Regular team code reviews and knowledge sharing"

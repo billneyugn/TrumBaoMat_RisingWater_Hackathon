@@ -1,75 +1,234 @@
-# 🎨 Rising Waters: Visual Design & Asset Generation Prompts
+# 🎨 Rising Waters: Visual Design & Asset Generation Guidelines
 
-## Modern UI/UX Design System
+## 🎯 Design Philosophy & Brand Identity
 
-### Design Philosophy
-- "Create a clean, professional interface inspired by modern web applications"
-- "Implement Google Material Design principles for consistency and usability"
-- "Design with accessibility in mind: high contrast, clear typography, intuitive navigation"
-- "Focus on content clarity over decorative elements"
+### Core Design Principles
+- "Create a clean, professional interface that builds trust and credibility for educational use"
+- "Implement Google Material Design 3 principles for consistency, accessibility, and modern aesthetics"
+- "Design with educational context in mind: clear information hierarchy, reduced cognitive load"
+- "Focus on content clarity over decorative elements while maintaining visual appeal"
+- "Ensure cultural sensitivity and appropriateness for Vietnamese educational institutions"
 
-### Color Palette & Theme
-- "Primary: Google Material Blue (#1976d2) for main interface elements"
-- "Secondary: Deep Orange (#ff7043) for accents and highlights"
-- "Status Colors: Success Green (#4caf50), Warning Orange (#ff9800), Danger Red (#f44336)"
-- "Neutral: Light backgrounds (#fafafa) with dark text (#212121) for readability"
+### Brand Personality
+- "Professional yet approachable: Serious about flood management education, friendly in presentation"
+- "Trustworthy and authoritative: Clean layouts, consistent spacing, reliable visual language"
+- "Educational and informative: Clear typography, logical information flow, learning-focused design"
+- "Modern and accessible: Contemporary aesthetics that appeal to diverse age groups and abilities"
+- "Culturally inclusive: Design elements that work across different cultural contexts and languages"
 
-### Typography System
-- "Primary Font: Poppins for modern, clean readability across all devices"
-- "Font weights: 400 (regular), 500 (medium), 600 (semi-bold), 700 (bold)"
-- "Hierarchical sizing: 2.5rem (titles), 1.5rem (headings), 1rem (body), 0.875rem (captions)"
-- "Optimal line-height: 1.6 for body text, 1.4 for headings"
+## 🎨 Color System & Visual Identity
 
-### Layout & Structure
-- "Responsive grid system adapting to screen sizes"
-- "Card-based design with subtle shadows and rounded corners"
-- "Consistent spacing using 8px grid system"
-- "Flexible layouts that work from mobile (320px) to desktop (1920px+)"
+### Primary Color Palette
+- "Primary Blue: #1976d2 (Material Blue 700) - Main interface elements, primary actions, navigation"
+- "Primary Blue Light: #42a5f5 (Material Blue 400) - Hover states, secondary elements, highlights"
+- "Primary Blue Dark: #1565c0 (Material Blue 800) - Active states, pressed buttons, emphasis"
+- "Secondary Orange: #ff7043 (Material Deep Orange 400) - Accents, warnings, call-to-action elements"
+- "Secondary Orange Dark: #f57c00 (Material Orange 600) - Critical actions, urgent notifications"
 
-### Interactive Elements
-- "Button Design: Material Design elevation with hover states"
-- "Form Elements: Clean inputs with focus states and validation feedback"
-- "Navigation: Intuitive menu structure with clear visual hierarchy"
-- "Modals: Centered overlays with backdrop blur and smooth transitions"
+### Status & Feedback Colors
+- "Success Green: #4caf50 (Material Green 500) - Positive feedback, completed actions, safety indicators"
+- "Warning Orange: #ff9800 (Material Orange 500) - Caution states, moderate risk, attention needed"
+- "Danger Red: #f44336 (Material Red 500) - Critical alerts, danger states, failure indicators"
+- "Info Blue: #2196f3 (Material Blue 500) - Information, tips, neutral feedback"
+- "Neutral Gray: #757575 (Material Grey 600) - Secondary text, disabled states, subtle elements"
 
-### Visual Feedback Systems
-- "Metric Bars: Smooth animations with color-coded progress indicators"
-- "Action Buttons: Clear states (default, hover, active, disabled)"
-- "Loading States: Subtle spinners and skeleton screens"
-- "Success/Error: Toast notifications and inline validation messages"
+### Background & Surface Colors
+- "Primary Background: #fafafa (Material Grey 50) - Main content areas, clean and minimal"
+- "Secondary Background: #ffffff (Pure White) - Cards, modals, elevated surfaces"
+- "Surface Background: #f5f5f5 (Material Grey 100) - Subtle sections, inactive areas"
+- "Overlay Background: rgba(0, 0, 0, 0.5) - Modal backdrops, overlays, focus states"
+- "Border Colors: #e0e0e0 (Material Grey 300) - Subtle borders, dividers, separators"
+
+### Text Color Hierarchy
+- "Primary Text: #212121 (Material Grey 900) - Main content, high contrast for readability"
+- "Secondary Text: #757575 (Material Grey 600) - Supporting information, descriptions"
+- "Disabled Text: #bdbdbd (Material Grey 400) - Inactive elements, placeholder text"
+- "Inverse Text: #ffffff (Pure White) - Text on dark backgrounds, high contrast elements"
+- "Link Text: #1976d2 (Primary Blue) - Interactive links, clickable elements"
+
+## 📝 Typography System
+
+### Font Selection & Hierarchy
+- "Primary Font: 'Poppins', sans-serif - Modern, clean, highly readable across all devices"
+- "Fallback Fonts: 'Segoe UI', 'Roboto', 'Arial', sans-serif - Cross-platform compatibility"
+- "Monospace Font: 'JetBrains Mono', 'Consolas', monospace - Code, metrics, technical data"
+- "Font Loading: Preload critical fonts, use font-display: swap for performance"
+
+### Typography Scale
+- "Display Large: 3.5rem (56px) / 1.2 line-height - Main page titles, hero sections"
+- "Display Medium: 2.5rem (40px) / 1.3 line-height - Section headers, game titles"
+- "Display Small: 2rem (32px) / 1.4 line-height - Subsection headers, card titles"
+- "Headline Large: 1.5rem (24px) / 1.4 line-height - Content headers, metric labels"
+- "Headline Medium: 1.25rem (20px) / 1.5 line-height - Subheaders, action labels"
+- "Body Large: 1rem (16px) / 1.6 line-height - Main content, descriptions, instructions"
+- "Body Medium: 0.875rem (14px) / 1.6 line-height - Secondary content, captions"
+- "Body Small: 0.75rem (12px) / 1.5 line-height - Fine print, metadata, small labels"
+
+### Font Weights & Usage
+- "Light (300): Decorative text, subtle emphasis, large display text"
+- "Regular (400): Body text, standard content, default weight"
+- "Medium (500): Subheadings, important labels, navigation items"
+- "Semi-Bold (600): Section headers, metric values, emphasis"
+- "Bold (700): Page titles, critical information, strong emphasis"
+
+## 🏗️ Layout & Grid System
+
+### Responsive Grid Framework
+- "Mobile First: Start with 320px minimum width, progressive enhancement for larger screens"
+- "Breakpoints: 320px (mobile), 768px (tablet), 1024px (desktop), 1440px (large desktop)"
+- "Grid System: 12-column flexible grid with 16px gutters, 24px margins on mobile"
+- "Container Max-Width: 1200px for optimal reading width and content organization"
+- "Flexible Layouts: Use CSS Grid and Flexbox for modern, responsive layouts"
+
+### Spacing System
+- "Base Unit: 8px grid system for consistent spacing throughout the interface"
+- "Spacing Scale: 4px, 8px, 16px, 24px, 32px, 48px, 64px, 96px, 128px"
+- "Component Spacing: 16px between related elements, 24px between sections"
+- "Content Spacing: 24px vertical rhythm for text content, 16px for compact layouts"
+- "Touch Targets: Minimum 44px for interactive elements, 48px preferred for mobile"
+
+### Card & Surface Design
+- "Card Elevation: Subtle shadows (0 2px 4px rgba(0,0,0,0.1)) for depth and hierarchy"
+- "Border Radius: 8px for cards, 4px for buttons, 12px for modals"
+- "Card Padding: 24px for content cards, 16px for compact cards, 32px for large cards"
+- "Surface Hierarchy: Different elevation levels to show content importance and relationships"
+- "Hover States: Subtle elevation increase (0 4px 8px rgba(0,0,0,0.15)) for interactive elements"
+
+## 🎛️ Interactive Elements & Components
+
+### Button Design System
+- "Primary Button: Solid background with primary color, white text, 8px border radius"
+- "Secondary Button: Outlined style with primary color border, primary color text"
+- "Text Button: No background, primary color text, underline on hover"
+- "Button Sizes: Small (32px height), Medium (40px height), Large (48px height)"
+- "Button States: Default, Hover, Active, Focus, Disabled with appropriate visual feedback"
+- "Button Spacing: 8px between buttons, 16px between button groups"
+
+### Form Elements & Inputs
+- "Input Fields: Clean borders, 8px padding, focus states with primary color accent"
+- "Label Design: Clear, descriptive labels with proper spacing and hierarchy"
+- "Validation States: Success (green), Warning (orange), Error (red) with appropriate icons"
+- "Placeholder Text: Subtle, helpful hints that don't interfere with actual content"
+- "Form Groups: Logical grouping with clear visual separation and consistent spacing"
+
+### Navigation & Menu Design
+- "Main Navigation: Clear hierarchy with primary actions prominently displayed"
+- "Breadcrumbs: Show current location and navigation path for complex interfaces"
+- "Tab Navigation: Clear active states, smooth transitions, accessible keyboard navigation"
+- "Menu Items: Consistent spacing, clear labels, appropriate touch targets for mobile"
+- "Navigation Feedback: Clear indication of current page, hover states, active states"
+
+## 🎭 Animation & Motion Design
+
+### Animation Principles
+- "Purposeful Motion: Every animation should serve a functional purpose, not just decoration"
+- "Performance First: Use transform and opacity for smooth 60fps animations"
+- "Accessibility: Respect prefers-reduced-motion for users with motion sensitivity"
+- "Consistent Timing: Use standard easing curves and duration scales throughout"
+- "Subtle and Professional: Animations should enhance usability without being distracting"
+
+### Timing & Easing
+- "Micro-interactions: 200ms duration with ease-out for quick feedback"
+- "Page Transitions: 300ms duration with ease-in-out for smooth navigation"
+- "Loading States: 400ms duration with ease-in-out for perceived performance"
+- "Easing Functions: cubic-bezier(0.4, 0, 0.2, 1) for natural, Material Design motion"
+- "Staggered Animations: 50ms delay between elements for polished, sequential reveals"
+
+### Specific Animations
+- "Ocean Wave Background: Gentle, continuous animation (20s duration) for thematic consistency"
+- "Metric Changes: Smooth number counting animation for engaging feedback"
+- "Button Interactions: Subtle scale (0.95) and elevation changes for tactile feedback"
+- "Modal Transitions: Fade in/out with scale for smooth overlay appearance"
+- "Loading Indicators: Subtle pulse or rotation for non-blocking loading states"
+
+## 📱 Responsive Design Strategy
+
+### Mobile-First Approach
+- "Start with mobile design (320px) and progressively enhance for larger screens"
+- "Touch-Friendly Interface: 44px minimum touch targets, appropriate spacing for fingers"
+- "Thumb Navigation: Place primary actions within easy thumb reach on mobile devices"
+- "Content Prioritization: Most important information visible without scrolling on mobile"
+- "Performance Optimization: Optimize images and animations for mobile performance"
+
+### Breakpoint Strategy
+- "Mobile (320px-767px): Single column layout, stacked navigation, compact spacing"
+- "Tablet (768px-1023px): Two-column layout, expanded navigation, medium spacing"
+- "Desktop (1024px-1439px): Multi-column layout, full navigation, standard spacing"
+- "Large Desktop (1440px+): Maximum content width, enhanced spacing, additional features"
+- "Fluid Typography: Use clamp() for responsive font sizes that scale smoothly"
+
+### Cross-Device Considerations
+- "Consistent Experience: Core functionality works identically across all devices"
+- "Device-Specific Features: Leverage device capabilities (touch, hover) appropriately"
+- "Orientation Support: Optimize layouts for both portrait and landscape orientations"
+- "Input Methods: Support both touch and mouse/keyboard input methods"
+- "Performance Scaling: Adjust complexity based on device capabilities and screen size"
+
+## ♿ Accessibility & Inclusive Design
+
+### WCAG 2.1 AA Compliance
+- "Color Contrast: Minimum 4.5:1 ratio for normal text, 3:1 for large text"
+- "Focus Indicators: Clear, visible focus states for all interactive elements"
+- "Keyboard Navigation: Full functionality accessible via keyboard only"
+- "Screen Reader Support: Proper semantic HTML, ARIA labels, and descriptions"
+- "Alternative Text: Descriptive alt text for all images and visual elements"
+
+### Inclusive Design Features
+- "High Contrast Mode: Support for high contrast themes and user preferences"
+- "Font Size Scaling: Respect user font size preferences and zoom settings"
+- "Motion Preferences: Honor prefers-reduced-motion for users sensitive to animation"
+- "Color Independence: Information not conveyed by color alone"
+- "Multiple Input Methods: Support for various assistive technologies and input devices"
+
+### Cultural & Language Considerations
+- "Text Expansion: Account for text length variations in different languages"
+- "Reading Direction: Support for left-to-right and right-to-left text layouts"
+- "Cultural Colors: Avoid colors with negative cultural associations"
+- "Icon Usage: Use universally understood icons or provide text alternatives"
+- "Localization Support: Design flexible layouts that accommodate different text lengths"
+
+## 🚀 Performance & Optimization
+
+### Asset Optimization
+- "Image Compression: Optimize all images for web with appropriate quality settings"
+- "SVG Usage: Use SVG for icons and simple graphics for crisp rendering at all sizes"
+- "Font Loading: Preload critical fonts, use font-display: swap for better performance"
+- "CSS Optimization: Minify CSS, remove unused styles, use critical CSS inlining"
+- "JavaScript Optimization: Minify JS, use tree shaking, lazy load non-critical code"
+
+### Loading Performance
+- "Critical Path: Prioritize above-the-fold content and critical functionality"
+- "Lazy Loading: Load images and non-critical content as needed"
+- "Caching Strategy: Implement appropriate caching headers for static assets"
+- "CDN Usage: Use content delivery networks for global asset distribution"
+- "Progressive Enhancement: Ensure core functionality works without advanced features"
+
+### Runtime Performance
+- "Smooth Animations: Use transform and opacity for GPU-accelerated animations"
+- "Efficient Rendering: Minimize DOM manipulation and repaints"
+- "Memory Management: Clean up event listeners and avoid memory leaks"
+- "Debounced Interactions: Prevent excessive API calls and DOM updates"
+- "Performance Monitoring: Track and optimize performance metrics continuously"
+
+## 🎨 Visual Design Elements
 
 ### Iconography & Graphics
-- "Minimalist approach: Use text labels over icons for clarity"
-- "Consistent visual language throughout the interface"
-- "SVG-based graphics for crisp rendering at all sizes"
-- "Emoji sparingly, only for event categorization when necessary"
+- "Icon Style: Consistent, minimalist line icons with 2px stroke weight"
+- "Icon Library: Use Material Design Icons or similar for consistency"
+- "Custom Icons: Create custom icons for game-specific elements (flood, safety, etc.)"
+- "Icon Sizing: 16px, 20px, 24px, 32px, 48px for different use cases"
+- "Icon Accessibility: Provide text alternatives and ensure sufficient contrast"
 
-### Animation & Motion
-- "Subtle micro-interactions: 200-300ms transitions"
-- "Easing: cubic-bezier(0.4, 0, 0.2, 1) for natural motion"
-- "Ocean wave backgrounds: Gentle, non-distracting animations"
-- "Performance-first: GPU-accelerated transforms only"
+### Imagery & Visual Content
+- "Photography Style: Professional, clean images that support educational content"
+- "Illustration Style: Simple, clear illustrations that enhance understanding"
+- "Chart Design: Clean, readable charts and graphs for metric visualization"
+- "Visual Hierarchy: Use size, color, and positioning to guide user attention"
+- "Content Balance: Balance text and visual elements for optimal readability"
 
-### Responsive Design Strategy
-- "Mobile-first approach with progressive enhancement"
-- "Breakpoints: 320px (mobile), 768px (tablet), 1024px (desktop)"
-- "Touch-friendly: 44px minimum touch targets"
-- "Content prioritization: Most important information first"
-
-### Accessibility Features
-- "WCAG 2.1 AA compliance for color contrast"
-- "Keyboard navigation support for all interactive elements"
-- "Screen reader friendly with proper ARIA labels"
-- "Focus indicators visible and consistent"
-
-### Performance Considerations
-- "Optimized assets: Compressed images and minified CSS/JS"
-- "Efficient rendering: Minimal DOM manipulation and repaints"
-- "Fast loading: Critical CSS inlined, non-critical loaded asynchronously"
-- "Progressive enhancement: Core functionality works without JavaScript"
-
-### Brand Identity
-- "Professional, educational tone suitable for institutional use"
-- "Trust-building visual elements: Clean layouts, consistent spacing"
-- "Modern aesthetic appealing to diverse age groups"
-- "Culturally neutral design with Vietnamese localization support"
+### Brand Consistency
+- "Logo Usage: Consistent logo placement and sizing across all interfaces"
+- "Color Application: Strict adherence to color palette and usage guidelines"
+- "Typography Consistency: Consistent font usage and hierarchy throughout"
+- "Spacing Standards: Maintain consistent spacing and layout patterns"
+- "Component Reuse: Use consistent components and patterns across all screens"
