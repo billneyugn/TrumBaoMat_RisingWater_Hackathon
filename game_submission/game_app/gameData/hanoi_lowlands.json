@@ -1,0 +1,142 @@
+{
+    "i18n": {
+        "en": {
+            "gameTitle": "Rising Waters: Urban Crisis",
+            "gameSubtitle": "Hanoi Lowlands Edition",
+            "townMap": "Town Map",
+            "round": "Round",
+            "meterSafety": "Safety",
+            "meterInfrastructure": "Infrastructure",
+            "meterMorale": "Morale",
+            "meterResourcePoints": "Resource Points",
+            "chooseAction": "Choose Your Action:",
+            "gameStats": "Game Statistics",
+            "help": "Help",
+            "restart": "Restart Game",
+            "quizTitle": "Safety Quiz",
+            "floodTip": "💡 Flood Safety Tip",
+            "understood": "Understood",
+            "playAgain": "Play Again",
+            "howToPlay": "How to Play",
+            "close": "Close",
+            "gameOverSuccess": "Mission Accomplished!",
+            "gameOverFailure": "Mission Failed",
+            "gameOverDraw": "Mixed Results"
+        }
+    },
+    "helpText": {
+        "en": "<div class='help-section'><h3>🎮 Game Overview</h3><p>You are a Community Leader in Hanoi's urban lowlands. Rapid flooding challenges infrastructure and requires quick emergency response. Keep Safety ≥ 70% and Infrastructure ≥ 60% to succeed.</p></div>"
+    },
+    "events": [
+        {
+            "id": "rapid_urban_flooding",
+            "title": {
+                "en": "Rapid Urban Flooding"
+            },
+            "description": {
+                "en": "Heavy rain causes sudden flooding in downtown areas."
+            },
+            "effects": {
+                "safety": -15,
+                "infrastructure": -20,
+                "morale": -10,
+                "resourcePoints": -8
+            },
+            "quiz": {
+                "question": {
+                    "en": "What is the first priority during rapid urban flooding?"
+                },
+                "options": [
+                    {
+                        "en": "Evacuate high-risk areas"
+                    },
+                    {
+                        "en": "Close all businesses"
+                    },
+                    {
+                        "en": "Wait for government help"
+                    },
+                    {
+                        "en": "Continue normal operations"
+                    }
+                ],
+                "correctAnswer": 0
+            },
+            "tip": {
+                "en": "Quick evacuation saves lives during rapid flooding events."
+            }
+        }
+    ],
+    "actions": [
+        {
+            "id": "emergency_evacuation",
+            "title": {
+                "en": "Emergency Evacuation"
+            },
+            "effects": {
+                "safety": 15,
+                "infrastructure": -5,
+                "morale": -5,
+                "resourcePoints": -8
+            }
+        },
+        {
+            "id": "infrastructure_repair",
+            "title": {
+                "en": "Infrastructure Repair"
+            },
+            "effects": {
+                "safety": 5,
+                "infrastructure": 20,
+                "morale": 5,
+                "resourcePoints": -12
+            }
+        },
+        {
+            "id": "community_support",
+            "title": {
+                "en": "Community Support"
+            },
+            "effects": {
+                "safety": 8,
+                "infrastructure": 5,
+                "morale": 15,
+                "resourcePoints": -6
+            }
+        },
+        {
+            "id": "resource_mobilization",
+            "title": {
+                "en": "Resource Mobilization"
+            },
+            "effects": {
+                "safety": 10,
+                "infrastructure": 10,
+                "morale": 8,
+                "resourcePoints": 5
+            }
+        }
+    ],
+    "initialState": {
+        "safety": 75,
+        "infrastructure": 70,
+        "morale": 80,
+        "resourcePoints": 25,
+        "totalRounds": 8
+    },
+    "winCondition": {
+        "safety": 70,
+        "infrastructure": 60
+    },
+    "feedbackMessages": {
+        "success": {
+            "en": "Excellent urban flood management!"
+        },
+        "failure": {
+            "en": "Urban flooding overwhelmed the community."
+        },
+        "partial": {
+            "en": "Mixed results in urban crisis management."
+        }
+    }
+}

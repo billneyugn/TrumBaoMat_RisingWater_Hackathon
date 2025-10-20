@@ -1,0 +1,142 @@
+{
+    "i18n": {
+        "en": {
+            "gameTitle": "Rising Waters: Delta Challenge",
+            "gameSubtitle": "Mekong Delta Edition",
+            "townMap": "Town Map",
+            "round": "Round",
+            "meterSafety": "Safety",
+            "meterInfrastructure": "Infrastructure",
+            "meterMorale": "Morale",
+            "meterResourcePoints": "Resource Points",
+            "chooseAction": "Choose Your Action:",
+            "gameStats": "Game Statistics",
+            "help": "Help",
+            "restart": "Restart Game",
+            "quizTitle": "Safety Quiz",
+            "floodTip": "💡 Flood Safety Tip",
+            "understood": "Understood",
+            "playAgain": "Play Again",
+            "howToPlay": "How to Play",
+            "close": "Close",
+            "gameOverSuccess": "Mission Accomplished!",
+            "gameOverFailure": "Mission Failed",
+            "gameOverDraw": "Mixed Results"
+        }
+    },
+    "helpText": {
+        "en": "<div class='help-section'><h3>🎮 Game Overview</h3><p>You are a Community Leader in the Mekong Delta. Seasonal flooding affects agriculture and requires careful resource management. Keep Safety ≥ 70% and Infrastructure ≥ 60% to succeed.</p></div>"
+    },
+    "events": [
+        {
+            "id": "seasonal_flooding",
+            "title": {
+                "en": "Seasonal Flooding"
+            },
+            "description": {
+                "en": "Annual flood season brings water to agricultural areas."
+            },
+            "effects": {
+                "safety": -8,
+                "infrastructure": -10,
+                "morale": -5,
+                "resourcePoints": -12
+            },
+            "quiz": {
+                "question": {
+                    "en": "How should you prepare for seasonal flooding?"
+                },
+                "options": [
+                    {
+                        "en": "Harvest crops early"
+                    },
+                    {
+                        "en": "Wait for floods to pass"
+                    },
+                    {
+                        "en": "Plant more crops"
+                    },
+                    {
+                        "en": "Ignore the warnings"
+                    }
+                ],
+                "correctAnswer": 0
+            },
+            "tip": {
+                "en": "Early preparation prevents agricultural losses during floods."
+            }
+        }
+    ],
+    "actions": [
+        {
+            "id": "crop_protection",
+            "title": {
+                "en": "Crop Protection"
+            },
+            "effects": {
+                "safety": 8,
+                "infrastructure": 5,
+                "morale": 10,
+                "resourcePoints": -10
+            }
+        },
+        {
+            "id": "dike_maintenance",
+            "title": {
+                "en": "Dike Maintenance"
+            },
+            "effects": {
+                "safety": 12,
+                "infrastructure": 18,
+                "morale": 5,
+                "resourcePoints": -15
+            }
+        },
+        {
+            "id": "community_planning",
+            "title": {
+                "en": "Community Planning"
+            },
+            "effects": {
+                "safety": 10,
+                "infrastructure": 8,
+                "morale": 12,
+                "resourcePoints": -8
+            }
+        },
+        {
+            "id": "resource_coordination",
+            "title": {
+                "en": "Resource Coordination"
+            },
+            "effects": {
+                "safety": 6,
+                "infrastructure": 6,
+                "morale": 8,
+                "resourcePoints": 8
+            }
+        }
+    ],
+    "initialState": {
+        "safety": 80,
+        "infrastructure": 65,
+        "morale": 75,
+        "resourcePoints": 30,
+        "totalRounds": 8
+    },
+    "winCondition": {
+        "safety": 70,
+        "infrastructure": 60
+    },
+    "feedbackMessages": {
+        "success": {
+            "en": "Outstanding delta flood management!"
+        },
+        "failure": {
+            "en": "Seasonal flooding overwhelmed agricultural planning."
+        },
+        "partial": {
+            "en": "Mixed results in delta crisis management."
+        }
+    }
+}
