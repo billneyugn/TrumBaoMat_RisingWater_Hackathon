@@ -29,32 +29,17 @@
 
         <!-- Main Game Area -->
         <div class="game-board">
-            <!-- Left: Map and Event Area -->
-            <div class="game-left">
-                <!-- Town Map Visualization -->
-                <div class="town-map">
-                    <div class="map-title" data-i18n="townMap">Town Map</div>
-                    <svg viewBox="0 0 200 150" class="map-svg">
-                        <!-- Water level indicator -->
-                        <rect class="water" id="waterLevel" x="0" y="130" width="200" height="20" fill="#4a90e2" opacity="0.3"/>
-                        <!-- Buildings -->
-                        <rect x="20" y="80" width="30" height="40" fill="#8b4513" class="building"/>
-                        <polygon points="50,80 65,60 80,80" fill="#d4501f" class="roof"/>
-                        <rect x="100" y="85" width="35" height="35" fill="#8b4513" class="building"/>
-                        <polygon points="117.5,85 135,70 152.5,85" fill="#d4501f" class="roof"/>
-                        <rect x="160" y="90" width="25" height="30" fill="#8b4513" class="building"/>
-                        <polygon points="172.5,90 185,80 197.5,90" fill="#d4501f" class="roof"/>
-                        <!-- People indicator -->
-                        <circle cx="60" cy="45" r="3" fill="#333" class="person"/>
-                        <circle cx="70" cy="50" r="3" fill="#333" class="person"/>
-                        <circle cx="140" cy="40" r="3" fill="#333" class="person"/>
-                    </svg>
+            <!-- Top Section: Round Counter -->
+            <div class="round-section">
+                <div class="round-counter">
+                    <span data-i18n="round">Round</span>: <span id="roundDisplay">1</span> / 8
                 </div>
+            </div>
 
-                <!-- Event Card Display -->
+            <!-- Event Card Display -->
+            <div class="event-section">
                 <div class="event-card-container">
                     <div class="event-card" id="eventCard">
-                        <div class="event-icon" id="eventIcon">⚠️</div>
                         <h2 class="event-title" id="eventTitle">Event Title</h2>
                         <p class="event-description" id="eventDescription">Event description</p>
                         <div class="event-effects" id="eventEffects"></div>
@@ -62,65 +47,63 @@
                 </div>
             </div>
 
-            <!-- Right: Metrics and Actions -->
-            <div class="game-right">
-                <!-- Round Counter -->
-                <div class="round-counter">
-                    <span data-i18n="round">Round</span>: <span id="roundDisplay">1</span> / 8
-                </div>
-
+            <!-- Bottom Section: Metrics and Actions -->
+            <div class="bottom-section">
                 <!-- Meters Panel -->
                 <div class="meters-panel">
-                    <!-- Safety Meter -->
-                    <div class="meter">
-                        <div class="meter-label" data-i18n="meterSafety">Safety</div>
-                        <div class="meter-bar">
-                            <div class="meter-fill safety-fill" id="safetyMeter"></div>
+                    <h3 class="panel-title" data-i18n="gameStats">Game Statistics</h3>
+                    <div class="meters-grid">
+                        <!-- Safety Meter -->
+                        <div class="meter">
+                            <div class="meter-label" data-i18n="meterSafety">Safety</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill safety-fill" id="safetyMeter"></div>
+                            </div>
+                            <div class="meter-value"><span id="safetyValue">75</span>%</div>
                         </div>
-                        <div class="meter-value"><span id="safetyValue">75</span>%</div>
-                    </div>
 
-                    <!-- Infrastructure Meter -->
-                    <div class="meter">
-                        <div class="meter-label" data-i18n="meterInfrastructure">Infrastructure</div>
-                        <div class="meter-bar">
-                            <div class="meter-fill infrastructure-fill" id="infrastructureMeter"></div>
+                        <!-- Infrastructure Meter -->
+                        <div class="meter">
+                            <div class="meter-label" data-i18n="meterInfrastructure">Infrastructure</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill infrastructure-fill" id="infrastructureMeter"></div>
+                            </div>
+                            <div class="meter-value"><span id="infrastructureValue">75</span>%</div>
                         </div>
-                        <div class="meter-value"><span id="infrastructureValue">75</span>%</div>
-                    </div>
 
-                    <!-- Morale Meter -->
-                    <div class="meter">
-                        <div class="meter-label" data-i18n="meterMorale">Morale</div>
-                        <div class="meter-bar">
-                            <div class="meter-fill morale-fill" id="moraleMeter"></div>
+                        <!-- Morale Meter -->
+                        <div class="meter">
+                            <div class="meter-label" data-i18n="meterMorale">Morale</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill morale-fill" id="moraleMeter"></div>
+                            </div>
+                            <div class="meter-value"><span id="moraleValue">75</span>%</div>
                         </div>
-                        <div class="meter-value"><span id="moraleValue">75</span>%</div>
-                    </div>
 
-                    <!-- Resource Points -->
-                    <div class="meter">
-                        <div class="meter-label" data-i18n="meterResourcePoints">Resource Points</div>
-                        <div class="meter-bar">
-                            <div class="meter-fill resource-fill" id="resourceMeter"></div>
+                        <!-- Resource Points -->
+                        <div class="meter">
+                            <div class="meter-label" data-i18n="meterResourcePoints">Resource Points</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill resource-fill" id="resourceMeter"></div>
+                            </div>
+                            <div class="meter-value"><span id="resourceValue">50</span> / 100</div>
                         </div>
-                        <div class="meter-value"><span id="resourceValue">50</span> / 100</div>
                     </div>
                 </div>
 
                 <!-- Actions Panel -->
                 <div class="actions-panel">
-                    <div class="actions-title" data-i18n="chooseAction">Choose Your Action:</div>
+                    <h3 class="panel-title" data-i18n="chooseAction">Choose Your Action</h3>
                     <div class="actions-grid" id="actionsGrid">
                         <!-- Actions will be populated here -->
                     </div>
                 </div>
+            </div>
 
-                <!-- Game Controls -->
-                <div class="game-controls">
-                    <button class="btn btn-secondary" id="helpBtn" data-i18n="help">Help</button>
-                    <button class="btn btn-danger" id="restartBtn" data-i18n="restart">Restart Game</button>
-                </div>
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button class="btn btn-secondary" id="helpBtn" data-i18n="help">Help</button>
+                <button class="btn btn-danger" id="restartBtn" data-i18n="restart">Restart Game</button>
             </div>
         </div>
     </div>

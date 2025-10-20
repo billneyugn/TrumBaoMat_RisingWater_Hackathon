@@ -73,7 +73,6 @@ function displayEvent() {
   const event = gameState.currentEvent;
   const lang = gameState.currentLanguage;
 
-  document.getElementById('eventIcon').textContent = event.icon;
   document.getElementById('eventTitle').textContent = event.title[lang];
   document.getElementById('eventDescription').textContent = event.description[lang];
 
