@@ -1,77 +1,75 @@
-# 🎨 Rising Waters: Asset Generation Prompts
+# 🎨 Rising Waters: Visual Design & Asset Generation Prompts
 
-## Visual Design Prompts
+## Modern UI/UX Design System
 
-### Game Interface Design
-- "Create a clean, modern web interface with a professional gradient header"
-- "Design a two-column layout: left side for town map and events, right side for metrics and actions"
-- "Use a color scheme that reflects water/flood themes: blues, teals, and earth tones"
-- "Make the interface responsive for desktop, tablet, and mobile devices"
+### Design Philosophy
+- "Create a clean, professional interface inspired by modern web applications"
+- "Implement Google Material Design principles for consistency and usability"
+- "Design with accessibility in mind: high contrast, clear typography, intuitive navigation"
+- "Focus on content clarity over decorative elements"
 
-### Town Map Visualization
-- "Design an SVG-based town map showing buildings, roads, and water levels"
-- "Create simple but recognizable building shapes with roofs"
-- "Include water level indicators that can be animated to show rising floodwaters"
-- "Add small person icons to represent community members"
-- "Make the map visually appealing but not distracting from gameplay"
+### Color Palette & Theme
+- "Primary: Google Material Blue (#1976d2) for main interface elements"
+- "Secondary: Deep Orange (#ff7043) for accents and highlights"
+- "Status Colors: Success Green (#4caf50), Warning Orange (#ff9800), Danger Red (#f44336)"
+- "Neutral: Light backgrounds (#fafafa) with dark text (#212121) for readability"
 
-### UI Components
-- "Design meter bars with smooth animations for Safety, Infrastructure, Morale, and Resource Points"
-- "Create action buttons with clear icons and descriptive text"
-- "Design modal dialogs for quizzes, tips, and game over screens"
-- "Use consistent button styling with hover effects and clear visual feedback"
+### Typography System
+- "Primary Font: Poppins for modern, clean readability across all devices"
+- "Font weights: 400 (regular), 500 (medium), 600 (semi-bold), 700 (bold)"
+- "Hierarchical sizing: 2.5rem (titles), 1.5rem (headings), 1rem (body), 0.875rem (captions)"
+- "Optimal line-height: 1.6 for body text, 1.4 for headings"
 
-### Event Card Design
-- "Create event cards with large emoji icons for quick visual recognition"
-- "Design clear typography hierarchy for event titles and descriptions"
-- "Include effect indicators showing how each event impacts metrics"
-- "Make event cards visually distinct but consistent with overall design"
+### Layout & Structure
+- "Responsive grid system adapting to screen sizes"
+- "Card-based design with subtle shadows and rounded corners"
+- "Consistent spacing using 8px grid system"
+- "Flexible layouts that work from mobile (320px) to desktop (1920px+)"
 
-### Language Switcher
-- "Design a clean language switcher in the top-right corner"
-- "Use clear language buttons: 'English' and 'Tiếng Việt'"
-- "Include visual feedback when switching languages"
-- "Make it easily accessible but not intrusive"
+### Interactive Elements
+- "Button Design: Material Design elevation with hover states"
+- "Form Elements: Clean inputs with focus states and validation feedback"
+- "Navigation: Intuitive menu structure with clear visual hierarchy"
+- "Modals: Centered overlays with backdrop blur and smooth transitions"
 
-### Modal Dialogs
-- "Design quiz modals with clear question formatting and multiple choice options"
-- "Create tip modals with educational content and acknowledgment buttons"
-- "Design game over screens with summary statistics and replay options"
-- "Include help modals with comprehensive game instructions"
+### Visual Feedback Systems
+- "Metric Bars: Smooth animations with color-coded progress indicators"
+- "Action Buttons: Clear states (default, hover, active, disabled)"
+- "Loading States: Subtle spinners and skeleton screens"
+- "Success/Error: Toast notifications and inline validation messages"
 
-### Responsive Design Elements
-- "Create mobile-friendly button sizes (minimum 44px touch targets)"
-- "Design collapsible layouts for smaller screens"
-- "Ensure text remains readable at all screen sizes"
-- "Optimize spacing and padding for different devices"
+### Iconography & Graphics
+- "Minimalist approach: Use text labels over icons for clarity"
+- "Consistent visual language throughout the interface"
+- "SVG-based graphics for crisp rendering at all sizes"
+- "Emoji sparingly, only for event categorization when necessary"
 
-### Animation & Transitions
-- "Add smooth meter bar animations when values change"
-- "Include subtle hover effects on interactive elements"
-- "Design smooth modal transitions (fade in/out)"
-- "Create loading animations for initial game setup"
+### Animation & Motion
+- "Subtle micro-interactions: 200-300ms transitions"
+- "Easing: cubic-bezier(0.4, 0, 0.2, 1) for natural motion"
+- "Ocean wave backgrounds: Gentle, non-distracting animations"
+- "Performance-first: GPU-accelerated transforms only"
 
-### Color Scheme
-- "Primary colors: Water blues (#2c5f8d, #4a90e2) for main interface"
-- "Secondary colors: Warning orange (#e67e22) for alerts"
-- "Success green (#27ae60) for positive feedback"
-- "Danger red (#e74c3c) for critical situations"
-- "Neutral grays for text and backgrounds"
+### Responsive Design Strategy
+- "Mobile-first approach with progressive enhancement"
+- "Breakpoints: 320px (mobile), 768px (tablet), 1024px (desktop)"
+- "Touch-friendly: 44px minimum touch targets"
+- "Content prioritization: Most important information first"
 
-### Typography
-- "Use clean, readable fonts: 'Orbitron' monospace for body text"
-- "Implement proper font sizing hierarchy for different content types"
-- "Ensure good contrast ratios for accessibility"
-- "Support both Latin and Vietnamese character sets"
+### Accessibility Features
+- "WCAG 2.1 AA compliance for color contrast"
+- "Keyboard navigation support for all interactive elements"
+- "Screen reader friendly with proper ARIA labels"
+- "Focus indicators visible and consistent"
 
-### Icon Design
-- "Use emoji icons for events: ⛈️ 🌊 💥 🏥 👥 🚁 ☀️"
-- "Create consistent icon usage throughout the interface"
-- "Ensure icons are universally recognizable"
-- "Use appropriate sizing for different screen densities"
+### Performance Considerations
+- "Optimized assets: Compressed images and minified CSS/JS"
+- "Efficient rendering: Minimal DOM manipulation and repaints"
+- "Fast loading: Critical CSS inlined, non-critical loaded asynchronously"
+- "Progressive enhancement: Core functionality works without JavaScript"
 
-### Loading States
-- "Design a simple spinner for initial game loading"
-- "Include loading overlays for data fetching"
-- "Show progress indicators where appropriate"
-- "Provide clear feedback when operations are in progress"
+### Brand Identity
+- "Professional, educational tone suitable for institutional use"
+- "Trust-building visual elements: Clean layouts, consistent spacing"
+- "Modern aesthetic appealing to diverse age groups"
+- "Culturally neutral design with Vietnamese localization support"

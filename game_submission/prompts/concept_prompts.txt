@@ -1,51 +1,51 @@
 # 🌊 Rising Waters: Concept & Brainstorming Prompts
 
-## Initial Game Concept Prompts
+## Game Vision & Core Concept
 
-### Core Game Concept
-- "Create an educational board game about flood preparedness for Vietnamese communities"
-- "Design a single-player strategy game that teaches disaster management through gameplay"
-- "Make a game where players become community leaders during flood season"
-- "Create an 8-round game that takes about 10 minutes to complete"
+### Primary Game Concept
+- "Create an immersive flood crisis simulation game for educational purposes"
+- "Design a strategic single-player experience teaching real-world disaster management"
+- "Build a community leadership simulator focusing on flood preparedness"
+- "Develop an 8-round tactical game with meaningful decision-making"
 
-### Educational Objectives
-- "Teach flood preparedness through interactive decision-making"
-- "Include real-world flood safety tips and Vietnamese disaster management practices"
-- "Create quizzes that test knowledge of evacuation procedures and emergency response"
-- "Make players understand the importance of early warning systems and dike maintenance"
+### Educational Mission
+- "Teach flood management through interactive gameplay and real scenarios"
+- "Integrate Vietnamese disaster response protocols and ASEAN guidelines"
+- "Create learning moments through safety quizzes and emergency procedures"
+- "Build awareness about community resilience and infrastructure protection"
 
-### Game Mechanics Design
-- "Design 4 key metrics: Safety, Infrastructure, Morale, and Resource Points"
-- "Create a system where players must balance competing priorities with limited resources"
-- "Make events randomized so each game feels different"
-- "Include a win condition that requires both Safety ≥ 70% and Infrastructure ≥ 60%"
+### Strategic Gameplay Design
+- "Implement 4 core metrics: Safety, Infrastructure, Morale, Resource Points"
+- "Create challenging resource allocation with meaningful trade-offs"
+- "Design randomized events for high replayability and varied experiences"
+- "Establish win conditions: Safety ≥ 70% AND Infrastructure ≥ 60%"
 
-### Cultural Context
-- "Base scenarios on Vietnam's geography: Mekong Delta, Red River, typhoon-prone regions"
-- "Include culturally appropriate community leadership concepts"
-- "Reference ASEAN disaster management guidelines and Vietnamese Ministry guidelines"
-- "Make the game accessible to both Vietnamese and English speakers"
-
-### Strategic Depth
-- "Create three distinct strategies: Prepare (proactive), Defend (reactive), Recover (adaptive)"
-- "Design actions with different costs and effects to create meaningful trade-offs"
-- "Make resource management challenging but not frustrating"
-- "Ensure replayability through randomized events and multiple winning paths"
+### Regional Scenarios
+- "Central Highlands: Persistent flooding affecting agriculture and roads"
+- "Hanoi Lowlands: Rapid urban flooding with emergency response challenges"
+- "Mekong Delta: Seasonal flooding with agricultural management focus"
+- "Each region with unique challenges, events, and strategic considerations"
 
 ### Learning Integration
-- "Embed educational content naturally into gameplay"
-- "Provide immediate feedback on decisions through metric changes"
-- "Include safety tips after each action to reinforce learning"
-- "Make quizzes optional but rewarding (+2 Resource Points for correct answers)"
+- "Embed educational content naturally into gameplay mechanics"
+- "Provide immediate feedback through metric changes and visual indicators"
+- "Include contextual safety tips after each action for reinforcement"
+- "Make quizzes rewarding (+2 Resource Points) but educational"
 
-### Accessibility & Localization
-- "Support both English and Vietnamese languages with full localization"
-- "Make the game work completely offline (no internet required)"
-- "Design for multiple screen sizes: desktop, tablet, and mobile"
-- "Ensure the game is accessible to players with different technical backgrounds"
+### Technical Foundation
+- "Pure web technologies: HTML5, CSS3, vanilla JavaScript"
+- "Modular architecture with separate concerns: logic, UI, utilities"
+- "JSON-based data system for easy content updates and localization"
+- "Responsive design supporting desktop, tablet, and mobile devices"
 
-### Technical Requirements
-- "Use only HTML5, CSS3, and vanilla JavaScript (no frameworks)"
-- "Store all game data in JSON format for easy modification"
-- "Make the game load quickly and run smoothly on older devices"
-- "Design modular code structure for easy maintenance and extension"
+### User Experience Goals
+- "Intuitive interface requiring no prior gaming experience"
+- "Quick setup: start playing within 30 seconds of page load"
+- "Clear visual feedback for all actions and state changes"
+- "Accessible design supporting multiple languages and abilities"
+
+### Content Strategy
+- "Real-world inspired events based on actual flood scenarios"
+- "Culturally appropriate community leadership concepts"
+- "Balanced difficulty progression from manageable to challenging"
+- "Educational value that extends beyond gameplay"

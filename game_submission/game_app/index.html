@@ -3,108 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rising Waters: Solo Survival (Vietnam Edition)</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/game-styles.css">
-    <!-- SweetAlert2 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Rising Waters: Flood Crisis Simulator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .loading-container {
+            text-align: center;
+            color: #1976d2;
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e3f2fd;
+            border-top: 4px solid #1976d2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .loading-subtext {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-
-
-    <!-- Main Container -->
-    <div class="game-container">
-        <!-- Header -->
-        <header class="game-header">
-            <h1 data-i18n="gameTitle">Rising Waters: Saviors of the Highlands</h1>
-            <div class="scenario-display">
-                <span class="scenario-label">Scenario:</span>
-                <span class="scenario-name" id="scenarioName">Loading...</span>
-            </div>
-        </header>
-
-        <!-- Main Game Area -->
-        <div class="game-board">
-            <!-- Top Section: Round Counter -->
-            <div class="round-section">
-                <div class="round-counter">
-                    <span data-i18n="round">Day</span>: <span id="roundDisplay">1</span> / 8
-                </div>
-            </div>
-
-            <!-- Event Card Display -->
-            <div class="event-section">
-                <div class="event-card-container">
-                    <div class="event-card" id="eventCard">
-                        <h2 class="event-title" id="eventTitle">Event Title</h2>
-                        <p class="event-description" id="eventDescription">Event description</p>
-                        <div class="event-effects" id="eventEffects"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Section: Metrics and Actions -->
-            <div class="bottom-section">
-                <!-- Meters Panel -->
-                <div class="meters-panel">
-                    <h3 class="panel-title" data-i18n="gameStats">Game Statistics</h3>
-                    <div class="meters-grid">
-                        <!-- Safety Meter -->
-                        <div class="meter">
-                            <div class="meter-label" data-i18n="meterSafety">Safety</div>
-                            <div class="meter-bar">
-                                <div class="meter-fill safety-fill" id="safetyMeter"></div>
-                            </div>
-                            <div class="meter-value"><span id="safetyValue">75</span>%</div>
-                        </div>
-
-                        <!-- Infrastructure Meter -->
-                        <div class="meter">
-                            <div class="meter-label" data-i18n="meterInfrastructure">Infrastructure</div>
-                            <div class="meter-bar">
-                                <div class="meter-fill infrastructure-fill" id="infrastructureMeter"></div>
-                            </div>
-                            <div class="meter-value"><span id="infrastructureValue">75</span>%</div>
-                        </div>
-
-                        <!-- Morale Meter -->
-                        <div class="meter">
-                            <div class="meter-label" data-i18n="meterMorale">Morale</div>
-                            <div class="meter-bar">
-                                <div class="meter-fill morale-fill" id="moraleMeter"></div>
-                            </div>
-                            <div class="meter-value"><span id="moraleValue">75</span>%</div>
-                        </div>
-
-                        <!-- Resource Points -->
-                        <div class="meter">
-                            <div class="meter-label" data-i18n="meterResourcePoints">Resource Points</div>
-                            <div class="meter-bar">
-                                <div class="meter-fill resource-fill" id="resourceMeter"></div>
-                            </div>
-                            <div class="meter-value"><span id="resourceValue">50</span> / 100</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Actions Panel -->
-                <div class="actions-panel">
-                    <h3 class="panel-title" data-i18n="chooseAction">Choose Your Action</h3>
-                    <div class="actions-grid" id="actionsGrid">
-                        <!-- Actions will be populated here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Game Controls -->
-            <div class="game-controls">
-                <button class="btn btn-secondary" id="helpBtn" data-i18n="help">Help</button>
-                <button class="btn btn-danger" id="restartBtn" data-i18n="restart">Restart Game</button>
-            </div>
-        </div>
+    <div class="loading-container">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Rising Waters</div>
+        <div class="loading-subtext">Loading game menu...</div>
     </div>
 
     <!-- Quiz Modal -->
@@ -123,24 +67,7 @@
         <div class="modal-content tip-content">
             <button class="modal-close" id="closeTipBtn">&times;</button>
             <h2 data-i18n="floodTip">💡 Flood Safety Tip</h2>
-            
-            <!-- Event Context Section -->
-            <div class="tip-section">
-                <h3 class="tip-subtitle" id="tipEventTitle"></h3>
-                <p id="tipEventContext"></p>
-            </div>
-            
-            <!-- Main Tip Section -->
-            <div class="tip-section">
-                <h4 class="tip-label">What to Do:</h4>
-                <p id="tipText"></p>
-            </div>
-            
-            <!-- Next Day Guidance -->
-            <div class="tip-next-day">
-                <p id="nextDayText"></p>
-            </div>
-            
+            <p id="tipText"></p>
             <button class="btn btn-primary" id="tipAckBtn" data-i18n="understood">Understood</button>
         </div>
     </div>
@@ -162,18 +89,6 @@
             <h2 data-i18n="howToPlay">How to Play</h2>
             <div class="help-content-text" id="helpText"></div>
             <button class="btn btn-primary" id="closeHelpConfirmBtn" data-i18n="close">Close</button>
-        </div>
-    </div>
-
-    <!-- Welcome Modal -->
-    <div class="modal" id="welcomeModal">
-        <div class="modal-content welcome-content">
-            <button class="modal-close" id="closeWelcomeBtn">&times;</button>
-            <div class="welcome-header">
-                <h1>🌊 Rising Waters: Vietnam Flood Resilience</h1>
-            </div>
-            <div class="welcome-body" id="welcomeText"></div>
-            <button class="btn btn-primary" id="startGameBtn">Begin Your Mission</button>
         </div>
     </div>
 
