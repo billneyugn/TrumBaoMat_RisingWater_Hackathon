@@ -1,0 +1,125 @@
+🌊 RISING WATERS: SOLO SURVIVAL - QUICK START GUIDE 🌊
+
+═══════════════════════════════════════════════════════════════════
+
+📦 FILES INCLUDED:
+  ✓ index.html        - Main game page
+  ✓ style.css         - All styling and animations
+  ✓ script.js         - Game logic and mechanics
+  ✓ gameData.json     - Events, actions, quizzes, translations
+  ✓ README.md         - Full game documentation
+  ✓ QUICKSTART.txt    - This file
+
+═══════════════════════════════════════════════════════════════════
+
+🎮 HOW TO PLAY (IN 30 SECONDS):
+
+1. Open "index.html" in your web browser
+   → Game loads automatically
+
+2. Read the Help menu (top right) if you're new
+
+3. Switch to Vietnamese if desired (language buttons, top right)
+
+4. Choose an action each round to manage the flood crisis
+
+5. Keep Safety ≥ 70% and Infrastructure ≥ 60% to win
+
+6. After 8 rounds, see your results and play again!
+
+═══════════════════════════════════════════════════════════════════
+
+⚡ QUICK TIPS:
+
+• SAFETY is most critical - prioritize it!
+• You start with 50 Resource Points (RP) - spend wisely
+• Reinforce dikes early for Prepare strategy
+• Evacuate quickly when floods hit for Defend strategy
+• Repair and distribute aid for Recover strategy
+• Answer quizzes correctly to earn +2 RP bonus
+• Every action reveals a real flood safety tip
+
+═══════════════════════════════════════════════════════════════════
+
+🌐 LANGUAGES AVAILABLE:
+
+English (EN)    - Default
+Vietnamese (VI) - Click "Tiếng Việt" button
+
+═══════════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING:
+
+Q: Game won't load?
+A: Ensure ALL 5 files are in the SAME folder:
+   - index.html
+   - style.css
+   - script.js
+   - gameData.json
+   - QUICKSTART.txt (optional)
+
+Q: Language switch doesn't work?
+A: Refresh the page (F5 or Ctrl+R), then try again
+
+Q: Quiz isn't showing?
+A: Quizzes have 30% chance per round. Keep playing!
+
+Q: Can I play offline?
+A: YES! No internet needed. Just double-click index.html
+
+═══════════════════════════════════════════════════════════════════
+
+📱 RESPONSIVE DESIGN:
+
+Works on:
+✓ Desktop (1024px+)     - Full layout
+✓ Tablet (768px-1024px) - Single column
+✓ Mobile (320px-768px)  - Compact, touch-friendly
+
+═══════════════════════════════════════════════════════════════════
+
+🎓 WHAT YOU'LL LEARN:
+
+✓ Flood preparedness strategies
+✓ Emergency evacuation procedures
+✓ Infrastructure resilience
+✓ Community leadership under crisis
+✓ Resource management
+✓ Vietnam-specific flood risks
+
+═══════════════════════════════════════════════════════════════════
+
+⏱️ GAME LENGTH:
+
+8 rounds = ~10 minutes per session
+
+Perfect for:
+- Educational settings (schools, communities)
+- Quick training sessions
+- Team-building exercises
+- Personal learning
+
+═══════════════════════════════════════════════════════════════════
+
+🔄 WANT TO CUSTOMIZE?
+
+Edit "gameData.json" to:
+- Add/remove events
+- Modify action costs and effects
+- Change win conditions
+- Add new languages
+- Adjust metric starting values
+
+See README.md for detailed customization guide
+
+═══════════════════════════════════════════════════════════════════
+
+✅ EVERYTHING READY TO PLAY!
+
+→ Double-click "index.html" NOW to start the game
+→ No installation or setup required
+→ Works 100% offline
+
+Good luck, Community Leader! 🌊💪
+
+═══════════════════════════════════════════════════════════════════

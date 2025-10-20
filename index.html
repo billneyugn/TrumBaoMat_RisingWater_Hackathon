@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rising Waters: Solo Survival (Vietnam Edition)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- SweetAlert2 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="vi">Tiếng Việt</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1 data-i18n="gameTitle">Rising Waters: Solo Survival</h1>
+            <p class="subtitle" data-i18n="gameSubtitle">Vietnam Edition - Community Leader Edition</p>
+        </header>
+
+        <!-- Main Game Area -->
+        <div class="game-board">
+            <!-- Left: Map and Event Area -->
+            <div class="game-left">
+                <!-- Town Map Visualization -->
+                <div class="town-map">
+                    <div class="map-title" data-i18n="townMap">Town Map</div>
+                    <svg viewBox="0 0 200 150" class="map-svg">
+                        <!-- Water level indicator -->
+                        <rect class="water" id="waterLevel" x="0" y="130" width="200" height="20" fill="#4a90e2" opacity="0.3"/>
+                        <!-- Buildings -->
+                        <rect x="20" y="80" width="30" height="40" fill="#8b4513" class="building"/>
+                        <polygon points="50,80 65,60 80,80" fill="#d4501f" class="roof"/>
+                        <rect x="100" y="85" width="35" height="35" fill="#8b4513" class="building"/>
+                        <polygon points="117.5,85 135,70 152.5,85" fill="#d4501f" class="roof"/>
+                        <rect x="160" y="90" width="25" height="30" fill="#8b4513" class="building"/>
+                        <polygon points="172.5,90 185,80 197.5,90" fill="#d4501f" class="roof"/>
+                        <!-- People indicator -->
+                        <circle cx="60" cy="45" r="3" fill="#333" class="person"/>
+                        <circle cx="70" cy="50" r="3" fill="#333" class="person"/>
+                        <circle cx="140" cy="40" r="3" fill="#333" class="person"/>
+                    </svg>
+                </div>
+
+                <!-- Event Card Display -->
+                <div class="event-card-container">
+                    <div class="event-card" id="eventCard">
+                        <div class="event-icon" id="eventIcon">⚠️</div>
+                        <h2 class="event-title" id="eventTitle">Event Title</h2>
+                        <p class="event-description" id="eventDescription">Event description</p>
+                        <div class="event-effects" id="eventEffects"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Metrics and Actions -->
+            <div class="game-right">
+                <!-- Round Counter -->
+                <div class="round-counter">
+                    <span data-i18n="round">Round</span>: <span id="roundDisplay">1</span> / 8
+                </div>
+
+                <!-- Meters Panel -->
+                <div class="meters-panel">
+                    <!-- Safety Meter -->
+                    <div class="meter">
+                        <div class="meter-label" data-i18n="meterSafety">Safety</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill safety-fill" id="safetyMeter"></div>
+                        </div>
+                        <div class="meter-value"><span id="safetyValue">75</span>%</div>
+                    </div>
+
+                    <!-- Infrastructure Meter -->
+                    <div class="meter">
+                        <div class="meter-label" data-i18n="meterInfrastructure">Infrastructure</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill infrastructure-fill" id="infrastructureMeter"></div>
+                        </div>
+                        <div class="meter-value"><span id="infrastructureValue">75</span>%</div>
+                    </div>
+
+                    <!-- Morale Meter -->
+                    <div class="meter">
+                        <div class="meter-label" data-i18n="meterMorale">Morale</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill morale-fill" id="moraleMeter"></div>
+                        </div>
+                        <div class="meter-value"><span id="moraleValue">75</span>%</div>
+                    </div>
+
+                    <!-- Resource Points -->
+                    <div class="meter">
+                        <div class="meter-label" data-i18n="meterResourcePoints">Resource Points</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill resource-fill" id="resourceMeter"></div>
+                        </div>
+                        <div class="meter-value"><span id="resourceValue">50</span> / 100</div>
+                    </div>
+                </div>
+
+                <!-- Actions Panel -->
+                <div class="actions-panel">
+                    <div class="actions-title" data-i18n="chooseAction">Choose Your Action:</div>
+                    <div class="actions-grid" id="actionsGrid">
+                        <!-- Actions will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button class="btn btn-secondary" id="helpBtn" data-i18n="help">Help</button>
+                    <button class="btn btn-danger" id="restartBtn" data-i18n="restart">Restart Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div class="modal" id="quizModal">
+        <div class="modal-content quiz-content">
+            <button class="modal-close" id="closeQuizBtn">&times;</button>
+            <h2 data-i18n="quizTitle">Safety Quiz</h2>
+            <p class="quiz-question" id="quizQuestion"></p>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+        </div>
+    </div>
+
+    <!-- Tip Modal -->
+    <div class="modal" id="tipModal">
+        <div class="modal-content tip-content">
+            <button class="modal-close" id="closeTipBtn">&times;</button>
+            <h2 data-i18n="floodTip">💡 Flood Safety Tip</h2>
+            <p id="tipText"></p>
+            <button class="btn btn-primary" id="tipAckBtn" data-i18n="understood">Understood</button>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content summary-content">
+            <h2 id="summaryTitle"></h2>
+            <div class="summary-stats" id="summaryStats"></div>
+            <div class="summary-feedback" id="summaryFeedback"></div>
+            <button class="btn btn-primary" id="playAgainBtn" data-i18n="playAgain">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content help-content">
+            <button class="modal-close" id="closeHelpBtn">&times;</button>
+            <h2 data-i18n="howToPlay">How to Play</h2>
+            <div class="help-content-text" id="helpText"></div>
+            <button class="btn btn-primary" id="closeHelpConfirmBtn" data-i18n="close">Close</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Script Imports (in correct dependency order) -->
+    <!-- 1. Helpers (no dependencies) -->
+    <script src="./helpers.js"></script>
+    
+    <!-- 2. Main (depends on helpers) -->
+    <script src="./main.js"></script>
+    
+    <!-- 3. UI (depends on helpers and main) -->
+    <script src="./ui.js"></script>
+</body>
+</html>
