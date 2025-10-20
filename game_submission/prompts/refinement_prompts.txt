@@ -1,157 +1,107 @@
-# 🔧 Rising Waters: Refinement & Debugging Prompts
+# 🔧 Rising Waters: Quality Assurance & Refinement Prompts
 
-## Bug Fixes & Debugging
+## Code Quality & Performance
 
-### Common Issues Resolution
-- "Fix language switching not working properly - ensure all UI elements update correctly"
-- "Debug metric updates not displaying immediately after action selection"
-- "Resolve quiz modal not appearing due to timing issues"
-- "Fix action buttons becoming unclickable after certain game states"
-
-### Performance Optimization
-- "Optimize game loading time by implementing efficient data fetching"
-- "Fix memory leaks in event listeners and modal handlers"
-- "Improve animation performance on older devices"
-- "Optimize DOM manipulation to reduce reflows and repaints"
-
-### Cross-Browser Compatibility
-- "Fix CSS Grid layout issues in older browsers"
-- "Resolve JavaScript compatibility issues with ES6 features"
-- "Debug modal positioning issues across different browsers"
-- "Fix font rendering inconsistencies between browsers"
-
-### Mobile Responsiveness
-- "Fix button sizing issues on mobile devices"
-- "Debug layout breaking on small screens"
-- "Resolve touch event handling problems"
-- "Fix modal display issues on mobile browsers"
-
-## Code Quality Improvements
-
-### Code Refactoring
-- "Refactor monolithic script.js into modular components"
-- "Extract common utility functions into helpers.js"
-- "Separate UI rendering logic into dedicated ui.js file"
-- "Improve function naming and code organization"
-
-### Error Handling Enhancement
-- "Add comprehensive error handling for network requests"
-- "Implement user-friendly error messages for game failures"
-- "Add validation for game data integrity"
-- "Create fallback mechanisms for missing or corrupted data"
-
-### Code Documentation
-- "Add JSDoc comments to all functions"
-- "Document game state structure and data flow"
-- "Create inline comments explaining complex logic"
-- "Document API contracts and function parameters"
-
-### Testing & Validation
-- "Add input validation for user interactions"
-- "Implement game state validation functions"
-- "Create test cases for edge conditions"
-- "Add debugging tools for development"
-
-## User Experience Improvements
-
-### UI/UX Enhancements
-- "Improve visual feedback for user actions"
-- "Add loading indicators for better perceived performance"
-- "Enhance accessibility with proper ARIA labels"
-- "Implement keyboard navigation support"
-
-### Gameplay Polish
-- "Add sound effects for button clicks and state changes"
-- "Implement particle effects for metric updates"
-- "Create smooth transitions between game states"
-- "Add visual indicators for available actions"
-
-### Educational Content Refinement
-- "Improve quiz question clarity and difficulty balance"
-- "Enhance flood safety tips with more specific advice"
-- "Add cultural context to Vietnamese scenarios"
-- "Improve language translations for accuracy"
+### Code Refactoring & Optimization
+- "Refactor monolithic code into modular, maintainable components"
+- "Implement consistent naming conventions and code organization"
+- "Optimize DOM queries with element caching and efficient selectors"
+- "Reduce bundle size through code splitting and lazy loading"
 
 ### Performance Monitoring
-- "Add performance metrics tracking"
-- "Implement error logging for debugging"
-- "Create user analytics for gameplay patterns"
-- "Add performance profiling tools"
+- "Implement performance metrics tracking for load times and interactions"
+- "Monitor memory usage and prevent memory leaks in long sessions"
+- "Optimize animation performance with GPU acceleration"
+- "Implement efficient rendering strategies for smooth 60fps gameplay"
 
-## Content Updates & Expansion
+### Error Handling & Debugging
+- "Comprehensive error handling for network requests and data loading"
+- "User-friendly error messages with actionable recovery steps"
+- "Debug logging system for development and production monitoring"
+- "Graceful degradation when features are unavailable"
 
-### Game Content Refinement
-- "Balance action costs and effects for better gameplay"
-- "Add more diverse flood scenarios"
-- "Improve quiz questions with more realistic situations"
-- "Enhance educational tips with current best practices"
+## User Experience Enhancement
 
-### Localization Improvements
-- "Review and improve Vietnamese translations"
-- "Add cultural context to game scenarios"
-- "Implement proper text formatting for Vietnamese"
-- "Add support for additional languages"
+### Accessibility Improvements
+- "WCAG 2.1 AA compliance with proper color contrast ratios"
+- "Screen reader optimization with semantic HTML and ARIA labels"
+- "Keyboard navigation support for all interactive elements"
+- "Alternative text and descriptions for visual elements"
 
-### Accessibility Enhancements
-- "Implement screen reader support"
-- "Add high contrast mode option"
-- "Create text scaling options"
-- "Implement voice-over support for mobile"
+### Mobile Experience Optimization
+- "Touch-friendly interface with appropriate target sizes (44px minimum)"
+- "Responsive design testing across device sizes and orientations"
+- "Performance optimization for mobile devices and slower networks"
+- "Gesture support for common mobile interactions"
 
-### Feature Additions
-- "Add difficulty level selection"
-- "Implement save/load game functionality"
-- "Create achievement system for replayability"
-- "Add social sharing features for results"
+### Visual Polish & Animations
+- "Smooth transitions between game states with consistent timing"
+- "Visual feedback for all user interactions and state changes"
+- "Loading states and progress indicators for better perceived performance"
+- "Micro-interactions that enhance usability without distraction"
 
-## Technical Debt Resolution
+## Content & Educational Value
 
-### Code Cleanup
-- "Remove unused CSS rules and JavaScript functions"
-- "Consolidate duplicate code patterns"
-- "Optimize image and asset loading"
-- "Clean up console.log statements"
+### Game Balance & Difficulty
+- "Playtesting with diverse user groups to validate difficulty curves"
+- "Action cost and effect balancing for meaningful strategic choices"
+- "Event variety and randomization for high replayability"
+- "Progressive difficulty that teaches concepts gradually"
 
-### Architecture Improvements
-- "Implement proper module system"
-- "Add dependency injection for better testing"
-- "Create configuration system for game parameters"
-- "Implement proper state management patterns"
+### Educational Content Refinement
+- "Accuracy verification of flood management information"
+- "Cultural appropriateness review for Vietnamese scenarios"
+- "Quiz question validation with subject matter experts"
+- "Safety tip effectiveness and clarity assessment"
 
-### Security Enhancements
-- "Sanitize user inputs to prevent XSS"
-- "Implement proper CSP headers"
-- "Add input validation for all user interactions"
-- "Create secure data handling practices"
+### Localization Quality
+- "Native speaker review of Vietnamese translations"
+- "Cultural adaptation of scenarios and content"
+- "Consistency checking across all language versions"
+- "Text length optimization for different languages"
 
-### Deployment Optimization
-- "Optimize file sizes for faster loading"
-- "Implement proper caching strategies"
-- "Create minified versions of assets"
-- "Add service worker for offline functionality"
+## Technical Stability
 
-## Quality Assurance
+### Cross-Browser Compatibility
+- "Testing on Chrome, Firefox, Safari, Edge, and mobile browsers"
+- "CSS fallbacks for older browser support"
+- "JavaScript polyfills for ES6+ features"
+- "Performance optimization for different browser engines"
 
-### Testing Procedures
-- "Implement automated testing for core game logic"
-- "Create manual testing checklists for different scenarios"
-- "Add cross-browser testing procedures"
-- "Implement mobile device testing protocols"
+### Data Integrity & Validation
+- "JSON schema validation for game data files"
+- "Input validation for all user interactions"
+- "Data corruption detection and recovery mechanisms"
+- "Backup and version control for game content"
 
-### Code Review Process
-- "Create code review checklist for new features"
-- "Implement peer review process for critical changes"
-- "Add automated code quality checks"
-- "Create documentation standards"
+### Security & Privacy
+- "Content Security Policy implementation"
+- "Input sanitization to prevent XSS attacks"
+- "Privacy-compliant analytics and monitoring"
+- "Secure handling of user preferences and game state"
 
-### User Feedback Integration
-- "Implement user feedback collection system"
-- "Create bug report templates"
-- "Add feature request tracking"
-- "Implement user testing protocols"
+## Quality Assurance Processes
 
-### Maintenance Procedures
-- "Create regular update schedule for game content"
-- "Implement backup and recovery procedures"
-- "Add monitoring for game performance"
-- "Create maintenance documentation"
+### Testing Protocols
+- "Automated unit testing for core game logic"
+- "Integration testing for user workflows"
+- "User acceptance testing with target demographics"
+- "Performance testing under various conditions"
+
+### Code Review Standards
+- "Peer review process for all code changes"
+- "Documentation requirements for new features"
+- "Testing requirements before code merge"
+- "Performance impact assessment for changes"
+
+### Deployment & Monitoring
+- "Staging environment testing before production deployment"
+- "Rollback procedures for failed deployments"
+- "Monitoring and alerting for production issues"
+- "User feedback collection and analysis"
+
+### Maintenance & Updates
+- "Regular content updates for accuracy and relevance"
+- "Security patch management and vulnerability assessment"
+- "Performance monitoring and optimization opportunities"
+- "User feedback integration and feature prioritization"

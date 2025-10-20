@@ -17,7 +17,7 @@ function showHowToPlay() {
     Swal.fire({
         title: 'How to Play',
         html: `
-            <div style="font-family: 'Orbitron', monospace;">
+                   <div style="font-family: 'Poppins', sans-serif;">
                 <div class="info-card">
                     <h4>OBJECTIVE</h4>
                     <p>Lead your community through 8 rounds of flood crisis. Maintain Safety ≥ 70% and Infrastructure ≥ 60% to achieve victory!</p>
@@ -58,7 +58,7 @@ function showGameInfo() {
     Swal.fire({
         title: 'Game Information',
         html: `
-            <div style="font-family: 'Orbitron', monospace;">
+                   <div style="font-family: 'Poppins', sans-serif;">
                 <div class="info-card">
                     <h4>ABOUT RISING WATERS</h4>
                     <p>A strategic simulation game where you lead a community through flood crisis management. Experience real-world scenarios based on Vietnam's diverse regions.</p>
@@ -99,7 +99,7 @@ function showScenarioSelection() {
     Swal.fire({
         title: 'Choose Your Scenario',
         html: `
-            <div style="font-family: 'Orbitron', monospace;">
+                   <div style="font-family: 'Poppins', sans-serif;">
                 <p style="margin-bottom: 20px; text-align: center; color: #6b7280; font-size: 0.875rem;">Select a region to experience unique flood management challenges:</p>
                 
                 <div class="scenario-card" onclick="selectScenario('central_highlands')">
@@ -149,10 +149,10 @@ function selectScenario(scenario) {
     // Store selected scenario and redirect to game
     localStorage.setItem('selectedScenario', scenario);
     
-    // Redirect to game page after a short delay
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 1500);
+           // Redirect to game page after a short delay
+           setTimeout(() => {
+               window.location.href = 'game.html';
+           }, 1500);
 }
 
 // Add SweetAlert2 custom styles

@@ -1,253 +1,181 @@
-# 🌊 Rising Waters: Solo Survival (Vietnam Edition)
+# Rising Waters: Flood Crisis Simulator
 
-**An Educational Flood Preparedness Board Game**
+A strategic web-based simulation game where players lead a community through flood crisis management scenarios.
 
-## 📖 Overview
+## 🎮 Game Overview
 
-Rising Waters is an interactive web-based educational game that teaches flood preparedness and community resilience through strategic gameplay. Players take on the role of a Community Leader managing a small Vietnamese town during flood season, making critical decisions that affect the safety and well-being of their community.
+**Rising Waters** is an educational simulation game that puts players in the role of a community leader during flood crises. Make strategic decisions to protect your community while managing limited resources across 8 challenging rounds.
 
-## 🎮 Game Features
-
-- **8-round gameplay** (~10 minutes per session)
-- **4 dynamic metrics**: Safety, Infrastructure, Morale, Resource Points
-- **9 strategic actions** with varying costs and effects
-- **8 randomized flood events** with rotating deck
-- **Bilingual support**: English & Vietnamese
-- **Educational quizzes** with real flood safety tips
-- **Three strategic paths**: Prepare, Defend, Recover
-- **Responsive design** for desktop, tablet, and mobile
+### Key Features
+- **3 Unique Scenarios**: Central Highlands, Hanoi Lowlands, and Mekong Delta
+- **Strategic Gameplay**: Balance Safety, Infrastructure, Morale, and Resource Points
+- **Educational Content**: Learn real-world flood management strategies
+- **Modern UI**: Clean, responsive design with ocean wave animations
 
 ## 🚀 Quick Start
 
-### Option 1: Direct Play (Recommended)
-1. Navigate to the `game_app/` folder
-2. Double-click `index.html`
-3. The game will open in your web browser
-4. Start playing immediately!
+### Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Local web server (Python, Node.js, or any HTTP server)
 
-### Option 2: Local Server
-1. Open terminal/command prompt in the `game_app/` folder
-2. Run: `python -m http.server 8000`
-3. Visit: `http://localhost:8000`
+### Installation & Setup
 
-### Option 3: Online Hosting
-1. Upload all files in `game_app/` to your web server
-2. Share the URL with others
-3. Works completely offline once loaded
+1. **Clone or Download** the project files
+2. **Navigate** to the `game_app` directory
+3. **Start a local server**:
+   ```bash
+   # Python 3
+   python -m http.server 8000
+   
+   # Python 2
+   python -m SimpleHTTPServer 8000
+   
+   # Node.js (if you have http-server installed)
+   npx http-server -p 8000
+   ```
+4. **Open** `http://localhost:8000/main.html` in your browser
 
 ## 📁 Project Structure
 
 ```
 game_submission/
-├── README.md                    # This file - project overview and instructions
-├── prompts/                     # AI prompts used during development
-│   ├── concept_prompts.txt      # Game concept and brainstorming prompts
-│   ├── asset_generation_prompts.txt  # Visual design and UI prompts
-│   ├── code_generation_prompts.txt   # Game logic and architecture prompts
+├── README.md                    # This file
+├── prompts/                     # AI development prompts
+│   ├── concept_prompts.txt      # Game concept and brainstorming
+│   ├── asset_generation_prompts.txt  # Visual design prompts
+│   ├── code_generation_prompts.txt   # Game logic prompts
 │   └── refinement_prompts.txt   # Debugging and polish prompts
-└── game_app/                    # Complete, playable web game
-    ├── index.html               # Main game file (open this to play!)
-    ├── gameData.json            # All game content and translations
+└── game_app/                    # Complete web game
+    ├── main.html                # Main menu (entry point)
+    ├── index.html               # Main game interface
     ├── css/                     # Stylesheets
-    │   └── game-styles.css      # Complete styling and animations
-    └── js/                      # JavaScript files
-        ├── game-utils.js        # Utility functions
-        ├── game-engine.js       # Core game logic
-        ├── game-legacy.js       # Original monolithic game logic
-        └── game-ui.js           # UI rendering functions
+    │   ├── game-styles.css      # Main game styling
+    │   └── main-menu.css        # Menu styling with ocean waves
+    ├── js/                      # JavaScript modules
+    │   ├── game-utils.js        # Utility functions
+    │   ├── game-engine.js       # Core game logic
+    │   ├── game-ui.js           # UI rendering
+    │   └── main-menu.js         # Menu functionality
+    └── gameData/                # Regional scenario data
+        ├── central_highlands.json
+        ├── hanoi_lowlands.json
+        └── mekong_detal.json
 ```
 
 ## 🎯 How to Play
 
-### Objective
-Keep your community safe during flood season by maintaining:
-- **Safety ≥ 70%** (protects citizens from harm)
-- **Infrastructure ≥ 60%** (maintains roads, dikes, buildings)
+### Game Objective
+Survive 8 rounds of flood crisis while maintaining:
+- **Safety ≥ 70%**
+- **Infrastructure ≥ 60%**
 
-### Gameplay Loop
-1. **Draw Event** - A flood-related challenge appears
-2. **Choose Action** - Select from 9 strategic options
-3. **See Results** - Watch metrics change based on your choice
-4. **Learn** - Read real flood safety tips
-5. **Quiz** - Answer questions for bonus Resource Points (+2 RP)
+### Gameplay Flow
+1. **Select Scenario**: Choose from 3 regional scenarios
+2. **Analyze Events**: Read event cards carefully
+3. **Make Decisions**: Choose actions that balance all metrics
+4. **Manage Resources**: Allocate Resource Points strategically
+5. **Monitor Progress**: Track your community's status
+6. **Answer Quizzes**: Gain bonus points through safety questions
 
-### Strategies
-- **Prepare**: Invest early in dikes and community awareness
-- **Defend**: React quickly when floods hit with evacuation and rescue
-- **Recover**: Rebuild infrastructure and restore community morale
+### Metrics to Manage
+- **Safety**: Community protection level
+- **Infrastructure**: Roads, buildings, utilities
+- **Morale**: Community spirit and cooperation
+- **Resource Points**: Available funds for actions
+
+## 🌊 Available Scenarios
+
+### Central Highlands
+- **Challenge**: Persistent floods affecting infrastructure and agriculture
+- **Focus**: Long-term infrastructure protection and community resilience
+- **Difficulty**: Moderate
+
+### Hanoi Lowlands
+- **Challenge**: Rapid urban flooding with infrastructure challenges
+- **Focus**: Emergency response and urban planning coordination
+- **Difficulty**: Hard
+
+### Mekong Delta
+- **Challenge**: Seasonal flooding with agricultural management
+- **Focus**: Balance farming needs with flood protection
+- **Difficulty**: Moderate
 
 ## 🛠️ Technical Details
 
-### Technology Stack
-- **HTML5** - Semantic structure and accessibility
-- **CSS3** - Modern styling, animations, responsive design
-- **Vanilla JavaScript** - No frameworks, 100% client-side
-- **JSON** - Game data and localization
+### Technologies Used
+- **HTML5**: Game structure and content
+- **CSS3**: Styling with animations and responsive design
+- **JavaScript (ES6+)**: Game logic and interactivity
+- **SVG**: Ocean wave animations
+- **LocalStorage**: Scenario selection persistence
 
-### System Requirements
-- **Browsers**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
-- **Platforms**: Windows, macOS, Linux, iOS, Android
-- **Storage**: ~70 KB total (all files)
-- **Internet**: Not required (works 100% offline)
+### Browser Compatibility
+- Chrome 60+
+- Firefox 55+
+- Safari 12+
+- Edge 79+
 
-### File Sizes
-- `index.html`: ~6 KB
-- `game-styles.css`: ~12 KB  
-- `game-legacy.js`: ~16 KB (original monolithic version)
-- `game-utils.js`, `game-engine.js`, `game-ui.js`: ~6 KB total (modular version)
-- `gameData.json`: ~25 KB
+### Performance
+- **File Size**: ~50KB total
+- **Load Time**: <2 seconds on modern browsers
+- **Memory Usage**: Minimal (<10MB)
 
-## 🌐 Localization
+## 🎨 Design Features
 
-The game supports two languages with complete translations:
+### Visual Design
+- **Clean Interface**: Minimalist, professional design
+- **Ocean Theme**: Subtle wave animations matching flood theme
+- **Responsive Layout**: Works on desktop, tablet, and mobile
+- **Accessibility**: High contrast, keyboard navigation support
 
-### English (EN)
-- Default language
-- Full localization of all content
-- Culturally appropriate scenarios
-
-### Vietnamese (VI)  
-- Complete Vietnamese translation
-- Game title: "Nước Dâng Cao: Sống Sót Một Mình"
-- Localized flood scenarios and terminology
-
-Switch languages anytime using the language buttons in the top-right corner.
+### Color Scheme
+- **Primary**: Google Material Design blue (#1976d2)
+- **Secondary**: Orange accents (#ff7043)
+- **Success**: Green (#4caf50)
+- **Warning**: Orange (#ff9800)
+- **Typography**: Orbitron monospace font
 
 ## 📚 Educational Value
 
-This game teaches:
+This game teaches players about:
+- **Flood Management**: Real-world strategies and challenges
+- **Resource Allocation**: Balancing competing priorities
+- **Crisis Leadership**: Decision-making under pressure
+- **Community Resilience**: Building sustainable protection systems
 
-### Flood Preparedness
-- Early warning response systems
-- Evacuation planning and execution
-- Dike maintenance and reinforcement
-- Resource allocation strategies
+## 🔧 Customization
 
-### Community Resilience
-- Leadership under crisis conditions
-- Public morale management
-- Infrastructure recovery priorities
-- Intersectoral coordination
+### Adding New Scenarios
+1. Create a new JSON file in `gameData/` directory
+2. Follow the existing structure with events, actions, and i18n
+3. Update `main-menu.js` to include the new scenario option
 
-### Risk Management
-- Budget constraints and trade-offs
-- Long-term vs. short-term planning
-- Consequence analysis
-- Decision-making under pressure
+### Modifying Game Balance
+- Edit metric thresholds in `game-engine.js`
+- Adjust action costs in scenario JSON files
+- Modify event effects for different difficulty levels
 
-### Cultural Context
-- Vietnam-specific flood risks
-- Local disaster management practices
-- Community-centered approaches
-- ASEAN disaster management guidelines
+## 📄 License
 
-## 🎓 Learning Outcomes
-
-After playing, users will understand:
-1. **Flood Risk Factors** - Heavy rainfall, dike failures, disease outbreaks
-2. **Preparedness Strategies** - Early investment in safety measures
-3. **Crisis Response** - Evacuation procedures and rescue coordination
-4. **Recovery Priorities** - Infrastructure repair and community support
-5. **Resource Management** - Budget constraints and opportunity costs
-
-## 🔧 Customization & Extension
-
-### Easy Modifications
-Edit `gameData.json` to:
-- Add/remove events and actions
-- Modify costs and effects
-- Change win conditions
-- Add new languages
-- Adjust starting metrics
-
-### Code Structure
-The game uses modular JavaScript architecture:
-- `game-utils.js` - Utility functions (no dependencies)
-- `game-engine.js` - Core game logic (depends on utils)
-- `game-ui.js` - Rendering functions (depends on utils and engine)
-
-### Adding Content
-- **New Events**: Add objects to the `events` array
-- **New Actions**: Add objects to the `actions` array  
-- **New Languages**: Add keys to the `i18n` object
-- **New Quizzes**: Include quiz objects in event data
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Game won't load?**
-- Ensure all files are in the same folder (`game_app/`)
-- Check that `gameData.json` is present and valid
-- Try refreshing the page (F5 or Ctrl+R)
-
-**Language switching not working?**
-- Refresh the page and try again
-- Check browser console for errors (F12)
-
-**Buttons not responding?**
-- Verify all JavaScript files are loaded
-- Check browser console for error messages
-- Ensure you're using a modern browser
-
-**Mobile issues?**
-- Try landscape orientation
-- Use pinch-to-zoom if needed
-- Ensure touch events are enabled
-
-### Performance Issues
-- Clear browser cache
-- Close other browser tabs
-- Restart browser if needed
-- Check available memory
-
-## 📄 License & Credits
-
-**Educational Game** - Community Leadership Edition  
-Designed for Vietnamese flood-resilience education.
-
-Based on guidelines from:
-- Vietnamese Ministry of Natural Resources & Environment
-- Red Cross International
-- ASEAN Disaster Management Center
+This project is created for educational purposes. Feel free to use, modify, and distribute for learning and teaching flood management concepts.
 
 ## 🤝 Contributing
 
-### For Educators
-- Use in classrooms and community settings
-- Share with students and colleagues
-- Provide feedback on educational effectiveness
-- Suggest improvements for learning outcomes
-
-### For Developers
-- Fork the project and make improvements
-- Add new features or fix bugs
-- Improve accessibility and performance
-- Add support for additional languages
-
-### For Community Leaders
-- Use for community training sessions
-- Adapt scenarios for local contexts
-- Share experiences and best practices
-- Provide feedback on cultural accuracy
+Contributions are welcome! Areas for improvement:
+- Additional scenarios and regions
+- Enhanced animations and effects
+- Multiplayer functionality
+- Mobile app version
+- Accessibility improvements
 
 ## 📞 Support
 
-For questions, feedback, or support:
-1. Check the troubleshooting section above
-2. Review the game's Help menu
-3. Examine the prompts in the `prompts/` folder for development context
-4. Test different strategies to understand game mechanics
-
-## 🎉 Ready to Play!
-
-Navigate to the `game_app/` folder and double-click `index.html` to start your journey as a Community Leader!
-
-**Good luck, and may your community stay safe during the flood season!** 🌊💪
+For questions or issues:
+1. Check the browser console for error messages
+2. Ensure you're using a modern browser
+3. Verify the local server is running correctly
+4. Try refreshing the page or clearing browser cache
 
 ---
 
-*Game Version: 1.0 (Full Release)*  
-*Platform: Web (HTML5)*  
-*Languages: English, Vietnamese*  
-*Status: Complete & Ready ✅*
+**Enjoy playing Rising Waters and learning about flood crisis management!** 🌊

@@ -67,7 +67,7 @@
 
 html,
 body {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--bg-light);
     overflow-x: hidden;
@@ -75,7 +75,7 @@ body {
 
 /* Apply Orbitron to all elements */
 * {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 /* Specific font weights for different elements */
@@ -85,7 +85,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
     font-weight: 700;
 }
 
@@ -93,26 +93,26 @@ button,
 input,
 select,
 textarea {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 /* SweetAlert2 font override */
 .swal2-popup {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 .swal2-title {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
     font-weight: 700;
 }
 
 .swal2-content {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 .swal2-confirm,
 .swal2-cancel {
-    font-family: 'Orbitron', monospace !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 body {
