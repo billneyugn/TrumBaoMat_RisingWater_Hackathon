@@ -4,7 +4,7 @@
             "gameTitle": "Rising Waters: Delta Challenge",
             "gameSubtitle": "Mekong Delta Edition",
             "townMap": "Town Map",
-            "round": "Round",
+            "day": "Day",
             "meterSafety": "Safety",
             "meterInfrastructure": "Infrastructure",
             "meterMorale": "Morale",
@@ -69,52 +69,88 @@
     ],
     "actions": [
         {
-            "id": "crop_protection",
-            "title": {
-                "en": "Crop Protection"
-            },
-            "effects": {
-                "safety": 8,
-                "infrastructure": 5,
-                "morale": 10,
-                "resourcePoints": -10
-            }
+            "id": "prepare_harvest",
+            "title": { "en": "Prepare Harvest" },
+            "description": { "en": "Move crops to higher ground" },
+            "effects": { "safety": 8, "infrastructure": 5, "morale": 6, "resourcePoints": -6 },
+            "category": "prepare"
         },
         {
-            "id": "dike_maintenance",
-            "title": {
-                "en": "Dike Maintenance"
-            },
-            "effects": {
-                "safety": 12,
-                "infrastructure": 18,
-                "morale": 5,
-                "resourcePoints": -15
-            }
+            "id": "canal_maintenance",
+            "title": { "en": "Canal Maintenance" },
+            "description": { "en": "Clean waterways and dikes" },
+            "effects": { "safety": 10, "infrastructure": 12, "morale": 4, "resourcePoints": -8 },
+            "category": "prepare"
         },
         {
-            "id": "community_planning",
-            "title": {
-                "en": "Community Planning"
-            },
-            "effects": {
-                "safety": 10,
-                "infrastructure": 8,
-                "morale": 12,
-                "resourcePoints": -8
-            }
+            "id": "community_shelter",
+            "title": { "en": "Build Shelters" },
+            "description": { "en": "Create evacuation centers" },
+            "effects": { "safety": 16, "infrastructure": 6, "morale": 10, "resourcePoints": -16 },
+            "category": "defend"
         },
         {
-            "id": "resource_coordination",
-            "title": {
-                "en": "Resource Coordination"
-            },
-            "effects": {
-                "safety": 6,
-                "infrastructure": 6,
-                "morale": 8,
-                "resourcePoints": 8
-            }
+            "id": "water_management",
+            "title": { "en": "Water Management" },
+            "description": { "en": "Control water levels" },
+            "effects": { "safety": 12, "infrastructure": 14, "morale": 5, "resourcePoints": -10 },
+            "category": "prepare"
+        },
+        {
+            "id": "boat_assistance",
+            "title": { "en": "Deploy Boats" },
+            "description": { "en": "Rescue and evacuate" },
+            "effects": { "safety": 14, "infrastructure": 0, "morale": 8, "resourcePoints": -12 },
+            "category": "defend"
+        },
+        {
+            "id": "crop_replacement",
+            "title": { "en": "Crop Replacement" },
+            "description": { "en": "Provide replanting support" },
+            "effects": { "safety": 5, "infrastructure": 8, "morale": 14, "resourcePoints": -14 },
+            "category": "recover"
+        },
+        {
+            "id": "aquaculture_aid",
+            "title": { "en": "Fish Farm Aid" },
+            "description": { "en": "Support aquaculture recovery" },
+            "effects": { "safety": 4, "infrastructure": 10, "morale": 12, "resourcePoints": -10 },
+            "category": "recover"
+        },
+        {
+            "id": "food_assistance",
+            "title": { "en": "Food Assistance" },
+            "description": { "en": "Distribute emergency food" },
+            "effects": { "safety": 8, "infrastructure": 0, "morale": 14, "resourcePoints": -12 },
+            "category": "recover"
+        },
+        {
+            "id": "medical_teams",
+            "title": { "en": "Medical Aid" },
+            "description": { "en": "Deploy medical personnel" },
+            "effects": { "safety": 12, "infrastructure": 0, "morale": 10, "resourcePoints": -11 },
+            "category": "defend"
+        },
+        {
+            "id": "information_sharing",
+            "title": { "en": "Share Information" },
+            "description": { "en": "Warn and inform community" },
+            "effects": { "safety": 10, "infrastructure": 0, "morale": 10, "resourcePoints": -5 },
+            "category": "prepare"
+        },
+        {
+            "id": "cooperative_action",
+            "title": { "en": "Cooperative Action" },
+            "description": { "en": "Organize volunteer response" },
+            "effects": { "safety": 8, "infrastructure": 8, "morale": 16, "resourcePoints": -8 },
+            "category": "recover"
+        },
+        {
+            "id": "do_nothing_delta",
+            "title": { "en": "Do Nothing" },
+            "description": { "en": "Wait and observe" },
+            "effects": { "safety": -6, "infrastructure": -4, "morale": -8, "resourcePoints": 0 },
+            "category": "risk"
         }
     ],
     "initialState": {
@@ -122,7 +158,7 @@
         "infrastructure": 65,
         "morale": 75,
         "resourcePoints": 30,
-        "totalRounds": 8
+        "totalDays": 8
     },
     "winCondition": {
         "safety": 70,

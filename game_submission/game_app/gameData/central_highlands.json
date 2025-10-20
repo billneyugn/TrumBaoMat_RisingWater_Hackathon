@@ -4,7 +4,7 @@
         "gameTitle": "Rising Waters: Solo Survival",
         "gameSubtitle": "Central Highlands Edition",
         "townMap": "Town Map",
-        "round": "Round",
+        "day": "Day",
         "meterSafety": "Safety",
         "meterInfrastructure": "Infrastructure",
         "meterMorale": "Morale",
@@ -27,7 +27,7 @@
         "gameTitle": "Nước Dâng Cao: Sống Sót Một Mình",
         "gameSubtitle": "Phiên Bản Tây Nguyên",
         "townMap": "Bản Đồ Thị Trấn",
-        "round": "Vòng",
+        "day": "Ngày",
         "meterSafety": "An Toàn",
         "meterInfrastructure": "Cơ Sở Hạ Tầng",
         "meterMorale": "Tinh Thần",
@@ -123,25 +123,96 @@
       {
         "id": "action_reinforce_dike",
         "title": { "en": "Reinforce Dike", "vi": "Gia Cố Đê" },
-        "effects": { "safety": 10, "infrastructure": 5, "morale": 2, "resourcePoints": -5 }
+        "description": { "en": "Strengthen dikes and barriers", "vi": "Tăng cường đê và hàng rào" },
+        "effects": { "safety": 10, "infrastructure": 5, "morale": 2, "resourcePoints": -5 },
+        "category": "prepare"
       },
       {
         "id": "action_evacuate_people",
         "title": { "en": "Evacuate People", "vi": "Sơ Tán Dân" },
-        "effects": { "safety": 15, "infrastructure": 0, "morale": 5, "resourcePoints": -10 }
+        "description": { "en": "Urgently move people to safety", "vi": "Di tản mọi người đến nơi an toàn" },
+        "effects": { "safety": 15, "infrastructure": 0, "morale": 5, "resourcePoints": -10 },
+        "category": "defend"
       },
       {
         "id": "action_deliver_aid",
         "title": { "en": "Deliver Aid", "vi": "Cung Cấp Trợ Giúp" },
-        "effects": { "safety": 0, "infrastructure": 0, "morale": 10, "resourcePoints": -15 }
+        "description": { "en": "Distribute emergency supplies", "vi": "Phân phát nhu yếu phẩm khẩn cấp" },
+        "effects": { "safety": 5, "infrastructure": 0, "morale": 10, "resourcePoints": -15 },
+        "category": "recover"
       },
       {
         "id": "action_repair_roads",
         "title": { "en": "Repair Roads", "vi": "Sửa Chữa Đường Xá" },
-        "effects": { "safety": 5, "infrastructure": 10, "morale": 5, "resourcePoints": -10 }
+        "description": { "en": "Fix damaged routes and access", "vi": "Sửa các tuyến đường bị hư hại" },
+        "effects": { "safety": 5, "infrastructure": 10, "morale": 5, "resourcePoints": -10 },
+        "category": "recover"
+      },
+      {
+        "id": "action_provide_medical",
+        "title": { "en": "Provide Medical Aid", "vi": "Cung Cấp Y Tế" },
+        "description": { "en": "Deploy medical teams to affected areas", "vi": "Triển khai đội y tế đến khu vực bị ảnh hưởng" },
+        "effects": { "safety": 12, "infrastructure": 0, "morale": 8, "resourcePoints": -12 },
+        "category": "defend"
+      },
+      {
+        "id": "action_establish_shelter",
+        "title": { "en": "Establish Shelters", "vi": "Thiết Lập Nơi Trú Ẩn" },
+        "description": { "en": "Create emergency evacuation centers", "vi": "Tạo các trung tâm sơ tán khẩn cấp" },
+        "effects": { "safety": 18, "infrastructure": 5, "morale": 8, "resourcePoints": -20 },
+        "category": "defend"
+      },
+      {
+        "id": "action_clear_drainage",
+        "title": { "en": "Clear Drainage", "vi": "Thông Thoát Nước" },
+        "description": { "en": "Clean canals and drainage systems", "vi": "Làm sạch kênh và hệ thống thoát nước" },
+        "effects": { "safety": 8, "infrastructure": 12, "morale": 3, "resourcePoints": -8 },
+        "category": "prepare"
+      },
+      {
+        "id": "action_monitor_slopes",
+        "title": { "en": "Monitor Slopes", "vi": "Giám Sát Dốc" },
+        "description": { "en": "Track landslide risk zones", "vi": "Theo dõi vùng nguy cơ sạt lở" },
+        "effects": { "safety": 12, "infrastructure": 3, "morale": 4, "resourcePoints": -6 },
+        "category": "prepare"
+      },
+      {
+        "id": "action_restore_utilities",
+        "title": { "en": "Restore Utilities", "vi": "Khôi Phục Tiện Ích" },
+        "description": { "en": "Fix water, power, communications", "vi": "Sửa nước, điện, thông tin liên lạc" },
+        "effects": { "safety": 6, "infrastructure": 15, "morale": 12, "resourcePoints": -18 },
+        "category": "recover"
+      },
+      {
+        "id": "action_distribute_food",
+        "title": { "en": "Distribute Food", "vi": "Phân Phát Thực Phẩm" },
+        "description": { "en": "Provide meals and nutrition", "vi": "Cung cấp bữa ăn và dinh dưỡng" },
+        "effects": { "safety": 8, "infrastructure": 0, "morale": 12, "resourcePoints": -14 },
+        "category": "recover"
+      },
+      {
+        "id": "action_mobilize_volunteers",
+        "title": { "en": "Mobilize Volunteers", "vi": "Huy Động Tình Nguyện Viên" },
+        "description": { "en": "Organize community assistance", "vi": "Tổ chức hỗ trợ cộng đồng" },
+        "effects": { "safety": 6, "infrastructure": 4, "morale": 14, "resourcePoints": -8 },
+        "category": "recover"
+      },
+      {
+        "id": "action_public_awareness",
+        "title": { "en": "Public Awareness", "vi": "Nâng Cao Nhận Thức" },
+        "description": { "en": "Inform community of safety measures", "vi": "Thông báo các biện pháp an toàn" },
+        "effects": { "safety": 10, "infrastructure": 0, "morale": 10, "resourcePoints": -7 },
+        "category": "prepare"
+      },
+      {
+        "id": "action_do_nothing",
+        "title": { "en": "Do Nothing", "vi": "Không Làm Gì" },
+        "description": { "en": "Wait and see what happens", "vi": "Chờ xem chuyện gì sẽ xảy ra" },
+        "effects": { "safety": -5, "infrastructure": -3, "morale": -8, "resourcePoints": 0 },
+        "category": "risk"
       }
     ],
-    "initialState": { "safety": 75, "infrastructure": 70, "morale": 70, "resourcePoints": 50 },
+    "initialState": { "safety": 75, "infrastructure": 70, "morale": 70, "resourcePoints": 50, "totalDays": 8 },
     "winCondition": { "safety": 70, "infrastructure": 60, "morale": 50 },
     "feedbackMessages": {
       "en": {

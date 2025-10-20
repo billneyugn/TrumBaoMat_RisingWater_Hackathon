@@ -11,11 +11,13 @@ let gameState = {
   gameData: null,
   gameStatus: 'loading', // loading, playing, gameOver
   metrics: {},
-  currentRound: 1,
+  currentDay: 1,
   currentEvent: null,
   eventDeck: [],
   quizAnswered: false,
-  totalScore: 0
+  totalScore: 0,
+  scoreBreakdown: {},
+  actionPool: []
 };
 
 /**
@@ -31,14 +33,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(`gameData/${selectedScenario}.json`);
     gameState.gameData = await response.json();
 
+    // Display scenario name in header
+    const scenarioElement = document.getElementById('scenarioName');
+    if (scenarioElement) {
+      // Convert scenario ID to readable name (e.g., 'central_highlands' -> 'Central Highlands')
+      const scenarioName = selectedScenario
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      scenarioElement.textContent = scenarioName;
+    }
+
     // Initialize game
     initializeGame();
     setupEventListeners();
-    renderUI();
     gameState.gameStatus = 'playing';
 
-    // Draw first event
+    // Draw first event (generates actionPool)
     drawNextEvent();
+    
+    // Render UI after event is drawn
+    renderUI();
+
   } catch (error) {
     console.error('Failed to load game data:', error);
     alert('Failed to load game. Please refresh the page.');
@@ -64,7 +80,7 @@ function initializeGame() {
     morale: initial.morale,
     resourcePoints: initial.resourcePoints
   };
-  gameState.currentRound = 1;
+  gameState.currentDay = 1;
   gameState.quizAnswered = false;
 
   // Shuffle event deck
@@ -83,7 +99,7 @@ function setupEventListeners() {
 
   document.getElementById('tipAckBtn').addEventListener('click', () => {
     closeModal('tipModal');
-    processNextRound();
+    processNextDay();
   });
 
   // Help modal
@@ -119,6 +135,45 @@ function drawNextEvent() {
 
   gameState.currentEvent = gameState.eventDeck.pop();
   displayEvent();
+  generateActionPool();
+}
+
+/**
+ * Generate a random action pool for the current day
+ * Strategy (All Days, including Day 1):
+ * 1. Find the "Do Nothing" action (category: risk)
+ * 2. Get all other actions
+ * 3. Randomly pick 3 actions from the full pool
+ * 4. Always add "Do Nothing" as the 4th option
+ * 5. Shuffle so Do Nothing isn't always in the same position
+ * 6. Ensure exactly 4 actions are available each day
+ */
+function generateActionPool() {
+  const allActions = gameState.gameData.actions;
+  
+  // Find the "Do Nothing" action (has category: 'risk')
+  const doNothingAction = allActions.find(a => a.category === 'risk');
+  
+  // Get all other actions (exclude Do Nothing)
+  const otherActions = allActions.filter(a => a.category !== 'risk');
+  
+  // Randomly shuffle and pick 3 actions
+  const shuffledOthers = shuffleArray(otherActions);
+  const selectedActions = shuffledOthers.slice(0, 3);
+  
+  // Build action pool with 3 random + Do Nothing
+  let actionPool = selectedActions;
+  if (doNothingAction) {
+    actionPool.push(doNothingAction);
+  }
+  
+  // Final shuffle so Do Nothing position is random
+  gameState.actionPool = shuffleArray(actionPool).slice(0, 4);
+  
+  // Log for debugging
+  console.log(`Day ${gameState.currentDay} - Random Action Pool Generated`);
+  console.log(`Generated ${gameState.actionPool.length} actions (3 random + Do Nothing)`);
+  console.log('Action Pool:', gameState.actionPool.map(a => a.id));
 }
 
 /**
@@ -148,11 +203,11 @@ function executeAction(action) {
 /**
  * Move to next round
  */
-function processNextRound() {
-  gameState.currentRound++;
+function processNextDay() {
+  gameState.currentDay++;
   updateRoundDisplay(); // Update round counter display immediately
 
-  if (gameState.currentRound > gameState.gameData.initialState.totalRounds) {
+  if (gameState.currentDay > gameState.gameData.initialState.totalDays) {
     endGame();
   } else {
     // 30% chance to show quiz
@@ -269,6 +324,111 @@ function checkQuizAnswer(selectedIndex, correctIndex) {
 }
 
 /**
+ * Calculate final score based on game performance
+ * Scoring System:
+ * - Base Score: 0-100 points
+ * - Safety Performance: 0-25 points (prioritize safety as most important)
+ * - Infrastructure: 0-20 points (resilience and recovery capability)
+ * - Morale: 0-15 points (community trust and cooperation)
+ * - Resource Efficiency: 0-20 points (wise budget management)
+ * - Bonus: 0-20 points (risk-taking strategy and perfect metrics)
+ */
+function calculateScore() {
+  const safety = gameState.metrics.safety;
+  const infrastructure = gameState.metrics.infrastructure;
+  const morale = gameState.metrics.morale;
+  const rp = gameState.metrics.resourcePoints;
+  
+  let score = 0;
+  let breakdown = {};
+
+  // 1. Safety Score (0-25) - Most Important
+  // Safety ≥ 95: 25 pts | 85-94: 20 pts | 70-84: 15 pts | 50-69: 8 pts | <50: 0 pts
+  if (safety >= 95) {
+    breakdown.safety = 25;
+  } else if (safety >= 85) {
+    breakdown.safety = 20;
+  } else if (safety >= 70) {
+    breakdown.safety = 15;
+  } else if (safety >= 50) {
+    breakdown.safety = 8;
+  } else {
+    breakdown.safety = 0;
+  }
+  score += breakdown.safety;
+
+  // 2. Infrastructure Score (0-20) - Foundation for Recovery
+  // Infra ≥ 90: 20 pts | 80-89: 16 pts | 60-79: 12 pts | 40-59: 6 pts | <40: 0 pts
+  if (infrastructure >= 90) {
+    breakdown.infrastructure = 20;
+  } else if (infrastructure >= 80) {
+    breakdown.infrastructure = 16;
+  } else if (infrastructure >= 60) {
+    breakdown.infrastructure = 12;
+  } else if (infrastructure >= 40) {
+    breakdown.infrastructure = 6;
+  } else {
+    breakdown.infrastructure = 0;
+  }
+  score += breakdown.infrastructure;
+
+  // 3. Morale Score (0-15) - Community Resilience
+  // Morale ≥ 80: 15 pts | 60-79: 10 pts | 40-59: 5 pts | <40: 0 pts
+  if (morale >= 80) {
+    breakdown.morale = 15;
+  } else if (morale >= 60) {
+    breakdown.morale = 10;
+  } else if (morale >= 40) {
+    breakdown.morale = 5;
+  } else {
+    breakdown.morale = 0;
+  }
+  score += breakdown.morale;
+
+  // 4. Resource Efficiency Score (0-20) - Budget Management
+  // Spent ≥ 50 RP (from 50 starting): 20 pts | 40-49: 16 pts | 30-39: 12 pts | 20-29: 8 pts | <20: 4 pts
+  const rpSpent = 50 - rp; // Started with 50
+  if (rpSpent >= 50) {
+    breakdown.efficiency = 20;
+  } else if (rpSpent >= 40) {
+    breakdown.efficiency = 16;
+  } else if (rpSpent >= 30) {
+    breakdown.efficiency = 12;
+  } else if (rpSpent >= 20) {
+    breakdown.efficiency = 8;
+  } else {
+    breakdown.efficiency = 4;
+  }
+  score += breakdown.efficiency;
+
+  // 5. Bonus Points (0-20)
+  breakdown.bonus = 0;
+  
+  // Perfect Safety (≥95) + Perfect Infra (≥90): +10 bonus
+  if (safety >= 95 && infrastructure >= 90) {
+    breakdown.bonus += 10;
+  }
+  
+  // Win condition achieved (Safety ≥70 AND Infra ≥60): +5 bonus
+  if (safety >= 70 && infrastructure >= 60) {
+    breakdown.bonus += 5;
+  }
+  
+  // All metrics ≥80: +5 bonus (excellent balance)
+  if (safety >= 80 && infrastructure >= 80 && morale >= 80) {
+    breakdown.bonus += 5;
+  }
+  
+  score += breakdown.bonus;
+
+  // Cap total score at 100
+  gameState.totalScore = Math.min(score, 100);
+  gameState.scoreBreakdown = breakdown;
+  
+  return gameState.totalScore;
+}
+
+/**
  * End game and show summary
  */
 function endGame() {
@@ -280,12 +440,77 @@ function endGame() {
   const rp = gameState.metrics.resourcePoints;
   const lang = gameState.currentLanguage;
 
+  // Calculate final score
+  const finalScore = calculateScore();
+
   const rankInfo = getPlayerRank(safety, infrastructure);
   const won = checkWinCondition(safety, infrastructure);
 
   const mainTitle = won 
     ? (lang === 'en' ? '🎉 Mission Accomplished!' : '🎉 Nhiệm Vụ Thành Công!')
     : (lang === 'en' ? '⚠️ Game Over' : '⚠️ Kết Thúc Trò Chơi');
+
+  // Build score breakdown display
+  const scoreBreakdown = gameState.scoreBreakdown;
+  const scoreHTML = lang === 'en'
+    ? `
+      <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+        <h4 style="text-align: center; color: #856404; margin: 0 0 10px 0; font-size: 1.1rem;">
+          🏆 Final Score: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/100</span>
+        </h4>
+        <div style="font-size: 0.85rem; color: #856404; text-align: left;">
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Safety Performance:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.safety} / 25 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Infrastructure:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.infrastructure} / 20 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Community Morale:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.morale} / 15 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Resource Efficiency:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.efficiency} / 20 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0; border-top: 1px solid #cc9900; padding-top: 8px;">
+            <span>Bonus Points:</span>
+            <span style="font-weight: bold; color: #cc6600;">+ ${scoreBreakdown.bonus}</span>
+          </div>
+        </div>
+      </div>
+    `
+    : `
+      <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+        <h4 style="text-align: center; color: #856404; margin: 0 0 10px 0; font-size: 1.1rem;">
+          🏆 Điểm Cuối Cùng: <span style="font-size: 1.3rem; font-weight: bold;">${finalScore}/100</span>
+        </h4>
+        <div style="font-size: 0.85rem; color: #856404; text-align: left;">
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Hiệu Suất An Toàn:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.safety} / 25 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Cơ Sở Hạ Tầng:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.infrastructure} / 20 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Tinh Thần Cộng Đồng:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.morale} / 15 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0;">
+            <span>Hiệu Quả Tài Nguyên:</span>
+            <span style="font-weight: bold;">${scoreBreakdown.efficiency} / 20 pts</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; padding: 3px 0; border-top: 1px solid #cc9900; padding-top: 8px;">
+            <span>Điểm Thưởng:</span>
+            <span style="font-weight: bold; color: #cc6600;">+ ${scoreBreakdown.bonus}</span>
+          </div>
+        </div>
+      </div>
+    `;
 
   const summaryHTML = `
     <div style="text-align: center; margin-bottom: 20px;">
@@ -294,9 +519,11 @@ function endGame() {
         ${rankInfo.rank}
       </h3>
       <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
-        ${lang === 'en' ? 'After 8 rounds of crisis management' : 'Sau 8 vòng quản lý khủng hoảng'}
+        ${lang === 'en' ? 'After 8 days of crisis management' : 'Sau 8 ngày quản lý khủng hoảng'}
       </p>
     </div>
+
+    ${scoreHTML}
 
     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h4 style="font-size: 1rem; color: #2c3e50; margin-bottom: 12px; text-align: left;">
@@ -341,7 +568,7 @@ function endGame() {
         <strong>💡 ${lang === 'en' ? 'Learning Tip' : 'Mẹo Học Tập'}:</strong><br/>
         ${lang === 'en' 
           ? 'Replay to explore different strategies (Prepare early, Defend during crisis, Recover after). Each approach teaches valuable lessons about flood resilience!'
-          : 'Chơi lại để khám phá các chiến lược khác nhau (Chuẩn bị sớm, Bảo vệ trong khủng hoảng, Phục hồi sau). Mỗi cách tiếp cận dạy những bài học quý báu về khả năng chống chịu lũ lụt!'}
+          : 'Chơi lại để khám phá các chiến lược khác nhau (Chuẩn Bị sớm, Bảo Vệ trong khủng hoảng, Phục Hồi sau). Mỗi cách tiếp cận dạy những bài học quý báu về khả năng chống chịu lũ lụt!'}
       </p>
     </div>
   `;
@@ -356,7 +583,7 @@ function endGame() {
     allowOutsideClick: false,
     allowEscapeKey: false,
     showCloseButton: false,
-    width: '600px'
+    width: '650px'
   }).then((result) => {
     if (result.isConfirmed) {
       replayGame();
@@ -369,7 +596,7 @@ function endGame() {
  */
 function replayGame() {
   gameState.gameStatus = 'playing';
-  gameState.currentRound = 1;
+  gameState.currentDay = 1;
   gameState.quizAnswered = false;
   gameState.totalScore = 0;
 

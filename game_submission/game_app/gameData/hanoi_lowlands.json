@@ -4,7 +4,7 @@
             "gameTitle": "Rising Waters: Urban Crisis",
             "gameSubtitle": "Hanoi Lowlands Edition",
             "townMap": "Town Map",
-            "round": "Round",
+            "day": "Day",
             "meterSafety": "Safety",
             "meterInfrastructure": "Infrastructure",
             "meterMorale": "Morale",
@@ -70,51 +70,87 @@
     "actions": [
         {
             "id": "emergency_evacuation",
-            "title": {
-                "en": "Emergency Evacuation"
-            },
-            "effects": {
-                "safety": 15,
-                "infrastructure": -5,
-                "morale": -5,
-                "resourcePoints": -8
-            }
+            "title": { "en": "Emergency Evacuation" },
+            "description": { "en": "Urgently move people to safety" },
+            "effects": { "safety": 15, "infrastructure": -5, "morale": -5, "resourcePoints": -8 },
+            "category": "defend"
         },
         {
             "id": "infrastructure_repair",
-            "title": {
-                "en": "Infrastructure Repair"
-            },
-            "effects": {
-                "safety": 5,
-                "infrastructure": 20,
-                "morale": 5,
-                "resourcePoints": -12
-            }
+            "title": { "en": "Infrastructure Repair" },
+            "description": { "en": "Fix critical urban infrastructure" },
+            "effects": { "safety": 5, "infrastructure": 20, "morale": 5, "resourcePoints": -12 },
+            "category": "recover"
         },
         {
             "id": "community_support",
-            "title": {
-                "en": "Community Support"
-            },
-            "effects": {
-                "safety": 8,
-                "infrastructure": 5,
-                "morale": 15,
-                "resourcePoints": -6
-            }
+            "title": { "en": "Community Support" },
+            "description": { "en": "Organize community assistance" },
+            "effects": { "safety": 8, "infrastructure": 5, "morale": 15, "resourcePoints": -6 },
+            "category": "recover"
         },
         {
             "id": "resource_mobilization",
-            "title": {
-                "en": "Resource Mobilization"
-            },
-            "effects": {
-                "safety": 10,
-                "infrastructure": 10,
-                "morale": 8,
-                "resourcePoints": 5
-            }
+            "title": { "en": "Resource Mobilization" },
+            "description": { "en": "Gather emergency resources" },
+            "effects": { "safety": 10, "infrastructure": 10, "morale": 8, "resourcePoints": 5 },
+            "category": "prepare"
+        },
+        {
+            "id": "medical_deployment",
+            "title": { "en": "Medical Deployment" },
+            "description": { "en": "Send medical teams to areas" },
+            "effects": { "safety": 12, "infrastructure": 0, "morale": 8, "resourcePoints": -10 },
+            "category": "defend"
+        },
+        {
+            "id": "shelter_setup",
+            "title": { "en": "Setup Shelters" },
+            "description": { "en": "Establish emergency centers" },
+            "effects": { "safety": 18, "infrastructure": 3, "morale": 10, "resourcePoints": -15 },
+            "category": "defend"
+        },
+        {
+            "id": "drainage_clearing",
+            "title": { "en": "Clear Drainage" },
+            "description": { "en": "Unblock flooded drainage" },
+            "effects": { "safety": 8, "infrastructure": 14, "morale": 3, "resourcePoints": -8 },
+            "category": "prepare"
+        },
+        {
+            "id": "power_restoration",
+            "title": { "en": "Power Restoration" },
+            "description": { "en": "Restore electrical systems" },
+            "effects": { "safety": 10, "infrastructure": 18, "morale": 12, "resourcePoints": -16 },
+            "category": "recover"
+        },
+        {
+            "id": "food_distribution",
+            "title": { "en": "Food Distribution" },
+            "description": { "en": "Provide meals and supplies" },
+            "effects": { "safety": 6, "infrastructure": 0, "morale": 14, "resourcePoints": -12 },
+            "category": "recover"
+        },
+        {
+            "id": "public_communication",
+            "title": { "en": "Public Communication" },
+            "description": { "en": "Inform citizens of status" },
+            "effects": { "safety": 10, "infrastructure": 0, "morale": 12, "resourcePoints": -6 },
+            "category": "prepare"
+        },
+        {
+            "id": "volunteer_mobilization",
+            "title": { "en": "Mobilize Volunteers" },
+            "description": { "en": "Organize volunteer teams" },
+            "effects": { "safety": 8, "infrastructure": 6, "morale": 16, "resourcePoints": -7 },
+            "category": "recover"
+        },
+        {
+            "id": "do_nothing_urban",
+            "title": { "en": "Do Nothing" },
+            "description": { "en": "Wait for situation to clear" },
+            "effects": { "safety": -8, "infrastructure": -5, "morale": -10, "resourcePoints": 0 },
+            "category": "risk"
         }
     ],
     "initialState": {
@@ -122,7 +158,7 @@
         "infrastructure": 70,
         "morale": 80,
         "resourcePoints": 25,
-        "totalRounds": 8
+        "totalDays": 8
     },
     "winCondition": {
         "safety": 70,
