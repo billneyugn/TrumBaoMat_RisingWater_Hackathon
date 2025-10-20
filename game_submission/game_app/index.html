@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rising Waters: Solo Survival (Vietnam Edition)</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/game-styles.css">
     <!-- SweetAlert2 CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -169,13 +172,13 @@
     </div>
 
     <!-- Script Imports (in correct dependency order) -->
-    <!-- 1. Helpers (no dependencies) -->
-    <script src="./helpers.js"></script>
+    <!-- 1. Game Utils (no dependencies) -->
+    <script src="js/game-utils.js"></script>
     
-    <!-- 2. Main (depends on helpers) -->
-    <script src="./main.js"></script>
+    <!-- 2. Game Engine (depends on utils) -->
+    <script src="js/game-engine.js"></script>
     
-    <!-- 3. UI (depends on helpers and main) -->
-    <script src="./ui.js"></script>
+    <!-- 3. Game UI (depends on utils and engine) -->
+    <script src="js/game-ui.js"></script>
 </body>
 </html>

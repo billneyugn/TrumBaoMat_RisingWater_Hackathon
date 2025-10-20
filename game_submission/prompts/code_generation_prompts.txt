@@ -1,0 +1,121 @@
+# 💻 Rising Waters: Code Generation Prompts
+
+## Game Logic & Architecture
+
+### Core Game State Management
+- "Implement a centralized game state object that tracks all game variables"
+- "Create functions to initialize, update, and reset game state"
+- "Design modular code structure with separate files for different responsibilities"
+- "Implement proper error handling for game data loading and user interactions"
+
+### Game Loop Implementation
+- "Create an 8-round game loop with event drawing and action processing"
+- "Implement randomized event deck shuffling using Fisher-Yates algorithm"
+- "Design action execution system that applies effects to metrics"
+- "Create win/loss condition checking based on final metric values"
+
+### Event System
+- "Implement event card drawing from shuffled deck"
+- "Create event display system with icons, titles, and descriptions"
+- "Design event effect application to game metrics"
+- "Implement event progression and deck management"
+
+### Action System
+- "Create action button rendering based on available actions"
+- "Implement action cost checking against available Resource Points"
+- "Design action effect application to multiple metrics"
+- "Create action validation and error handling"
+
+### Metric Management
+- "Implement 4 core metrics: Safety, Infrastructure, Morale, Resource Points"
+- "Create metric clamping functions to keep values within 0-100 range"
+- "Design smooth metric updates with visual feedback"
+- "Implement metric calculation and display formatting"
+
+### Quiz System
+- "Create randomized quiz selection from event-based questions"
+- "Implement multiple choice question display and answer validation"
+- "Design quiz reward system (+2 Resource Points for correct answers)"
+- "Create quiz feedback and progression handling"
+
+### Localization System
+- "Implement i18n (internationalization) function for multi-language support"
+- "Create language switching functionality with real-time UI updates"
+- "Design translation key system for all UI elements"
+- "Implement fallback text for missing translations"
+
+## UI & Rendering
+
+### DOM Manipulation
+- "Create functions to update meter displays with smooth animations"
+- "Implement action button rendering and event handling"
+- "Design modal system for quizzes, tips, and game over screens"
+- "Create responsive layout adjustments for different screen sizes"
+
+### Event Handling
+- "Implement click handlers for action buttons with validation"
+- "Create language switcher event handlers"
+- "Design modal open/close functionality with proper cleanup"
+- "Implement keyboard accessibility for modal interactions"
+
+### Data Loading & Management
+- "Create JSON data loading system for game content"
+- "Implement error handling for failed data loads"
+- "Design data structure for events, actions, and translations"
+- "Create data validation and fallback mechanisms"
+
+### Animation & Transitions
+- "Implement CSS transitions for metric bar updates"
+- "Create modal fade in/out animations"
+- "Design button hover effects and click feedback"
+- "Implement loading state animations"
+
+## Technical Implementation
+
+### Modular Architecture
+- "Split code into separate files: helpers.js, main.js, ui.js"
+- "Create helper functions for common utilities (shuffling, clamping, formatting)"
+- "Design main game logic in dedicated file with clear function separation"
+- "Implement UI rendering functions in separate module"
+
+### Performance Optimization
+- "Minimize DOM queries by caching element references"
+- "Implement efficient array operations for game data"
+- "Create optimized rendering functions that only update changed elements"
+- "Design memory-efficient game state management"
+
+### Error Handling
+- "Implement try-catch blocks for async operations"
+- "Create user-friendly error messages for common issues"
+- "Design graceful degradation for missing game data"
+- "Implement validation for user inputs and game state"
+
+### Browser Compatibility
+- "Use modern JavaScript features with fallbacks for older browsers"
+- "Implement CSS Grid and Flexbox with appropriate fallbacks"
+- "Create responsive design that works across different browsers"
+- "Test functionality on Chrome, Firefox, Safari, and Edge"
+
+### Code Quality
+- "Write clear, commented code with consistent naming conventions"
+- "Implement proper function documentation and parameter validation"
+- "Create reusable utility functions to avoid code duplication"
+- "Design modular functions that can be easily tested and maintained"
+
+### Data Structure Design
+- "Create comprehensive JSON structure for game content"
+- "Implement nested objects for events, actions, and translations"
+- "Design flexible data format that allows easy content updates"
+- "Create validation for JSON data structure and content"
+
+### State Persistence
+- "Implement game state reset functionality for replay"
+- "Create proper initialization sequences for new games"
+- "Design state cleanup when switching between games"
+- "Implement proper memory management for game sessions"
+
+### Accessibility
+- "Implement proper ARIA labels for screen readers"
+- "Create keyboard navigation support for all interactive elements"
+- "Design high contrast color schemes for visibility"
+- "Implement focus management for modal dialogs"
