@@ -24,7 +24,7 @@ let gameState = {
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Load game data
-    const response = await fetch('gameData.json');
+    const response = await fetch('gameData/central_highlands.json');
     gameState.gameData = await response.json();
 
     // Initialize game

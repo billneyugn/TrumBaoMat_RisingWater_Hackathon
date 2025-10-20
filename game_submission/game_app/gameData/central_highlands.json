@@ -1,0 +1,157 @@
+{
+    "i18n": {
+      "en": {
+        "gameTitle": "Rising Waters: Solo Survival",
+        "gameSubtitle": "Central Highlands Edition",
+        "townMap": "Town Map",
+        "round": "Round",
+        "meterSafety": "Safety",
+        "meterInfrastructure": "Infrastructure",
+        "meterMorale": "Morale",
+        "meterResourcePoints": "Resource Points",
+        "chooseAction": "Choose Your Action:",
+        "help": "Help",
+        "restart": "Restart Game",
+        "quizTitle": "Safety Quiz",
+        "floodTip": "💡 Flood Safety Tip",
+        "understood": "Understood",
+        "playAgain": "Play Again",
+        "howToPlay": "How to Play",
+        "close": "Close",
+        "gameOverSuccess": "Mission Accomplished!",
+        "gameOverFailure": "Mission Failed",
+        "gameOverDraw": "Mixed Results"
+      },
+      "vi": {
+        "gameTitle": "Nước Dâng Cao: Sống Sót Một Mình",
+        "gameSubtitle": "Phiên Bản Tây Nguyên",
+        "townMap": "Bản Đồ Thị Trấn",
+        "round": "Vòng",
+        "meterSafety": "An Toàn",
+        "meterInfrastructure": "Cơ Sở Hạ Tầng",
+        "meterMorale": "Tinh Thần",
+        "meterResourcePoints": "Điểm Tài Nguyên",
+        "chooseAction": "Chọn Hành Động Của Bạn:",
+        "help": "Trợ Giúp",
+        "restart": "Khởi Động Lại Trò Chơi",
+        "quizTitle": "Câu Hỏi An Toàn",
+        "floodTip": "💡 Mẹo An Toàn Lũ Lụt",
+        "understood": "Tôi Hiểu",
+        "playAgain": "Chơi Lại",
+        "howToPlay": "Cách Chơi",
+        "close": "Đóng",
+        "gameOverSuccess": "Nhiệm Vụ Thành Công!",
+        "gameOverFailure": "Nhiệm Vụ Thất Bại",
+        "gameOverDraw": "Kết Quả Hỗn Hợp"
+      }
+    },
+    "helpText": {
+      "en": "<div class='help-section'><h3>🎮 Game Overview</h3><p>You are a Community Leader in a Central Highlands town. Floods rise slower but last longer, damaging roads and fields. Keep Safety ≥ 70% and Infrastructure ≥ 60% to succeed.</p></div>",
+      "vi": "<div class='help-section'><h3>🎮 Tổng Quan Trò Chơi</h3><p>Bạn là Nhà Lãnh Đạo Cộng Đồng ở thị trấn Tây Nguyên. Lũ dâng chậm nhưng kéo dài, làm hư hại đường và đất nông nghiệp. Giữ An Toàn ≥ 70% và Cơ Sở Hạ Tầng ≥ 60% để thành công.</p></div>"
+    },
+    "events": [
+      {
+        "id": "event_slow_rain",
+        "icon": "🌧️",
+        "title": { "en": "Prolonged Rainfall", "vi": "Mưa Dài Ngày" },
+        "description": { "en": "Rain lasts for several days. Roads start to erode and landslides possible.", "vi": "Mưa kéo dài nhiều ngày. Đường bắt đầu bị xói mòn và có thể xảy ra sạt lở." },
+        "effects": { "safety": -5, "infrastructure": -10, "morale": -5, "resourcePoints": 0 },
+        "tip": { "en": "Monitor slope areas, reinforce roads.", "vi": "Theo dõi khu vực dốc, gia cố đường." },
+        "quiz": {
+          "question": { "en": "How do you protect roads during prolonged rain?", "vi": "Làm sao bảo vệ đường trong mưa kéo dài?" },
+          "options": [
+            { "en": "Nothing, wait for rain to stop", "vi": "Không làm gì, chờ mưa tạnh" },
+            { "en": "Reinforce vulnerable roads and clear drainage", "vi": "Gia cố đường dễ hư và làm sạch cống" },
+            { "en": "Evacuate residents immediately", "vi": "Sơ tán dân ngay lập tức" },
+            { "en": "Build new roads", "vi": "Xây đường mới" }
+          ],
+          "correctAnswer": 1
+        }
+      },
+      {
+        "id": "event_landslide_warning",
+        "icon": "⛰️",
+        "title": { "en": "Landslide Risk", "vi": "Nguy Cơ Sạt Lở" },
+        "description": { "en": "Heavy rainfall increases landslide risk in hilly areas.", "vi": "Mưa lớn làm tăng nguy cơ sạt lở ở khu vực đồi núi." },
+        "effects": { "safety": -10, "infrastructure": -15, "morale": -5, "resourcePoints": -5 },
+        "tip": { "en": "Evacuate hillside communities and monitor slopes.", "vi": "Sơ tán dân cư vùng đồi núi và giám sát sạt lở." }
+      },
+      {
+        "id": "event_irrigation_damage",
+        "icon": "💧",
+        "title": { "en": "Irrigation System Damaged", "vi": "Hệ Thống Thủy Lợi Hư Hại" },
+        "description": { "en": "Floods damage irrigation, affecting crops.", "vi": "Lũ làm hư hại hệ thống thủy lợi, ảnh hưởng đến mùa màng." },
+        "effects": { "safety": 0, "infrastructure": -15, "morale": -5, "resourcePoints": -10 },
+        "tip": { "en": "Repair canals to restore agriculture.", "vi": "Sửa kênh để phục hồi nông nghiệp." }
+      },
+      {
+        "id": "event_rescue_request",
+        "icon": "🚁",
+        "title": { "en": "Remote Rescue Needed", "vi": "Cần Cứu Hộ Khu Vực Xa" },
+        "description": { "en": "Villagers stranded in remote highlands require aid.", "vi": "Người dân bị mắc kẹt ở vùng cao cần cứu trợ." },
+        "effects": { "safety": -5, "infrastructure": -5, "morale": 10, "resourcePoints": -15 },
+        "tip": { "en": "Use helicopters or off-road vehicles for rescue.", "vi": "Sử dụng trực thăng hoặc xe địa hình cứu hộ." }
+      },
+      {
+        "id": "event_clear_weather",
+        "icon": "☀️",
+        "title": { "en": "Clear Weather Window", "vi": "Thời Tiết Quang Đãng" },
+        "description": { "en": "Good weather allows repairs and aid distribution.", "vi": "Thời tiết tốt cho phép sửa chữa và phân phát trợ giúp." },
+        "effects": { "safety": 5, "infrastructure": 10, "morale": 5, "resourcePoints": 5 },
+        "tip": { "en": "Focus on infrastructure repairs and aid delivery.", "vi": "Tập trung sửa chữa cơ sở hạ tầng và phân phát trợ giúp." }
+      },
+      {
+        "id": "event_water_recedes",
+        "icon": "🌅",
+        "title": { "en": "Water Levels Recede", "vi": "Mực Nước Rút" },
+        "description": { "en": "Flood subsides but landslides and damage remain.", "vi": "Lũ rút nhưng sạt lở và thiệt hại còn lại." },
+        "effects": { "safety": 5, "infrastructure": -10, "morale": 5, "resourcePoints": 0 },
+        "tip": { "en": "Document damage and start rebuilding.", "vi": "Ghi lại thiệt hại và bắt đầu tái thiết." }
+      },
+      {
+        "id": "event_disease_risk",
+        "icon": "🦠",
+        "title": { "en": "Waterborne Disease Risk", "vi": "Nguy Cơ Bệnh Tật" },
+        "description": { "en": "Flood waters contaminated with bacteria spread illness.", "vi": "Nước lũ nhiễm khuẩn lây lan bệnh tật." },
+        "effects": { "safety": -5, "infrastructure": 0, "morale": -5, "resourcePoints": -10 },
+        "tip": { "en": "Provide medical aid and clean water.", "vi": "Cung cấp y tế và nước sạch." }
+      }
+    ],
+    "actions": [
+      {
+        "id": "action_reinforce_dike",
+        "title": { "en": "Reinforce Dike", "vi": "Gia Cố Đê" },
+        "effects": { "safety": 10, "infrastructure": 5, "morale": 2, "resourcePoints": -5 }
+      },
+      {
+        "id": "action_evacuate_people",
+        "title": { "en": "Evacuate People", "vi": "Sơ Tán Dân" },
+        "effects": { "safety": 15, "infrastructure": 0, "morale": 5, "resourcePoints": -10 }
+      },
+      {
+        "id": "action_deliver_aid",
+        "title": { "en": "Deliver Aid", "vi": "Cung Cấp Trợ Giúp" },
+        "effects": { "safety": 0, "infrastructure": 0, "morale": 10, "resourcePoints": -15 }
+      },
+      {
+        "id": "action_repair_roads",
+        "title": { "en": "Repair Roads", "vi": "Sửa Chữa Đường Xá" },
+        "effects": { "safety": 5, "infrastructure": 10, "morale": 5, "resourcePoints": -10 }
+      }
+    ],
+    "initialState": { "safety": 75, "infrastructure": 70, "morale": 70, "resourcePoints": 50 },
+    "winCondition": { "safety": 70, "infrastructure": 60, "morale": 50 },
+    "feedbackMessages": {
+      "en": {
+        "success": "Central Highlands survived thanks to your leadership!",
+        "failure": "Central Highlands suffered severe flood and landslide damage.",
+        "draw": "Partial success: Some communities safe, others affected."
+      },
+      "vi": {
+        "success": "Tây Nguyên đã sống sót nhờ lãnh đạo của bạn!",
+        "failure": "Tây Nguyên chịu thiệt hại nặng nề do lũ và sạt lở.",
+        "draw": "Thành công một phần: Một số cộng đồng an toàn, một số bị ảnh hưởng."
+      }
+    }
+  }
+  
