@@ -14,12 +14,15 @@ A strategic web-based simulation game where players lead a community through flo
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Option 1: Play Online (Recommended)
+**Live Demo**: [Play Rising Waters](https://yourusername.github.io/your-repo-name) *(replace with your deployed URL)*
+
+### Option 2: Local Development
+**Prerequisites:**
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 - Local web server (Python, Node.js, or any HTTP server)
 
-### Installation & Setup
-
+**Setup:**
 1. **Clone or Download** the project files
 2. **Navigate** to the `game_app` directory
 3. **Start a local server**:
@@ -33,7 +36,15 @@ A strategic web-based simulation game where players lead a community through flo
    # Node.js (if you have http-server installed)
    npx http-server -p 8000
    ```
-4. **Open** `http://localhost:8000/main.html` in your browser
+4. **Open** `http://localhost:8000` in your browser (automatically redirects to menu)
+
+### Option 3: Deploy to GitHub Pages
+**One-Click Deployment:**
+1. Fork this repository
+2. Enable GitHub Pages in repository settings
+3. Your game will be live at `https://yourusername.github.io/your-repo-name`
+
+**See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.**
 
 ## 📁 Project Structure
 
