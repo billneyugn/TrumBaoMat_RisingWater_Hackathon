@@ -49,13 +49,13 @@ function renderActions() {
     btn.className = 'action-btn';
     btn.innerHTML = `
       <div class="action-btn-title">${action.title[gameState.currentLanguage]}</div>
-      <div class="action-btn-desc">${action.description[gameState.currentLanguage]}</div>
     `;
 
     btn.addEventListener('click', () => {
-      // Check if player has enough resources
-      if (action.cost > gameState.metrics.resourcePoints) {
-        alert(`Not enough Resource Points! Need ${action.cost}, have ${roundValue(gameState.metrics.resourcePoints)}.`);
+      // Check if player has enough resources (cost is negative resourcePoints effect)
+      const cost = Math.abs(action.effects.resourcePoints || 0);
+      if (cost > gameState.metrics.resourcePoints) {
+        alert(`Not enough Resource Points! Need ${cost}, have ${roundValue(gameState.metrics.resourcePoints)}.`);
         return;
       }
 

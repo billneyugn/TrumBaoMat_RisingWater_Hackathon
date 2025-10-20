@@ -23,8 +23,12 @@ let gameState = {
  */
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Load game data
-    const response = await fetch('gameData/central_highlands.json');
+    // Initialize theme
+    initializeTheme();
+    
+    // Load game data based on selected scenario
+    const selectedScenario = localStorage.getItem('selectedScenario') || 'central_highlands';
+    const response = await fetch(`gameData/${selectedScenario}.json`);
     gameState.gameData = await response.json();
 
     // Initialize game
@@ -40,6 +44,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     alert('Failed to load game. Please refresh the page.');
   }
 });
+
+/**
+ * Initialize theme system
+ */
+function initializeTheme() {
+  // No quick actions needed
+}
+
 
 /**
  * Set up initial game state
@@ -63,15 +75,6 @@ function initializeGame() {
  * Set up all event listeners
  */
 function setupEventListeners() {
-  // Language switcher
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      gameState.currentLanguage = e.target.dataset.lang;
-      renderUI();
-    });
-  });
 
   // Tip modal
   document.getElementById('closeTipBtn').addEventListener('click', () => {
